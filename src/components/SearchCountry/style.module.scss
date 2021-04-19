@@ -1,0 +1,53 @@
+@import '../../assets/styles/config';
+
+.SearchCountry {
+  display: flex;
+  height: 48px;
+  overflow: hidden;
+  border-radius: 5px;
+
+  .searchButton {
+    flex-basis: 72px;
+    display: flex;
+    justify-content: center;
+    padding-left: 6px;
+    align-items: center;
+    cursor: pointer;
+    background-color: $dark-darkBlue;
+    transition: background-color 0.3s ease;
+
+    &:hover { background-color: $dark-darkBlueHover;}
+  }
+
+  .searchIcon {
+    fill: $white;
+    width: 15px;
+    height: 15px;
+  }
+
+  .searchInput {
+    flex-grow: 1;
+    color: $white;
+    outline: none;
+    border: none;
+    background-color: $dark-darkBlue;
+    padding-right: 20px;
+
+    &::placeholder {
+      color: $white;
+      font-size: 12px;
+    }
+  }
+
+  @include responsiveMedium {
+    height: 56px;
+    width: 480px;
+
+    .searchIcon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .searchInput::placeholder { font-size: 14px; }
+  }
+}

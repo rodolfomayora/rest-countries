@@ -1,0 +1,11 @@
+@import '../../assets/styles/config';
+
+.Home {
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  @include responsiveMedium {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}

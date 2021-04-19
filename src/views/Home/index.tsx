@@ -1,11 +1,19 @@
 import React, { FC } from 'react';
-import { Layout, Container } from '../../components';
+import {
+  Layout,
+  Container,
+  SearchCountry
+} from '../../components';
+import style from './style.module.scss';
 
 const Home: FC = () => (
   <Layout>
-    <main>
+    <main className={style.Home}>
       <Container>
-        <h1>home</h1>
+        <div className={style.contentWrapper}>
+          <SearchCountry />
+
+        </div>
       </Container>
     </main>
   </Layout>
