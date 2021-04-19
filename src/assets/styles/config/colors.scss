@@ -1,0 +1,16 @@
+/* Color Palette
+ =====================================================*/
+ 
+$white: hsl(0, 0%, 100%); // Dark Mode Text & Light Mode Elements
+
+// Dark Mode
+$dark-darkBlue: hsl(209, 23%, 22%); // Elements
+$dark-veryDarkBlue: hsl(207, 26%, 17%); // Background
+
+// Light Mode
+$light-veryDarkBlue: hsl(200, 15%, 8%); // Text
+$light-darkGray: hsl(0, 0%, 52%); // Input
+$light-lightGray: hsl(0, 0%, 98%); // Background
+
+// Extra
+$transparent: hsla(0, 0%, 0%, 0);

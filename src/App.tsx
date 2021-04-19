@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
+import './assets/styles/styles.global.scss';
 
-export default function App() {
+const App: FC = () => {
   return (
     <div>
       <h1>test</h1>
     </div>
   );
 }
+
+export default App;

@@ -1,0 +1,31 @@
+html * {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+:root {
+  font-family: 'Nunito-Sans', Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 300px;
+  color: $white;
+  background-color: $dark-veryDarkBlue;
+}
+
+img,
+figure {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: $white;
+  text-decoration: none;
+  -webkit-tap-highlight-color: $transparent;
+}

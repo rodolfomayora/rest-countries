@@ -1,0 +1,20 @@
+/* Mixins
+ ====================*/
+
+ @mixin responsiveMedium {
+   @media screen and (min-width: $medium) {
+     @content;
+   }
+ }
+
+ @mixin responsiveLarge {
+   @media screen and (min-width: $large) {
+     @content;
+   }
+ }
+
+ @mixin responsiveHelper($newBreakPoint) {
+   @media screen and (min-width: $newBreakPoint) {
+     @content;
+   }
+ }
