@@ -1,4 +1,4 @@
-export const sampleData: Array<any> = [
+const sampleData: Array<any> = [
   {
       "name": "Afghanistan",
       "topLevelDomain": [
@@ -159,3 +159,5 @@ export const sampleData: Array<any> = [
       "cioc": ""
   }
 ];
+
+export default sampleData;

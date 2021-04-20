@@ -2,9 +2,28 @@
 
 .Home {
   padding-top: 24px;
-  padding-bottom: 24px;
+  padding-bottom: 65px;
 
   .countryFilters > :first-child { margin-bottom: 40px; }
+
+  .countryList {
+    display: grid;
+
+    grid-template-columns: auto;
+    grid-auto-rows: auto;
+    justify-content: center;
+    grid-row-gap: 40px;
+    margin-top: 32px;
+
+    // & > * + * { margin-top: 40px; }
+  }
+
+  @include responsiveHelper(576px) {
+    .countryList {
+      grid-template-columns: repeat(2, auto);
+      justify-content: space-around;
+    }
+  }
 
   @include responsiveMedium {
     padding-top: 48px;
@@ -15,6 +34,21 @@
       justify-content: space-between;
 
       & > :first-child { margin-bottom: 0; }
+    }
+  }
+
+  @include responsiveLarge {
+    .countryList {
+      margin-top: 46px;
+      grid-template-columns: repeat(3, auto);
+      justify-content: space-between;
+      grid-row-gap: 80px;
+    }
+  }
+
+  @include responsiveHelper(1260px) {
+    .countryList {
+      grid-template-columns: repeat(4, auto);
     }
   }
 }
