@@ -2,7 +2,8 @@ import {
   FETCH_COUNTRIES_REQUEST,
   FETCH_COUNTRIES_SUCCESS,
   FETCH_COUNTRIES_FEILURE
-} from './action-types';
+} from './actionTypes';
+
 // Effect Creators
 import {
   takeLatest,

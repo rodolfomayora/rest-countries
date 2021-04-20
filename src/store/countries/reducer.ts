@@ -2,12 +2,12 @@ import {
   FETCH_COUNTRIES_REQUEST,
   FETCH_COUNTRIES_SUCCESS,
   FETCH_COUNTRIES_FEILURE
-} from './action-types';
+} from './actionTypes';
 import { CountriesState, CountriesReducer } from './types';
 
 const defaultCountries: CountriesState = {
   loading: false,
-  countries: [],
+  countriesList: [],
   error: ''
 }
 
@@ -22,7 +22,7 @@ const countries: CountriesReducer = (state = defaultCountries, { type, payload }
     case FETCH_COUNTRIES_SUCCESS: return ({
       ...state,
       loading: false,
-      countries: payload
+      countriesList: payload
     })
 
     case FETCH_COUNTRIES_FEILURE: return ({

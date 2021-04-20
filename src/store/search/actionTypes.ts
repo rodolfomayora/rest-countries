@@ -1,0 +1,1 @@
+export const SET_COUNTRY_NAME: string = 'SET_COUNTRY_NAME';

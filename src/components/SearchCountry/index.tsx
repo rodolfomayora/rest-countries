@@ -1,10 +1,14 @@
-import React, { FC, useState, ChangeEvent } from 'react';
+import React, { FC, ChangeEvent } from 'react';
 import style from './style.module.scss';
 import { SearchIcon } from '../../assets/images';
+import { useSelector, useDispatch } from 'react-redux';
+import { countryNameSelector } from '../../store/rootSelectors';
+import { setCountryName } from '../../store/rootActions';
 
 const SearchCountry: FC = () => {
 
-  const [country, setCountry] = useState<string>('');
+  const dispatch = useDispatch();
+  const countryName: string = useSelector(countryNameSelector);
 
   return (
     <div className={style.SearchCountry}>
@@ -16,9 +20,12 @@ const SearchCountry: FC = () => {
         name="countryName"
         type="search"
         placeholder="Search for a country..."
-        value={country}
-        onChange={(event: ChangeEvent<HTMLInputElement>) => {
-          return setCountry(event.target.value);
+        value={countryName}
+        onChange={({ target }: ChangeEvent<HTMLInputElement>) => {
+          return dispatch(setCountryName(target.value
+            .trim()
+            .toLowerCase()  
+          ))
         }}
       />
     </div>

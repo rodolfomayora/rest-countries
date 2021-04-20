@@ -3,7 +3,7 @@ import { StrictEffect } from 'redux-saga/effects';
 
 export type CountriesState = {
   loading: boolean;
-  countries: Array<any>,
+  countriesList: Array<any>,
   error: string
 };
 
