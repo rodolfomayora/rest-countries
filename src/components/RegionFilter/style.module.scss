@@ -1,0 +1,58 @@
+@import '../../assets/styles/config';
+
+.RegionFilter {
+  position: relative;
+  width: 200px;
+  font-size: 12px;
+  height: 48px;
+
+  .toggleFilter {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $dark-darkBlue;
+    padding-left: 25px;
+    padding-right: 20px;
+    border-radius: 5px;
+  }
+
+  .arrow,
+  .arrowReverse {
+    fill: $white;
+    width: 8px;
+    height: 8px;
+  }
+
+  .arrowReverse { transform: scaleY(-1); }
+
+  .filterOptions {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 100%;
+    margin-top: 5px;
+    width: 200px;
+    padding: 12px 25px;
+    background-color: $dark-darkBlue;
+    border-radius: 5px;
+    overflow: hidden;
+
+    & > * {
+      list-style: none;
+      line-height: 24px;
+    }
+  }
+
+  @include responsiveMedium {
+    height: 56px; 
+    font-size: 13px;
+
+    .toggleFilter { font-size: 14px; }
+
+    .filterOptions > * {
+      line-height: 28px;
+      letter-spacing: 0.4px;
+    }
+  }
+}
