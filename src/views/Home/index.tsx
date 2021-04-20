@@ -22,9 +22,9 @@ const Home: FC = () => (
           </div>
 
           <div className={style.countryList}>
-            {sampleData.map((country: any) => (
+            {sampleData.map((country: any, index: number) => (
               <CountryPreview
-                key={country.alpha3Code}
+                key={(index + 1).toString()}
                 name={country.name}
                 population={country.population}
                 region={country.region}

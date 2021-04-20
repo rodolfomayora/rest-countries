@@ -7,21 +7,26 @@
   .countryFilters > :first-child { margin-bottom: 40px; }
 
   .countryList {
-    display: grid;
 
-    grid-template-columns: auto;
+    margin-top: 32px;
+    display: grid;
+    // the same with of the component
+    grid-template-columns: 265px;
     grid-auto-rows: auto;
     justify-content: center;
-    grid-row-gap: 40px;
-    margin-top: 32px;
 
-    // & > * + * { margin-top: 40px; }
+    & > :nth-of-type(1) ~ * { margin-top: 40px; }
   }
 
   @include responsiveHelper(576px) {
     .countryList {
-      grid-template-columns: repeat(2, auto);
+      grid-template-columns: repeat(2, 265px);
       justify-content: space-around;
+
+      & > :nth-of-type(2) {
+        margin-top: 0;
+        & ~ * { margin-top: 40px; }
+      }
     }
   }
 
@@ -39,16 +44,26 @@
 
   @include responsiveLarge {
     .countryList {
-      margin-top: 46px;
-      grid-template-columns: repeat(3, auto);
-      justify-content: space-between;
-      grid-row-gap: 80px;
+      // margin-top: 46px;
+      grid-template-columns: repeat(3, 265px);
+      // grid-row-gap: 80px;
+
+      & > :nth-of-type(3) {
+        margin-top: 0;
+        & ~ * { margin-top: 80px; }
+      }
     }
   }
 
   @include responsiveHelper(1260px) {
     .countryList {
-      grid-template-columns: repeat(4, auto);
+      justify-content: space-between;
+      grid-template-columns: repeat(4, 265px);
+      
+      & > :nth-of-type(4) {
+        margin-top: 0;
+        & ~ * { margin-top: 80px; }
+      }
     }
   }
 }
