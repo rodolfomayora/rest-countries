@@ -5,3 +5,4 @@ export { default as SearchCountry } from './SearchCountry';
 export { default as RegionFilter } from './RegionFilter';
 export { default as CountryPreview } from './CountryPreview';
 export { default as CountryList } from './CountryList';
+export { default as CountryFilters } from './CountryFilters';

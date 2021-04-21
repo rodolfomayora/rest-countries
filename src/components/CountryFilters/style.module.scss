@@ -1,0 +1,13 @@
+@import '../../assets/styles/config';
+
+.countryFilters {
+
+  & > :first-child { margin-bottom: 40px; }
+
+  @include responsiveMedium {
+    display: flex;
+    justify-content: space-between;
+
+    & > :first-child { margin-bottom: 0; }
+  }
+}

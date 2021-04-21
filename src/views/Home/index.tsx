@@ -2,9 +2,8 @@ import React, { FC } from 'react';
 import {
   Layout,
   Container,
-  SearchCountry,
-  RegionFilter,
-  CountryList
+  CountryList,
+  CountryFilters
 } from '../../components';
 import style from './style.module.scss';
 
@@ -13,11 +12,7 @@ const Home: FC = () => (
     <main className={style.Home}>
       <Container>
         <div className={style.contentWrapper}>
-          <div className={style.countryFilters}>
-            <SearchCountry />
-            <RegionFilter />
-          </div>
-
+          <CountryFilters />
           <CountryList />
         </div>
       </Container>

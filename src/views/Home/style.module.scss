@@ -4,17 +4,8 @@
   padding-top: 24px;
   padding-bottom: 65px;
 
-  .countryFilters > :first-child { margin-bottom: 40px; }
-
   @include responsiveMedium {
     padding-top: 48px;
     padding-bottom: 48px;
-
-    .countryFilters {
-      display: flex;
-      justify-content: space-between;
-
-      & > :first-child { margin-bottom: 0; }
-    }
   }
 }
