@@ -29,6 +29,7 @@ function* fetchCountriesRequest(): FetchSagaReturn {
       [crr.alpha3Code]: {
         id: crr.alpha3Code,
         name: crr.name,
+        capital: crr.capital,
         population: crr.population,
         region: crr.region,
         subregion: crr.subregion,

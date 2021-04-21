@@ -12,7 +12,7 @@ export type Country = {
   topLevelDomain: string,
   currencies: Array<object>,
   languages: Array<object>,
-  borderCountriesx: Array<string>
+  borderCountries: Array<string>
 }
 
 export type AllCountries = {
