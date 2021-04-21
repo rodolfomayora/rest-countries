@@ -1,6 +1,7 @@
-export const selectAllCountries = (state: any): Array<any> => {
-  const { countries } = state;
-  const { allCountries } = countries;
+import RootState from '../rootState';
+
+export const selectAllCountries = (state: RootState): Array<any> => {
+  const { allCountries } = state.countries;
   const { allIds, byId } = allCountries;
-  return allIds.map((countyId: string) => byId[countyId]);
+  return allIds.map((countyId: string): object => byId[countyId]);
 }

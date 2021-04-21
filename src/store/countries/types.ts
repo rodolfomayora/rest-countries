@@ -20,11 +20,6 @@ export type AllCountries = {
     [countryId: string]: Country
   },
   allIds: Array<string>,
-  africaIds: Array<string>,
-  americasIds: Array<string>,
-  asiaIds: Array<string>,
-  europeIds: Array<string>,
-  oceaniaIds: Array<string>
 }
 
 export type CountriesState = {

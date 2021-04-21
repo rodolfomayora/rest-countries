@@ -17,6 +17,7 @@
     padding-left: 25px;
     padding-right: 20px;
     border-radius: 5px;
+    cursor: pointer;
   }
 
   .arrow,
@@ -28,22 +29,30 @@
 
   .arrowReverse { transform: scaleY(-1); }
 
-  .filterOptions {
+  .optionsWrapper {
     position: absolute;
     z-index: 1;
     left: 0;
     top: 100%;
     margin-top: 5px;
     width: 200px;
-    padding: 12px 25px;
+    padding: 12px 0;
     background-color: $dark-darkBlue;
     border-radius: 5px;
     overflow: hidden;
+    box-shadow: 0 0 5px $shadow;
+  }
 
-    & > * {
-      list-style: none;
-      line-height: 24px;
-    }
+  .option {
+    display: block;
+    padding-left: 25px;
+    padding-right: 25px;
+    list-style: none;
+    line-height: 24px;
+    cursor: pointer;
+
+    &.active,
+    &:hover { background-color: $dark-darkBlueHover; }
   }
 
   @include responsiveMedium {
@@ -52,7 +61,7 @@
 
     .toggleFilter { font-size: 14px; }
 
-    .filterOptions > * {
+    .option {
       line-height: 28px;
       letter-spacing: 0.4px;
     }

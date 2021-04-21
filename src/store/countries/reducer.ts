@@ -10,11 +10,6 @@ const defaultCountries: CountriesState = {
   allCountries: {
     byId: {},
     allIds: [],
-    africaIds: [],
-    americasIds: [],
-    asiaIds: [],
-    europeIds: [],
-    oceaniaIds: []
   },
   error: ''
 }

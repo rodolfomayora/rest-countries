@@ -9,8 +9,14 @@
   grid-auto-rows: auto;
   justify-content: center;
 
-  & > :nth-of-type(1) ~ * { margin-top: 40px; }
+  .message {
+    position: absolute;
+    left: 50%;
+    top: 26vh;
+    transform: translateX(-50%);
+  }
 
+  & > :nth-of-type(1) ~ * { margin-top: 40px; }
 
   @include responsiveSmall {
     grid-template-columns: repeat(2, 265px);

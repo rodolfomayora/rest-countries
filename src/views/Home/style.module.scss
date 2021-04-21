@@ -6,13 +6,6 @@
 
   .countryFilters > :first-child { margin-bottom: 40px; }
 
-  .message {
-    position: absolute;
-    left: 50%;
-    top: 26vh;
-    transform: translateX(-50%);
-  }
-
   @include responsiveMedium {
     padding-top: 48px;
     padding-bottom: 48px;

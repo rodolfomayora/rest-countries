@@ -43,31 +43,9 @@ function* fetchCountriesRequest(): FetchSagaReturn {
 
     const allCountryIds: Array<string> = Object.keys(allCountriesById);
 
-    const allIdsByRegion: any = data.reduce((acc: any, crr: any) => {
-      if (crr.region === 'Africa') acc.Africa.push(crr.alpha3Code);
-      if (crr.region === 'Americas') acc.Americas.push(crr.alpha3Code);
-      if (crr.region === 'Asia') acc.Asia.push(crr.alpha3Code);
-      if (crr.region === 'Europe') acc.Europe.push(crr.alpha3Code);
-      if (crr.region === 'Oceania') acc.Oceania.push(crr.alpha3Code);
-      return acc;
-    }, {
-      Africa: [],
-      Americas: [],
-      Asia: [],
-      Europe: [],
-      Oceania: []
-    })
-
-    const { Africa, Americas, Asia, Europe, Oceania } = allIdsByRegion;
-
     const normalizedData: AllCountries = {
       byId: allCountriesById,
-      allIds: allCountryIds,
-      africaIds: Africa,
-      americasIds: Americas,
-      asiaIds: Asia,
-      europeIds: Europe,
-      oceaniaIds: Oceania
+      allIds: allCountryIds
     }
 
     yield put({
