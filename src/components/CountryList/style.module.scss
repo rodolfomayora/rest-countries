@@ -1,0 +1,44 @@
+@import '../../assets/styles/config';
+
+.CountryList {
+  position: relative;
+  margin-top: 32px;
+  display: grid;
+  // the same with of the component
+  grid-template-columns: 265px;
+  grid-auto-rows: auto;
+  justify-content: center;
+
+  & > :nth-of-type(1) ~ * { margin-top: 40px; }
+
+
+  @include responsiveSmall {
+    grid-template-columns: repeat(2, 265px);
+    justify-content: space-between;
+
+    & > :nth-of-type(2) {
+      margin-top: 0;
+      & ~ * { margin-top: 40px; }
+    }
+  }
+  
+  @include responsiveLarge {
+    margin-top: 50px;
+    grid-template-columns: repeat(3, 265px);
+
+    & > :nth-of-type(3) {
+      margin-top: 0;
+      & ~ * { margin-top: 40px; }
+    }
+  }
+
+  @include responsiveExtraLarge {
+    justify-content: space-between;
+    grid-template-columns: repeat(4, 265px);
+    
+    & > :nth-of-type(4) {
+      margin-top: 0;
+      & ~ * { margin-top: 76px; }
+    }
+  }
+}
