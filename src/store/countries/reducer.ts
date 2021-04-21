@@ -7,7 +7,15 @@ import { CountriesState, CountriesReducer } from './types';
 
 const defaultCountries: CountriesState = {
   loading: false,
-  countriesList: [],
+  allCountries: {
+    byId: {},
+    allIds: [],
+    africaIds: [],
+    americasIds: [],
+    asiaIds: [],
+    europeIds: [],
+    oceaniaIds: []
+  },
   error: ''
 }
 
@@ -22,7 +30,7 @@ const countries: CountriesReducer = (state = defaultCountries, { type, payload }
     case FETCH_COUNTRIES_SUCCESS: return ({
       ...state,
       loading: false,
-      countriesList: payload
+      allCountries: payload
     })
 
     case FETCH_COUNTRIES_FEILURE: return ({

@@ -7,7 +7,7 @@
   .countryFilters > :first-child { margin-bottom: 40px; }
 
   .countryList {
-
+    position: relative;
     margin-top: 32px;
     display: grid;
     // the same with of the component
@@ -16,6 +16,13 @@
     justify-content: center;
 
     & > :nth-of-type(1) ~ * { margin-top: 40px; }
+  }
+
+  .message {
+    position: absolute;
+    left: 50%;
+    top: 26vh;
+    transform: translateX(-50%);
   }
 
   @include responsiveHelper(576px) {

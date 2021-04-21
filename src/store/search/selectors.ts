@@ -1,1 +1,1 @@
-export const countryNameSelector = (state: any): string => state.search.countryName;
+export const selectCountryName = (state: any): string => state.search.countryName;

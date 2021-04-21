@@ -9,25 +9,38 @@ import {
 import style from './style.module.scss';
 import { useSelector } from 'react-redux';
 import {
-  countriesWithIdSelector,
-  countryNameSelector,
+  selectCountryName,
+  selectAllCountries,
 } from '../../store/rootSelectors';
 
 const Home: FC = () => {
 
-  const countryName:string = useSelector(countryNameSelector);
-  const countriesList: Array<any> = useSelector(countriesWithIdSelector);
-  const [copyCountries, setCopyCountries] = useState<Array<any>>(countriesList);
-  useEffect(() => {
-    const result = countriesList.filter((country: any) => {
-      return country.name
-      .toLowerCase()
-      .includes(countryName)
-    });
+  const countryName:string = useSelector(selectCountryName);
+  const countryList: Array<any> = useSelector(selectAllCountries);
 
-    setCopyCountries(result);
+  const [copyCountries, setCopyCountries] = useState<Array<any>>(countryList);
+  const [showMessage, setShowMessage] = useState<boolean>(false);
+  useEffect(() => {
+    setShowMessage(false);
+    
+    if (!countryName) {
+
+      setCopyCountries(countryList);
+
+    } else {
+
+      const result = countryList.filter((country: any) => {
+        return country.name
+          .toLowerCase()
+          .includes(countryName)
+      });
+  
+      if (!result.length) setShowMessage(true)
+  
+      setCopyCountries(result);
+    }
   },
-  [countryName, countriesList])
+  [countryName, countryList])
 
   return (
     <Layout>
@@ -43,15 +56,16 @@ const Home: FC = () => {
               {!!copyCountries.length && copyCountries
                 .map((country: any) => (
                   <CountryPreview
-                    // key={(index + 1).toString()}
                     key={country.id}
                     name={country.name}
                     population={country.population}
                     region={country.region}
                     capital={country.capital}
-                    flagImage={country.flag}
+                    flagImage={country.flagImage}
                   />
               ))}
+
+              {showMessage && (<div className={style.message}>Country no Found</div>)}
             </div>
           </div>
         </Container>

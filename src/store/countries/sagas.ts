@@ -11,7 +11,7 @@ import {
   put,
 } from 'redux-saga/effects';
 import { allCountries } from '../../utils/endPoints';
-import { FetchSagaReturn } from './types';
+import { FetchSagaReturn, AllCountries } from './types';
 
 // Saga Workers
 function* fetchCountriesRequest(): FetchSagaReturn {
@@ -24,9 +24,54 @@ function* fetchCountriesRequest(): FetchSagaReturn {
 
     const data: Array<any> = yield call([response, response.json]);
 
+    const allCountriesById: any = data.reduce((acc: object, crr: any) => ({
+      ...acc,
+      [crr.alpha3Code]: {
+        id: crr.alpha3Code,
+        name: crr.name,
+        population: crr.population,
+        region: crr.region,
+        subregion: crr.subregion,
+        flagImage: crr.flag,
+        topLevelDomain: crr.topLevelDomain,
+        currencies: [...crr.currencies],
+        languages: [...crr.languages],
+        borderCountries: crr.borders
+      }
+    }), {});
+
+    const allCountryIds: Array<string> = Object.keys(allCountriesById);
+
+    const allIdsByRegion: any = data.reduce((acc: any, crr: any) => {
+      if (crr.region === 'Africa') acc.Africa.push(crr.alpha3Code);
+      if (crr.region === 'Americas') acc.Americas.push(crr.alpha3Code);
+      if (crr.region === 'Asia') acc.Asia.push(crr.alpha3Code);
+      if (crr.region === 'Europe') acc.Europe.push(crr.alpha3Code);
+      if (crr.region === 'Oceania') acc.Oceania.push(crr.alpha3Code);
+      return acc;
+    }, {
+      Africa: [],
+      Americas: [],
+      Asia: [],
+      Europe: [],
+      Oceania: []
+    })
+
+    const { Africa, Americas, Asia, Europe, Oceania } = allIdsByRegion;
+
+    const normalizedData: AllCountries = {
+      byId: allCountriesById,
+      allIds: allCountryIds,
+      africaIds: Africa,
+      americasIds: Americas,
+      asiaIds: Asia,
+      europeIds: Europe,
+      oceaniaIds: Oceania
+    }
+
     yield put({
       type: FETCH_COUNTRIES_SUCCESS,
-      payload: data
+      payload: normalizedData
     })
 
   } catch ({ message }) {
