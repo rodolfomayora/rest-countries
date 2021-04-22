@@ -6,3 +6,4 @@ export { default as RegionFilter } from './RegionFilter';
 export { default as CountryPreview } from './CountryPreview';
 export { default as CountryList } from './CountryList';
 export { default as CountryFilters } from './CountryFilters';
+export { default as BackToHomeButton } from './BackToHomeButton';
