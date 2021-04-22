@@ -1,4 +1,4 @@
-import React, { FC, ChangeEvent } from 'react';
+import React, { FC, ChangeEvent, useState, useEffect } from 'react';
 import style from './style.module.scss';
 import { SearchIcon } from '../../assets/images';
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,6 +10,17 @@ const SearchCountry: FC = () => {
   const dispatch = useDispatch();
   const countryName: string = useSelector(selectCountryName);
 
+  const [input, setInput] = useState<string>(countryName);
+
+  useEffect(() => {
+    const debounceCountryName: number = window.setTimeout(() => {
+      dispatch(setCountryName(input.trim().toLowerCase()))
+    }, 800)
+
+    return () => window.clearInterval(debounceCountryName);
+  },
+  [input, dispatch])
+
   return (
     <div className={style.SearchCountry}>
       <div className={style.searchButton}>
@@ -20,12 +31,9 @@ const SearchCountry: FC = () => {
         name="countryName"
         type="search"
         placeholder="Search for a country..."
-        value={countryName}
-        onChange={({ target }: ChangeEvent<HTMLInputElement>) => {
-          return dispatch(setCountryName(target.value
-            .trim()
-            .toLowerCase()  
-          ))
+        value={input}
+        onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          setInput(event.target.value);
         }}
       />
     </div>

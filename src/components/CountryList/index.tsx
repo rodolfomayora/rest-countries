@@ -14,7 +14,6 @@ const CountryList: FC = () => {
   const regionFilter: string = useSelector(selectRegionFilter);
   const allCountries: Array<any> = useSelector(selectAllCountries);
   const [copyCountries, setCopyCountries] = useState<Array<any>>(allCountries);
-  const [showMessage, setShowMessage] = useState<boolean>(false);
 
   useEffect(() => {
 
@@ -24,15 +23,12 @@ const CountryList: FC = () => {
       return parseCurrentName.includes(parseCountryName);
     }
 
-    setShowMessage(false)
-    
     const result = allCountries.reduce((acc: any, crr: any) => {
       const { region, name } = crr;
 
       if (regionFilter === 'All' || region === regionFilter) {
         if (countryName === '') acc.push(crr);
         else if (compareName(name, countryName)) acc.push(crr);
-        else setShowMessage(true);
       }
 
       return acc;
@@ -45,7 +41,7 @@ const CountryList: FC = () => {
 
   return (
     <div className={style.CountryList}>
-      {!!copyCountries.length && copyCountries.map((country: any) => (
+      {!!copyCountries.length ? copyCountries.map((country: any) => (
         <CountryPreview
           key={country.id}
           id={country.id}
@@ -55,9 +51,9 @@ const CountryList: FC = () => {
           capital={country.capital}
           flagImage={country.flagImage}
         />
-      ))}
-  
-      {showMessage && (<div className={style.message}>Country not Found</div>)}
+      )) : (
+        <div className={style.message}>Country not Found</div>
+      )}
     </div>
   );
 }
