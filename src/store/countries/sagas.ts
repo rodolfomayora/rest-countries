@@ -29,6 +29,7 @@ function* fetchCountriesRequest(): FetchSagaReturn {
       [crr.alpha3Code]: {
         id: crr.alpha3Code,
         name: crr.name,
+        nativeName: crr.nativeName,
         capital: crr.capital,
         population: crr.population,
         region: crr.region,
@@ -37,7 +38,7 @@ function* fetchCountriesRequest(): FetchSagaReturn {
         topLevelDomain: crr.topLevelDomain,
         currencies: [...crr.currencies],
         languages: [...crr.languages],
-        borderCountries: crr.borders
+        borderCountries: [...crr.borders]
       }
     }), {});
 

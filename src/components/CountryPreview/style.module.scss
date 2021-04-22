@@ -7,6 +7,10 @@
   overflow: hidden;
   box-shadow: 0 0 8px $shadow;
   
+  .previewWrapper {
+    display: block
+  }
+
   .flagWrapper {
     height: 160px;
     background-color: $darkGray;

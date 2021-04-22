@@ -14,7 +14,7 @@ const App: FC = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/Detail" component={CountryDetail} />
+        <Route path="/:id" component={CountryDetail} />
       </Switch>
     </BrowserRouter>
   );

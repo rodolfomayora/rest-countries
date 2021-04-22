@@ -48,6 +48,7 @@ const CountryList: FC = () => {
       {!!copyCountries.length && copyCountries.map((country: any) => (
         <CountryPreview
           key={country.id}
+          id={country.id}
           name={country.name}
           population={country.population}
           region={country.region}

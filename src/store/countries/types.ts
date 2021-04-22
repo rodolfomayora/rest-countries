@@ -1,9 +1,11 @@
 import { AnyAction } from 'redux';
 import { StrictEffect } from 'redux-saga/effects';
+import RootState from '../rootState';
 
 export type Country = {
   id: string,
   name: string,
+  nativeName: string,
   population: number,
   region: string,
   subregion: string
@@ -31,3 +33,7 @@ export type CountriesState = {
 export type CountriesReducer = (state: CountriesState, action: AnyAction) => CountriesState;
 
 export type FetchSagaReturn = Generator<StrictEffect, void, any>;
+
+export type SelectAll = (state: RootState) => Array<any>;
+
+export type SelectById = (countryId: string) => (state: RootState) => object;
