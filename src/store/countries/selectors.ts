@@ -8,5 +8,10 @@ export const selectAllCountries: SelectAll = (state) => {
 
 export const selectCountryById: SelectById = (countryId) => (state) => {
   const { byId } = state.countries.allCountries
-  return { ...byId[countryId] };
+  return ({ ...byId[countryId] });
+}
+
+export const selectAllCountiesById = (state: any) => {
+  const { allCountries } = state.countries;
+  return ({ ...allCountries.byId });
 }
