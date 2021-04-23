@@ -1,7 +1,7 @@
 export type CountryPreviewProps = {
   id: string,
   name: string,
-  population: number,
+  population: string | number,
   region: string,
   capital: string,
   flagImage: string

@@ -4,16 +4,16 @@ import CountryPreview from '../CountryPreview';
 import { useSelector } from 'react-redux';
 import {
   selectCountryName,
-  selectAllCountries,
   selectRegionFilter,
+  selectCountriesAsArray
 } from '../../store/rootSelectors';
 
 const CountryList: FC = () => {
 
   const countryName: string = useSelector(selectCountryName);
   const regionFilter: string = useSelector(selectRegionFilter);
-  const allCountries: Array<any> = useSelector(selectAllCountries);
-  const [copyCountries, setCopyCountries] = useState<Array<any>>(allCountries);
+  const allCountries: Array<any> = useSelector(selectCountriesAsArray);
+  const [copyCountries, setCopyCountries] = useState<Array<any>>([...allCountries]);
 
   useEffect(() => {
 

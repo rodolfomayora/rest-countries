@@ -11,6 +11,7 @@ import {
   put,
 } from 'redux-saga/effects';
 import { allCountries } from '../../utils/endPoints';
+import parseDigitsNumber from '../../utils/parseDigitsNumber';
 import { FetchSagaReturn, AllCountries } from './types';
 
 // Saga Workers
@@ -24,6 +25,8 @@ function* fetchCountriesRequest(): FetchSagaReturn {
 
     const data: Array<any> = yield call([response, response.json]);
 
+    const getName = (item: any) => item.name;
+
     const allCountriesById: any = data.reduce((acc: object, crr: any) => ({
       ...acc,
       [crr.alpha3Code]: {
@@ -31,13 +34,13 @@ function* fetchCountriesRequest(): FetchSagaReturn {
         name: crr.name,
         nativeName: crr.nativeName,
         capital: crr.capital,
-        population: crr.population,
+        population: parseDigitsNumber(crr.population),
         region: crr.region,
         subregion: crr.subregion,
         flagImage: crr.flag,
         topLevelDomain: crr.topLevelDomain,
-        currencies: [...crr.currencies],
-        languages: [...crr.languages],
+        currencies: crr.currencies.map(getName),
+        languages: crr.languages.map(getName),
         borderCountries: [...crr.borders]
       }
     }), {});

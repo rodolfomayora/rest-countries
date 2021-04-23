@@ -6,14 +6,14 @@ export type Country = {
   id: string,
   name: string,
   nativeName: string,
-  population: number,
+  population: string | number,
   region: string,
   subregion: string
   capital: string,
   flagImage: string,
   topLevelDomain: string,
-  currencies: Array<object>,
-  languages: Array<object>,
+  currencies: Array<string>,
+  languages: Array<string>,
   borderCountries: Array<string>
 }
 
@@ -34,6 +34,8 @@ export type CountriesReducer = (state: CountriesState, action: AnyAction) => Cou
 
 export type FetchSagaReturn = Generator<StrictEffect, void, any>;
 
-export type SelectAll = (state: RootState) => Array<any>;
+export type SelectCountreis = (state: RootState) => AllCountries;
 
 export type SelectById = (countryId: string) => (state: RootState) => object;
+
+export type SelectAllById = (state: RootState) => object;

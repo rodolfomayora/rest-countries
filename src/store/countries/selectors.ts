@@ -1,17 +1,28 @@
-import { SelectAll, SelectById } from './types';
+import { createSelector } from 'reselect';
 
-export const selectAllCountries: SelectAll = (state) => {
-  const { allCountries } = state.countries;
-  const { allIds, byId } = allCountries;
-  return allIds.map((countyId: string): object => byId[countyId]);
-}
+import {
+  SelectCountreis,
+  SelectById,
+  SelectAllById
+} from './types';
 
 export const selectCountryById: SelectById = (countryId) => (state) => {
   const { byId } = state.countries.allCountries
   return ({ ...byId[countryId] });
 }
 
-export const selectAllCountiesById = (state: any) => {
+export const selectAllCountriesById: SelectAllById = (state) => {
   const { allCountries } = state.countries;
   return ({ ...allCountries.byId });
 }
+
+export const selectAllCountries: SelectCountreis = (state) => {
+  return state.countries.allCountries;
+}
+
+export const selectCountriesAsArray = createSelector(
+  selectAllCountries,
+  ({ allIds, byId }) => allIds.map((countyId: string): object => {
+    return byId[countyId]
+  })
+)

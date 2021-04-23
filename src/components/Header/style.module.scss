@@ -22,7 +22,7 @@
   }
 
   @include responsiveMedium {
-    box-shadow: 0 0 5px 5px $shadow;
+    box-shadow: 0 0 5px 2px $shadow;
 
     .mainTitle {
       font-size: 23px;
