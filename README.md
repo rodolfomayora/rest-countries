@@ -1,46 +1,66 @@
-# Getting Started with Create React App
+# Frontend Mentor - REST Countries API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [REST Countries API challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Available Scripts
+### Screenshot
 
-In the project directory, you can run:
+![](./public/screenshot.jpg)
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Links
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Solution URL: [https://github.com/rodolfomayora/rest-countries.git](https://github.com/rodolfomayora/rest-countries.git)
+- Live Site URL: [https://rest-countries-app-rodolfomayora.vercel.app/](https://rest-countries-app-rodolfomayora.vercel.app/)
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## My process
 
-### `yarn build`
+- RC0: Proyect Configuration
+- RC1: Assets Definition
+- RC2: View Navigation Configuration
+- RC3: Layout and Container Component
+- RC4: Header Component
+- RC5: SearchCountry Component
+- RC6: RegionFilter Component
+- RC7: CountryPreview Component
+- RC8: Redux and Redux Saga configuration"
+- RC9: API Integration and Search Country using input field
+- RC10: Normalized reducer countries data
+- RC11: CountryList Component (section)
+- RC12: Improve Layout and fix country data
+- RC13: Filter Countries by Region
+- RC14: CountryFilters Component
+- RC15: Dinamyc route configuration for Country Detail
+- RC16: Improve performance and UX of SearchCountry
+- RC17: BackButton Component
+- RC18: BorderCountryButton Component
+- RC19: CountryDetail Component
+- RC20: Improve performance with List Virtualization (windowing)
+- RC21: Solve reload country detail page issue
+- RC22: Update README.md
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Built with
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [ReactJS](https://reactjs.org/) 
+- [TypeScript](https://www.typescriptlang.org/) - JavaScript Superset
+- [Redux](https://redux.js.org/) - Global State Management Pattern
+- [Redux-Saga](https://redux-saga.js.org/) - Redux Side Effect Manager
+- [SASS](https://sass-lang.com/) - CSS Pre-procesor
+- [CSS Modules](https://github.com/css-modules/css-modules) - For Scoped styles
+- [List Virtualization](https://github.com/bvaughn/react-window) - windowing
+- Semantic HTML5 markup
+- Flexbox
+- Mobile-first workflow
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### development techniques for performance improvement
+- debouncing
+- Windowing (List Virtualization)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Author
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Website - [https://rodolfo-mayora-pereda.vercel.app](https://rodolfo-mayora-pereda.vercel.app)
+- LinkedIn - [https://www.linkedin.com/in/rodolfo-mayora-pereda](https://www.linkedin.com/in/rodolfo-mayora-pereda)
+- Frontend Mentor - [https://www.frontendmentor.io/profile/rodolfomayora](https://www.frontendmentor.io/profile/rodolfomayora)
