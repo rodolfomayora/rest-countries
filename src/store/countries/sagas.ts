@@ -33,7 +33,7 @@ function* fetchCountriesRequest(): FetchSagaReturn {
         id: crr.alpha3Code,
         name: crr.name,
         nativeName: crr.nativeName,
-        capital: crr.capital,
+        capital: !!crr.capital ? crr.capital : 'Has no capital',
         population: parseDigitsNumber(crr.population),
         region: crr.region,
         subregion: crr.subregion,

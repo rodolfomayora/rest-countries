@@ -97,9 +97,9 @@ const CountryDetail: FC = () => {
                         </p>
                         <p>
                           <span className={style.label}>
-                            Languajes:
+                            languages:
                           </span>{' '}
-                          {mapArrayToText(countryData.languagesName ?? [])}
+                          {mapArrayToText(countryData.languages ?? [])}
                         </p>
                       </div>
                     </div>
