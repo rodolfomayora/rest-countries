@@ -36,6 +36,8 @@ export type FetchSagaReturn = Generator<StrictEffect, void, any>;
 
 export type SelectCountreis = (state: RootState) => AllCountries;
 
+export type SelectAllCountriesId = (state: RootState) => Array<string>;
+
 export type SelectById = (countryId: string) => (state: RootState) => object;
 
 export type SelectAllById = (state: RootState) => object;

@@ -13,11 +13,11 @@ import mapArrayToMatriz from '../../utils/mapArrayToMatriz';
 
 const CountryList: FC = () => {
 
+  const allCountriesAsArray: Array<any> = useSelector(selectCountriesAsArray);
   const countryName: string = useSelector(selectCountryName);
   const regionFilter: string = useSelector(selectRegionFilter);
-  const allCountries: Array<any> = useSelector(selectCountriesAsArray);
 
-  const [copyCountries, setCopyCountries] = useState<Array<any>>([...allCountries]);
+  const [copyCountries, setCopyCountries] = useState<Array<any>>([...allCountriesAsArray]);
   useEffect(() => {
 
     const compareName = (currentName: string, countryName: string) => {
@@ -26,7 +26,7 @@ const CountryList: FC = () => {
       return parseCurrentName.includes(parseCountryName);
     }
 
-    const result = allCountries.reduce((acc: any, crr: any) => {
+    const result = allCountriesAsArray.reduce((acc: any, crr: any) => {
       const { region, name } = crr;
 
       if (regionFilter === 'All' || region === regionFilter) {
@@ -40,7 +40,7 @@ const CountryList: FC = () => {
     setCopyCountries(result);
     
   },
-  [allCountries, regionFilter, countryName])
+  [allCountriesAsArray, regionFilter, countryName])
 
 
   const responsiveColumns = (width: number): number => {
@@ -73,44 +73,51 @@ const CountryList: FC = () => {
 
   return (
     <div className={style.CountryList}>
+      {!!allCountriesAsArray.length && !copyCountries.length && (
+        <div className={style.noResult}>No result</div>
+      )}
+
       <AutoSizer>
-        {({ width, height}) => (
-          <FixedSizeGrid className={style.virtualList}
-            width={width}
-            height={height}
-            columnCount={responsiveColumns(width)}
-            columnWidth={width / responsiveColumns(width)}
-            rowCount={Math.ceil(copyCountries.length / responsiveColumns(width))}
-            rowHeight={335 + setVerticalGap(width)}
-            itemData={mapArrayToMatriz(
-              copyCountries,
-              responsiveColumns(width)
-            )}
-          >
-            {({ style, columnIndex, rowIndex, data }) => {
-              return !!data[rowIndex][columnIndex] ? (
-                <div style={{
-                  ...style,
-                  display: 'flex',
-                  justifyContent: isMobile(width) ? 'flex-start' : 'center',
-                  alignItems: 'flex-start'
-                }}>
-                  <CountryPreview
-                    key={data[rowIndex][columnIndex].id}
-                    id={data[rowIndex][columnIndex].id}
-                    name={data[rowIndex][columnIndex].name}
-                    population={data[rowIndex][columnIndex].population}
-                    region={data[rowIndex][columnIndex].region}
-                    capital={data[rowIndex][columnIndex].capital}
-                    flagImage={data[rowIndex][columnIndex].flagImage}
-                  />
-                </div>
-              ) : (
-                <></>
-              )
-            }}
-          </FixedSizeGrid>
-        )}
+        {({ width, height}) => {
+          const columnCount: number = responsiveColumns(width);
+          const rowCount: number = Math.ceil(copyCountries.length / columnCount);
+          const verticalGap: number = setVerticalGap(width);
+          const rowHeight: number = 335 + verticalGap;
+
+          return (
+            <FixedSizeGrid className={style.virtualList}
+              width={width}
+              height={height}
+              columnCount={columnCount}
+              columnWidth={width / columnCount}
+              rowCount={rowCount}
+              rowHeight={rowHeight}
+              itemData={mapArrayToMatriz(copyCountries, columnCount)}
+            >
+              {({ style, columnIndex, rowIndex, data }) => {
+                return !!data[rowIndex][columnIndex] ? (
+                  <div style={{
+                    ...style,
+                    display: 'flex',
+                    justifyContent: isMobile(width) ? 'flex-start' : 'center',
+                    alignItems: 'flex-start'
+                  }}>
+                    <CountryPreview
+                      key={data[rowIndex][columnIndex].id}
+                      id={data[rowIndex][columnIndex].id}
+                      name={data[rowIndex][columnIndex].name}
+                      population={data[rowIndex][columnIndex].population}
+                      region={data[rowIndex][columnIndex].region}
+                      capital={data[rowIndex][columnIndex].capital}
+                      flagImage={data[rowIndex][columnIndex].flagImage}
+                    />
+                  </div>
+                ) : (
+                  <></>
+                )
+              }}
+            </FixedSizeGrid>
+        )}}
       </AutoSizer>
     </div>
   );
