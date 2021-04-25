@@ -8,8 +8,14 @@ import { selectRegionFilter } from '../../store/rootSelectors';
 const RegionFilter: FC = () => {
 
   const dispatch = useDispatch();
+  const currentRegion: string = useSelector(selectRegionFilter);
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [label, setLabel] = useState<string>(() => {
+    return currentRegion === 'All'
+      ? 'Filter by Region'
+      : currentRegion;
+  })
 
   const regions: Array<string> = [
     'All',
@@ -20,12 +26,18 @@ const RegionFilter: FC = () => {
     'Oceania'
   ];
 
-  const currentRegion: string = useSelector(selectRegionFilter);
-
   const setOptionStyle = (condition: boolean): string => {
     return condition
       ? style.option + ' ' + style.active
       : style.option;
+  }
+
+  const changeRegion = (region: string): void => {
+    setLabel(region === 'All'
+      ? 'All Regions'
+      : region
+    );
+    dispatch(setRegionFilter(region));
   }
 
   return (
@@ -33,17 +45,18 @@ const RegionFilter: FC = () => {
       <div className={style.toggleFilter}
         onClick={() => setIsOpen((crr:boolean) => !crr)}
       >
-        Filter by Region
-        <ArrowDownIcon
-          className={isOpen ? style.arrow : style.arrowReverse}
-        />
+        {label}
+        <ArrowDownIcon className={isOpen
+          ? style.arrow
+          : style.arrowReverse
+        }/>
       </div>
       
       {isOpen && (
         <ul className={style.optionsWrapper}>
           {regions.map((region: string) => (
             <li className={setOptionStyle(region === currentRegion)}
-              onClick={() => dispatch(setRegionFilter(region))}
+              onClick={() => changeRegion(region)}
               key={region}
             >
               {region}
