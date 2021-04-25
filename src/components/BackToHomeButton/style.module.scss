@@ -1,0 +1,34 @@
+@import '../../assets//styles/config';
+
+.BackToHomeButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 104px;
+  height: 32px;
+  background-color: $dark-darkBlue;
+  border-radius: 3px;
+  box-shadow: 0 0 5px $shadow;
+
+  .icon {
+    fill: $white;
+    width: 18px;
+    margin-right: 6px;
+  }
+
+  .text {
+    margin-bottom: -2px;
+    font-size: 13px;
+    letter-spacing: 0.4px;
+  }
+
+  @include responsiveMedium {
+    width: 136px;
+    height: 40px;
+    box-shadow: 0 0 5px 3px $shadow;
+
+    .icon { margin-right: 10px; }
+
+    .text { font-size: 16px; }
+  }
+}

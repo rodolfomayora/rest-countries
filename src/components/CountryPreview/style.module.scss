@@ -1,0 +1,44 @@
+@import '../../assets/styles/config';
+
+.CountryPreview {
+  width: 265px;
+  background-color: $dark-darkBlue;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 0 8px $shadow;
+  transition: background-color 0.3s ease;
+
+  &:hover { background-color: $dark-darkBlueHover;}
+  
+  .previewWrapper {
+    display: block
+  }
+
+  .flagWrapper {
+    height: 160px;
+    background-color: $darkGray;
+  }
+
+  .flagImage {
+    max-width: none;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .countrySummary {
+    height: 175px;
+    padding: 26px 25px 50px;
+  }
+
+  .countryName {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    margin-bottom: 20px;
+  }
+
+  .info  > * + * { margin-top: 9px; }
+
+}

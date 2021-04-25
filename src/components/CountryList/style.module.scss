@@ -1,0 +1,22 @@
+@import '../../assets//styles/config';
+
+// OJO: there are inline styles into TSX component
+
+.CountryList {
+  flex-grow: 1;
+
+  .virtualList {
+    overflow-x: hidden !important;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    &::-webkit-scrollbar { width: 6px; }
+    &::-webkit-scrollbar-track { background-color: $shadow;}
+    &::-webkit-scrollbar-thumb {
+      background-color: $darkGray;
+      border-radius: 3px;
+    }
+  }
+}

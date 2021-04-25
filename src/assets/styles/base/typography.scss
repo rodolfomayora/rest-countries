@@ -1,0 +1,44 @@
+/* Nunito Sans
+ ===============================*/
+
+$nunitoSansPath: '../../fonts/NunitoSans/';
+
+@font-face {
+  font-family: 'Nunito-Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    url('#{$nunitoSansPath}nunito-sans-v6-latin-regular.woff') format('woff'),
+    url('#{$nunitoSansPath}nunito-sans-v6-latin-regular.woff') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito-Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src:
+    url('#{$nunitoSansPath}nunito-sans-v6-latin-300.woff') format('woff'),
+    url('#{$nunitoSansPath}nunito-sans-v6-latin-300.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito-Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src:
+    url('#{$nunitoSansPath}nunito-sans-v6-latin-600.woff') format('woff'),
+    url('#{$nunitoSansPath}nunito-sans-v6-latin-600.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nunito-Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src:
+    url('#{$nunitoSansPath}nunito-sans-v6-latin-800.woff') format('woff'),
+    url('#{$nunitoSansPath}nunito-sans-v6-latin-800.ttf') format('truetype');
+}

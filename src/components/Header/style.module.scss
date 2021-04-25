@@ -1,0 +1,33 @@
+@import '../../assets/styles/config';
+
+.Header {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $dark-darkBlue;
+  box-shadow: 0 0 5px $shadow;
+
+  .headerWrapper {
+    display: flex;
+    align-items: center;
+    height: $headerHeight;
+  }
+
+  .mainTitle {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+  }
+
+  @include responsiveMedium {
+    box-shadow: 0 0 5px 2px $shadow;
+
+    .mainTitle {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+    }
+  }
+}
