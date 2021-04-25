@@ -38,6 +38,8 @@ This is a solution to the [REST Countries API challenge on Frontend Mentor](http
 - RC20: Improve performance with List Virtualization (windowing)
 - RC21: Solve reload country detail page issue
 - RC22: Update README.md
+- RC23: Improve UX for RegionFilter
+- RC24: 404 Page Component
 
 
 ### Built with

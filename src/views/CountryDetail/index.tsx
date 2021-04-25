@@ -1,24 +1,35 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import {
   Layout,
   Container,
   BackToHomeButton,
   BorderCountryButton
 } from '../../components';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
   selectCountryById,
   selectAllCountriesById,
+  selectAllCountriesIds
 } from '../../store/rootSelectors';
 import style from './style.module.scss';
 
 const CountryDetail: FC = () => {
 
+  const history = useHistory();
   const { id } = useParams<any>();
 
+  const allCountriesIds: Array<string> = useSelector(selectAllCountriesIds);
   const countriesById: any = useSelector(selectAllCountriesById);
   const countryData: any = useSelector(selectCountryById(id));
+
+  useEffect(() => {
+    const checkPath = (id: string): boolean => {
+      return allCountriesIds.some((countryId) => countryId === id);
+    }
+  
+    if (!checkPath(id)) history.push('/404');
+  })
 
   const mapArrayToText = (arr: Array<string>) => arr.join(', ');
 

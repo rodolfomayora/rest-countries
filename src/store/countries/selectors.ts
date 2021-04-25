@@ -3,12 +3,17 @@ import { createSelector } from 'reselect';
 import {
   SelectCountreis,
   SelectById,
-  SelectAllById
+  SelectAllById,
+  SelectAllCountriesId
 } from './types';
 
 export const selectCountryById: SelectById = (countryId) => (state) => {
   const { byId } = state.countries.allCountries
   return ({ ...byId[countryId] });
+}
+
+export const selectAllCountriesIds: SelectAllCountriesId = (state) => {
+  return state.countries.allCountries.allIds;
 }
 
 export const selectAllCountriesById: SelectAllById = (state) => {

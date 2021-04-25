@@ -3,7 +3,19 @@
 // OJO: there are inline styles into TSX component
 
 .CountryList {
+  position: relative;
   flex-grow: 1;
+
+  .noResult {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    font-weight: 600;
+    visibility: hidden;
+    animation: noResult 0s linear 0.6s 1 forwards;
+  }
 
   .virtualList {
     overflow-x: hidden !important;
@@ -19,4 +31,9 @@
       border-radius: 3px;
     }
   }
+}
+
+@keyframes noResult {
+  0% { visibility: hidden; }
+  100% { visibility: visible; }
 }

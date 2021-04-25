@@ -1,0 +1,15 @@
+@import '../../assets/styles/config';
+
+.NoMatch404 {
+  height: calc(100vh - #{$headerHeight});
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  & > * + * { margin-top: 40px; }
+
+  .errorCode {
+    font-size: 100px;
+  }
+}
