@@ -10,7 +10,7 @@ This is a solution to the [REST Countries API challenge on Frontend Mentor](http
 ### Links
 
 - Solution URL: [https://github.com/rodolfomayora/rest-countries.git](https://github.com/rodolfomayora/rest-countries.git)
-- Live Site URL: [https://rest-countries-app-rodolfomayora.vercel.app/](https://rest-countries-app-rodolfomayora.vercel.app/)
+- Live Site URL: [https://rest-countries-app-swart.vercel.app/](https://rest-countries-app-swart.vercel.app/)
 
 
 ## My process
