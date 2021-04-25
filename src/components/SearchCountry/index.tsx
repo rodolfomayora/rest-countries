@@ -15,7 +15,7 @@ const SearchCountry: FC = () => {
   useEffect(() => {
     const debounceCountryName: number = window.setTimeout(() => {
       dispatch(setCountryName(input.trim().toLowerCase()))
-    },1000)
+    },700)
 
     return () => window.clearInterval(debounceCountryName);
   },

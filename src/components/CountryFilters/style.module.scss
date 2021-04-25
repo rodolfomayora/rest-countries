@@ -2,7 +2,7 @@
 
 .countryFilters {
 
-  & > :first-child { margin-bottom: 40px; }
+  & > :first-child { margin-bottom: 20px; }
 
   @include responsiveMedium {
     display: flex;

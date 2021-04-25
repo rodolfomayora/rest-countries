@@ -12,7 +12,9 @@ const Home: FC = () => (
     <main className={style.Home}>
       <Container>
         <div className={style.contentWrapper}>
-          <CountryFilters />
+          <div className={style.searchWrapper}>
+            <CountryFilters />
+          </div>
           <CountryList />
         </div>
       </Container>

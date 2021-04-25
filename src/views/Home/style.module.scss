@@ -1,11 +1,20 @@
 @import '../../assets/styles/config';
 
 .Home {
+  height: calc(100vh - #{$headerHeight});
   padding-top: 24px;
-  padding-bottom: 65px;
+
+  .contentWrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .searchWrapper { margin-bottom: 20px; }
 
   @include responsiveMedium {
     padding-top: 48px;
-    padding-bottom: 48px;
+
+    .searchWrapper { margin-bottom: 40px; }
   }
 }
