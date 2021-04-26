@@ -71,6 +71,10 @@ const CountryList: FC = () => {
     return false
   }
 
+  const getItemKey = ({ columnIndex, rowIndex, data }: any): string => {
+    return (data[rowIndex][columnIndex]?.id ?? `${rowIndex}${columnIndex}`);
+  }
+
   return (
     <div className={style.CountryList}>
       {!!allCountriesAsArray.length && !copyCountries.length && (
@@ -93,6 +97,7 @@ const CountryList: FC = () => {
               rowCount={rowCount}
               rowHeight={rowHeight}
               itemData={mapArrayToMatriz(copyCountries, columnCount)}
+              itemKey={getItemKey}
             >
               {({ style, columnIndex, rowIndex, data }) => {
                 return !!data[rowIndex][columnIndex] ? (
