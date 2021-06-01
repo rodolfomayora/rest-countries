@@ -16,7 +16,7 @@ import style from './style.module.scss';
 
 const CountryDetail: FC = () => {
 
-  const history = useHistory();
+  const pageRedirect = useHistory().push;
   const { id } = useParams<any>();
 
   const allCountriesIds: Array<string> = useSelector(selectAllCountriesIds);
@@ -24,11 +24,11 @@ const CountryDetail: FC = () => {
   const countryData: any = useSelector(selectCountryById(id));
 
   useEffect(() => {
-    const checkPath = (id: string): boolean => {
-      return allCountriesIds.some((countryId) => countryId === id);
+    const checkCountryId = (id: string): boolean => {
+      return allCountriesIds.some((countryId: string) => countryId === id);
     }
   
-    if (!checkPath(id)) history.push('/404');
+    if (!checkCountryId(id)) pageRedirect('/404');
   })
 
   const mapArrayToText = (arr: Array<string>) => arr.join(', ');
