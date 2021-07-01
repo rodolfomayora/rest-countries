@@ -12,8 +12,11 @@
 
   .searchWrapper { margin-bottom: 20px; }
 
+  /* LIGHT THEME */
+  &.light { background-color: $light-lightGray; }
+
   @include responsiveMedium {
-    padding-top: 48px;
+    padding-top: 40px;
 
     .searchWrapper { margin-bottom: 40px; }
   }

@@ -1,14 +1,17 @@
 import React, { FC, useState, useEffect } from 'react';
+
+import AutoSizer from 'react-virtualized-auto-sizer';
+import { FixedSizeGrid } from 'react-window';
 import { useSelector} from 'react-redux';
-import style from './style.module.scss';
+
 import {
   selectCountryName,
   selectRegionFilter,
-  selectCountriesAsArray
+  selectCountriesAsArray,
+  selectTheme
 } from '../../store/rootSelectors';
-import AutoSizer from 'react-virtualized-auto-sizer';
-import { FixedSizeGrid } from 'react-window';
 import CountryPreview from '../CountryPreview';
+import style from './style.module.scss';
 import mapArrayToMatriz from '../../utils/mapArrayToMatriz';
 
 const CountryList: FC = () => {
@@ -75,8 +78,15 @@ const CountryList: FC = () => {
     return (data[rowIndex][columnIndex]?.id ?? `${rowIndex}${columnIndex}`);
   }
 
+  const theme = useSelector(selectTheme);
+
+  const themes = {
+    default: style.CountryList,
+    light: `${style.CountryList} ${style.light}`
+  }
+
   return (
-    <div className={style.CountryList}>
+    <div className={themes[theme]}>
       {!!allCountriesAsArray.length && !copyCountries.length && (
         <div className={style.noResult}>No result</div>
       )}

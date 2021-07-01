@@ -1,0 +1,30 @@
+@import '../../assets//styles/config';
+
+.ToggleThemeButton {
+
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  padding: 0;
+  color: $white;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: $transparent;
+  
+  .icon {
+    width: 16px;
+    margin-right: 8px;
+    fill: $white;
+  }
+
+  .text { margin-top: 2px; }
+  
+  /* LIGHT MODE */
+  &.light {
+
+    color: $light-veryDarkBlue;
+
+    .icon { fill: $light-veryDarkBlue; }
+  }
+}

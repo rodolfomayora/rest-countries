@@ -11,5 +11,12 @@
 
   .errorCode {
     font-size: 100px;
+    color: $white;
+  }
+
+  &.light {
+    background-color: $white;
+  
+    .errorCode { color: $light-veryDarkBlue; }
   }
 }

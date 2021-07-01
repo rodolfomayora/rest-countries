@@ -1,17 +1,20 @@
 import React, { FC, useEffect } from 'react';
+
+import { useParams, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import {
+  selectCountryById,
+  selectAllCountriesById,
+  selectAllCountriesIds,
+  selectTheme,
+} from '../../store/rootSelectors';
 import {
   Layout,
   Container,
   BackToHomeButton,
   BorderCountryButton
 } from '../../components';
-import { useParams, useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import {
-  selectCountryById,
-  selectAllCountriesById,
-  selectAllCountriesIds
-} from '../../store/rootSelectors';
 import style from './style.module.scss';
 
 const CountryDetail: FC = () => {
@@ -22,20 +25,32 @@ const CountryDetail: FC = () => {
   const allCountriesIds: Array<string> = useSelector(selectAllCountriesIds);
   const countriesById: any = useSelector(selectAllCountriesById);
   const countryData: any = useSelector(selectCountryById(id));
-
   useEffect(() => {
-    const checkCountryId = (id: string): boolean => {
+
+    const isCountryListNotEmpty: boolean = !!Object.keys(allCountriesIds).length;
+
+    const thereIsCountryId = (id: string): boolean => {
       return allCountriesIds.some((countryId: string) => countryId === id);
     }
-  
-    if (!checkCountryId(id)) pageRedirect('/404');
-  })
+
+    const doesNeedToRedirect: boolean = isCountryListNotEmpty && !thereIsCountryId(id);
+
+    if (doesNeedToRedirect) pageRedirect('/404');
+  },
+  [allCountriesIds, id, pageRedirect])
 
   const mapArrayToText = (arr: Array<string>) => arr.join(', ');
 
+  const theme = useSelector(selectTheme);
+
+  const themes = {
+    default: style.CountryDetail,
+    light: `${style.CountryDetail} ${style.light}`
+  }
+
   return (
-    <Layout>
-      <main className={style.CountryDetail}>
+    <Layout pageTitle="Country Detail">
+      <main className={themes[theme]}>
         <Container>
           <section className={style.sectionWrapper}>
             <BackToHomeButton/>

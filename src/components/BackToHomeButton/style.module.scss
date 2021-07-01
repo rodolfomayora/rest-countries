@@ -8,7 +8,6 @@
   height: 32px;
   background-color: $dark-darkBlue;
   border-radius: 3px;
-  box-shadow: 0 0 5px $shadow;
 
   .icon {
     fill: $white;
@@ -19,13 +18,24 @@
   .text {
     margin-bottom: -2px;
     font-size: 13px;
+    font-weight: 600;
     letter-spacing: 0.4px;
+    color: $white;
+  }
+
+  /* LIGHT THEME */
+  &.light {
+    background-color: $white;
+    box-shadow: 0 0 5px 2px $shadow;
+
+    .icon { fill: $light-veryDarkBlue; }
+
+    .text { color: $light-veryDarkBlue; }
   }
 
   @include responsiveMedium {
     width: 136px;
     height: 40px;
-    box-shadow: 0 0 5px 3px $shadow;
 
     .icon { margin-right: 10px; }
 

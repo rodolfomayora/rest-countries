@@ -1,9 +1,11 @@
 import React, { FC, ChangeEvent, useState, useEffect } from 'react';
-import style from './style.module.scss';
-import { SearchIcon } from '../../assets/images';
+
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCountryName } from '../../store/rootSelectors';
+
+import { selectCountryName, selectTheme } from '../../store/rootSelectors';
 import { setCountryName } from '../../store/rootActions';
+import { SearchIcon } from '../../assets/images';
+import style from './style.module.scss';
 
 const SearchCountry: FC = () => {
 
@@ -11,7 +13,6 @@ const SearchCountry: FC = () => {
   const countryName: string = useSelector(selectCountryName);
 
   const [input, setInput] = useState<string>(countryName);
-
   useEffect(() => {
     const debounceCountryName: number = window.setTimeout(() => {
       dispatch(setCountryName(input.trim().toLowerCase()))
@@ -21,8 +22,15 @@ const SearchCountry: FC = () => {
   },
   [input, dispatch])
 
+  const theme = useSelector(selectTheme);
+
+  const themes = {
+    default: style.SearchCountry,
+    light: `${style.SearchCountry} ${style.light}`
+  }
+
   return (
-    <div className={style.SearchCountry}>
+    <div className={themes[theme]}>
       <div className={style.searchButton}>
         <SearchIcon className={style.searchIcon} />
       </div>
