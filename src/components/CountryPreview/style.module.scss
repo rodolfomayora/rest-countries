@@ -5,14 +5,8 @@
   background-color: $dark-darkBlue;
   border-radius: 5px;
   overflow: hidden;
-  box-shadow: 0 0 8px $shadow;
-  transition: background-color 0.3s ease;
 
-  &:hover { background-color: $dark-darkBlueHover;}
-  
-  .previewWrapper {
-    display: block
-  }
+  .previewWrapper { display: block; }
 
   .flagWrapper {
     height: 160px;
@@ -30,6 +24,7 @@
   .countrySummary {
     height: 175px;
     padding: 26px 25px 50px;
+    color: $white;
   }
 
   .countryName {
@@ -37,8 +32,33 @@
     font-weight: 600;
     letter-spacing: 0.3px;
     margin-bottom: 20px;
+    color: $white;
   }
+
+  .label { font-weight: 600; }
 
   .info  > * + * { margin-top: 9px; }
 
+  &:hover { background-color: $dark-darkBlueHover; }
+
+  &:active {
+    transform: scale(0.96);
+    opacity: 0.7;
+  }
+
+  /* LIGHT THEME */
+  &.light {
+    background-color: $white;
+    box-shadow: 0 0 8px $shadow;
+
+    .flagWrapper {
+      background-color: $light-darkGray;
+      color: $light-veryDarkBlue;
+    }
+
+    .countryName,
+    .countrySummary { color: $light-veryDarkBlue; }
+
+    &:hover { background-color: $shadow; }
+  }
 }

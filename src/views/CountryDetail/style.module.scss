@@ -3,6 +3,7 @@
 .CountryDetail {
   padding-top: 40px;
   padding-bottom: 60px;
+  background-color: $dark-veryDarkBlue;
 
   .sectionWrapper {
     padding-left: 12px;
@@ -12,6 +13,7 @@
   .infoContainer {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     margin-top: 65px;
   }
 
@@ -75,6 +77,15 @@
       margin-left: 5px; 
       margin-right: 5px;
     }
+  }
+
+  /* LIGHT THEME */
+  &.light {
+    background-color: $white;
+    
+    .flagWrapper { box-shadow: 0 0 8px $shadow; }
+
+    .blockInfo { color: $light-veryDarkBlue; }
   }
 
   @include responsiveSmall {

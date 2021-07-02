@@ -1,4 +1,6 @@
 import React, { FC } from 'react';
+
+import { useTheme } from '../../hooks';
 import {
   Layout,
   Container,
@@ -7,19 +9,24 @@ import {
 } from '../../components';
 import style from './style.module.scss';
 
-const Home: FC = () => (
-  <Layout>
-    <main className={style.Home}>
-      <Container>
-        <div className={style.contentWrapper}>
-          <div className={style.searchWrapper}>
-            <CountryFilters />
+const Home: FC = () => {
+
+  const homeStyle = useTheme(style.Home, style.light);
+
+  return (
+    <Layout pageTitle="Home">
+      <main className={homeStyle}>
+        <Container>
+          <div className={style.contentWrapper}>
+            <div className={style.searchWrapper}>
+              <CountryFilters />
+            </div>
+            <CountryList />
           </div>
-          <CountryList />
-        </div>
-      </Container>
-    </main>
-  </Layout>
-);
+        </Container>
+      </main>
+    </Layout>
+  );
+}
 
 export default Home;

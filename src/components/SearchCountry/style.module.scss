@@ -5,7 +5,6 @@
   height: 48px;
   overflow: hidden;
   border-radius: 5px;
-  box-shadow: 0 0 8px $shadow;
 
   .searchButton {
     flex-basis: 72px;
@@ -14,7 +13,9 @@
     padding-left: 6px;
     align-items: center;
     background-color: $dark-darkBlue;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+
+    &:active { opacity: 0.8; }
   }
 
   .searchIcon {
@@ -30,10 +31,29 @@
     border: none;
     background-color: $dark-darkBlue;
     padding-right: 20px;
+    font-weight: 600;
+    color: $white;
 
     &::placeholder {
       color: $white;
       font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  /* LIGHT THEME */
+  &.light {
+    box-shadow: 0 0 8px $shadow;
+
+    .searchButton { background-color: $white; }
+
+    .searchIcon { fill: $light-veryDarkBlue; }
+
+    .searchInput {
+      color: $light-veryDarkBlue;
+      background-color: $white;
+
+      &::placeholder { color: $light-veryDarkBlue; }
     }
   }
 

@@ -1,41 +1,50 @@
 import React, { FC, useEffect } from 'react';
+
+import { useParams, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
+import { useTheme } from '../../hooks';
+import {
+  selectCountryById,
+  selectAllCountriesById,
+  selectAllCountriesIds,
+} from '../../store/rootSelectors';
 import {
   Layout,
   Container,
   BackToHomeButton,
   BorderCountryButton
 } from '../../components';
-import { useParams, useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import {
-  selectCountryById,
-  selectAllCountriesById,
-  selectAllCountriesIds
-} from '../../store/rootSelectors';
 import style from './style.module.scss';
 
 const CountryDetail: FC = () => {
 
-  const history = useHistory();
+  const pageRedirect = useHistory().push;
   const { id } = useParams<any>();
 
   const allCountriesIds: Array<string> = useSelector(selectAllCountriesIds);
   const countriesById: any = useSelector(selectAllCountriesById);
   const countryData: any = useSelector(selectCountryById(id));
-
   useEffect(() => {
-    const checkPath = (id: string): boolean => {
-      return allCountriesIds.some((countryId) => countryId === id);
+    const isCountryListNotEmpty: boolean = !!Object.keys(allCountriesIds).length;
+
+    const thereIsCountryId = (id: string): boolean => {
+      return allCountriesIds.some((countryId: string) => countryId === id);
     }
-  
-    if (!checkPath(id)) history.push('/404');
-  })
+
+    const doesNeedToRedirect: boolean = isCountryListNotEmpty && !thereIsCountryId(id);
+
+    if (doesNeedToRedirect) pageRedirect('/404');
+  },
+  [allCountriesIds, id, pageRedirect])
 
   const mapArrayToText = (arr: Array<string>) => arr.join(', ');
 
+  const countryDetailStyle = useTheme(style.CountryDetail, style.light);
+
   return (
-    <Layout>
-      <main className={style.CountryDetail}>
+    <Layout pageTitle="Country Detail">
+      <main className={countryDetailStyle}>
         <Container>
           <section className={style.sectionWrapper}>
             <BackToHomeButton/>

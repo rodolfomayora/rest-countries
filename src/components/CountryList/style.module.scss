@@ -25,10 +25,18 @@
     align-items: flex-start;
 
     &::-webkit-scrollbar { width: 6px; }
-    &::-webkit-scrollbar-track { background-color: $shadow;}
+    &::-webkit-scrollbar-track { background-color: $dark-darkBlue; }
     &::-webkit-scrollbar-thumb {
       background-color: $darkGray;
       border-radius: 3px;
+    }
+  }
+
+  /* LIGHT THEME */
+  &.light {
+    .virtualList {
+      &::-webkit-scrollbar-track { background-color: $shadow; }
+      &::-webkit-scrollbar-thumb { background-color: $darkGray; }
     }
   }
 }

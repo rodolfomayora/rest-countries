@@ -7,10 +7,10 @@
   left: 0;
   right: 0;
   background-color: $dark-darkBlue;
-  box-shadow: 0 0 5px $shadow;
 
   .headerWrapper {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     height: $headerHeight;
   }
@@ -19,11 +19,18 @@
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.4px;
+    color: $white;
+  }
+
+  /* LIGHT THEME */
+  &.light {
+    background-color: $white;
+    box-shadow: 0 0 5px $shadow;
+
+    .mainTitle { color: $light-veryDarkBlue; }
   }
 
   @include responsiveMedium {
-    box-shadow: 0 0 5px 2px $shadow;
-
     .mainTitle {
       font-size: 23px;
       font-weight: 800;
