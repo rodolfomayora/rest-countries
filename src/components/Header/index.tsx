@@ -1,24 +1,18 @@
 import React, { FC } from 'react';
 
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
-import { selectTheme } from '../../store/rootSelectors';
+import { useTheme } from '../../hooks';
 import Container from '../Container';
 import ToggleThemeButton from '../ToggleThemeButton';
 import style from './style.module.scss';
 
 const Header: FC = () => {
 
-  const theme = useSelector(selectTheme);
-
-  const themes: any = {
-    default: style.Header,
-    light: `${style.Header} ${style.light}`
-  }
+  const headerStyle = useTheme(style.Header, style.light);
 
   return (
-    <header className={themes[theme]}>
+    <header className={headerStyle}>
       <Container>
         <section className={style.headerWrapper}>
           <Link to="/">

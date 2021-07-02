@@ -3,11 +3,11 @@ import React, { FC, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import { useTheme } from '../../hooks';
 import {
   selectCountryById,
   selectAllCountriesById,
   selectAllCountriesIds,
-  selectTheme,
 } from '../../store/rootSelectors';
 import {
   Layout,
@@ -26,7 +26,6 @@ const CountryDetail: FC = () => {
   const countriesById: any = useSelector(selectAllCountriesById);
   const countryData: any = useSelector(selectCountryById(id));
   useEffect(() => {
-
     const isCountryListNotEmpty: boolean = !!Object.keys(allCountriesIds).length;
 
     const thereIsCountryId = (id: string): boolean => {
@@ -41,16 +40,11 @@ const CountryDetail: FC = () => {
 
   const mapArrayToText = (arr: Array<string>) => arr.join(', ');
 
-  const theme = useSelector(selectTheme);
-
-  const themes = {
-    default: style.CountryDetail,
-    light: `${style.CountryDetail} ${style.light}`
-  }
+  const countryDetailStyle = useTheme(style.CountryDetail, style.light);
 
   return (
     <Layout pageTitle="Country Detail">
-      <main className={themes[theme]}>
+      <main className={countryDetailStyle}>
         <Container>
           <section className={style.sectionWrapper}>
             <BackToHomeButton/>

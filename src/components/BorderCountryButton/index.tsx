@@ -1,9 +1,8 @@
 import React, { FC } from 'react';
 
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
-import { selectTheme } from '../../store/rootSelectors';
+import { useTheme } from '../../hooks';
 import { BorderCountryButtonProps } from './types';
 import style from './style.module.scss';
 
@@ -11,15 +10,10 @@ const BorderCountryButton: FC<BorderCountryButtonProps> = (props) => {
 
   const { children, countryId } = props;
 
-  const theme = useSelector(selectTheme);
-
-  const themes = {
-    default: style.BorderCountryButton,
-    light: `${style.BorderCountryButton} ${style.light}`
-  }
+  const borderCountryButton = useTheme(style.BorderCountryButton, style.light);
 
   return (
-    <Link className={themes[theme]}
+    <Link className={borderCountryButton}
       to={`/CountryDetail/${countryId}`}
     >
       {children}

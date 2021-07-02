@@ -1,8 +1,6 @@
 import React, { FC } from 'react';
 
-import { useSelector } from 'react-redux';
-
-import { selectTheme } from '../../store/rootSelectors';
+import { useTheme } from '../../hooks';
 import {
   Layout,
   Container,
@@ -13,16 +11,11 @@ import style from './style.module.scss';
 
 const Home: FC = () => {
 
-  const theme = useSelector(selectTheme);
-
-  const themes = {
-    default: style.Home,
-    light: `${style.Home} ${style.light}`
-  }
+  const homeStyle = useTheme(style.Home, style.light);
 
   return (
     <Layout pageTitle="Home">
-      <main className={themes[theme]}>
+      <main className={homeStyle}>
         <Container>
           <div className={style.contentWrapper}>
             <div className={style.searchWrapper}>

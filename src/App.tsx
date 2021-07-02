@@ -41,6 +41,25 @@ const App: FC = () => {
   },
   [currentTheme])
 
+  useEffect(() => {
+    const setHeaderThemeColor = () => {
+      try {
+        const metaThemeColor = document.querySelector('meta[name=theme-color]');
+        if (!metaThemeColor) throw new Error('There ir no meta theme-color tag');
+        const defaultColor: string = 'hsl(209, 23%, 22%)';
+        const lightColor: string = 'hsl(0, 0%, 100%)';
+        if (currentTheme === 'default') metaThemeColor.setAttribute('content', defaultColor);
+        if (currentTheme === 'light') metaThemeColor.setAttribute('content', lightColor);
+
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
+
+    setHeaderThemeColor();
+  },
+  [currentTheme])
+
   return (
     <BrowserRouter>
       <Switch>

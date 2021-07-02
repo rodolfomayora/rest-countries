@@ -1,24 +1,18 @@
 import React, { FC } from 'react';
 
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
-import { selectTheme } from '../../store/rootSelectors';
+import { useTheme } from '../../hooks';
 import { CountryPreviewProps } from './types';
 import style from './style.module.scss';
 
 const CountryPreview: FC<CountryPreviewProps> = (props) => {
   const { capital, flagImage, id, name, population, region } = props;
 
-  const theme = useSelector(selectTheme);
-
-  const themes = {
-    default: style.CountryPreview,
-    light: `${style.CountryPreview} ${style.light}`
-  }
+  const countryPreviewStyle = useTheme(style.CountryPreview, style.light);
 
   return (
-    <article className={themes[theme]}>
+    <article className={countryPreviewStyle}>
       <Link className={style.previewWrapper}
         to={`/CountryDetail/${id}`}
       >
@@ -43,7 +37,7 @@ const CountryPreview: FC<CountryPreviewProps> = (props) => {
         </div>
       </Link>
     </article>
-  )
+  );
 }
 
 export default CountryPreview;

@@ -1,23 +1,17 @@
 import React, { FC } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useTheme } from '../../hooks';
 
-import { selectTheme } from '../../store/rootSelectors';
 import { Layout, BackToHomeButton } from '../../components';
 import style from './style.module.scss';
 
 const NoMatch404: FC = () => {
 
-  const theme = useSelector(selectTheme);
-
-  const themes = {
-    default: style.NoMatch404,
-    light: `${style.NoMatch404} ${style.light}`
-  }
+  const noMatch404Style = useTheme(style.NoMatch404, style.light);
 
   return (
     <Layout pageTitle="404">
-      <main className={themes[theme]}>
+      <main className={noMatch404Style}>
         <h2 className={style.errorCode}>404</h2>
         <p>Country not found</p>
         <BackToHomeButton />
