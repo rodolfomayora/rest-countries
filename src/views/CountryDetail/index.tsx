@@ -56,7 +56,7 @@ const CountryDetail: FC = () => {
                     <div className={style.flagContent}>
                       <img className={style.flagImage}
                         src={countryData.flagImage}
-                        alt={`${countryData.name} flag`}
+                        alt={`${countryData.name}'s flag`}
                         width="200"
                         height="100"
                       />
@@ -98,28 +98,28 @@ const CountryDetail: FC = () => {
                           <span className={style.label}>
                             Capital:
                           </span>{' '}
-                          {countryData.capital}
+                          {countryData.capital || 'Has no capital'}
                         </p>
                       </div>
 
                       <div className={style.data}>
                         <p>
                           <span className={style.label}>
-                            Top Level Domain:
+                            Top Level Domains:
                           </span>{' '}
-                          {countryData.topLevelDomain}
+                          {mapArrayToText(countryData.topLevelDomain ?? []) || 'Has no top level domain'}
                         </p>
                         <p>
                           <span className={style.label}>
                             Currences:
                           </span>{' '}
-                          {mapArrayToText(countryData.currencies ?? [])}
+                          {mapArrayToText(countryData.currencies ?? []) || 'Has no currencies'}
                         </p>
                         <p>
                           <span className={style.label}>
                             languages:
                           </span>{' '}
-                          {mapArrayToText(countryData.languages ?? [])}
+                          {mapArrayToText(countryData.languages ?? []) || 'Has no languajes'}
                         </p>
                       </div>
                     </div>

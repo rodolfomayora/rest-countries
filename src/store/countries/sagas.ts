@@ -27,25 +27,37 @@ function* fetchCountriesRequest(): FetchSagaReturn {
 
     const getName = (item: any) => item.name;
 
-    const allCountriesById: any = data.reduce((acc: object, crr: any) => ({
-      ...acc,
-      [crr.alpha3Code]: {
-        id: crr.alpha3Code,
-        name: crr.name,
-        nativeName: crr.nativeName,
-        capital: !!crr.capital ? crr.capital : 'Has no capital',
-        population: parseDigitsNumber(crr.population),
-        region: crr.region,
-        subregion: crr.subregion,
-        flagImage: crr.flag,
-        topLevelDomain: crr.topLevelDomain,
-        currencies: crr.currencies.map(getName),
-        languages: crr.languages.map(getName),
-        borderCountries: [...crr.borders]
-      }
-    }), {});
+    const allCountriesById: any = data.reduce((acc: object, crr: any) => {
+      const nativeNameObject: any = crr.name?.nativeName
+        ? Object.values(crr.name.nativeName)[0]
+        : { official: 'Has no native name' };
+      const nativeNameOfficial: string = nativeNameObject.official;
 
-    const allCountryIds: Array<string> = Object.keys(allCountriesById);
+      return ({
+        ...acc,
+        [crr.cca3]: {
+          id: crr.cca3,
+          name: crr.name.common,
+          nativeName: nativeNameOfficial,
+          capital: !!crr.capital?.[0] ? crr.capital[0] : '',
+          population: parseDigitsNumber(crr.population),
+          region: crr.region,
+          subregion: crr.subregion,
+          flagImage: crr.flags.svg,
+          topLevelDomain: !!crr?.tld ? crr.tld : [],
+          currencies: !!crr?.currencies ? Object.values(crr.currencies).map(getName) : [],
+          languages: !!crr?.languages ? Object.values(crr.languages) : [],
+          borderCountries: [...(crr?.borders || [])]
+        }
+      })
+    }, {});
+
+    const arrangedByName: Array<any> = Object
+      .values(allCountriesById)
+      .sort((a: any, b: any) => a.name.localeCompare(b.name));
+
+    const allCountryIds: Array<string> = arrangedByName
+      .map((country) => country.id);
 
     const normalizedData: AllCountries = {
       byId: allCountriesById,
