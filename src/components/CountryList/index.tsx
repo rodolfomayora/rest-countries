@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeGrid } from 'react-window';
@@ -90,7 +90,7 @@ const CountryList: FC = () => {
       {!!allCountriesAsArray.length && !copyCountries.length && (
         <div className={style.noResult}>No result</div>
       )}
-
+      {/* @ts-ignore */}
       <AutoSizer>
         {({ width, height}) => {
           const columnCount: number = responsiveColumns(width);
@@ -99,6 +99,7 @@ const CountryList: FC = () => {
           const rowHeight: number = 335 + verticalGap;
 
           return (
+            // @ts-ignore
             <FixedSizeGrid className={style.virtualList}
               width={width}
               height={height}

@@ -51,8 +51,10 @@ const App: FC = () => {
         if (currentTheme === 'default') metaThemeColor.setAttribute('content', defaultColor);
         if (currentTheme === 'light') metaThemeColor.setAttribute('content', lightColor);
 
-      } catch (error) {
-        console.error(error.message);
+      } catch (error: unknown) {
+        if (error instanceof Error) {
+          console.error(error.message);
+        }
       }
     }
 
@@ -61,10 +63,15 @@ const App: FC = () => {
   [currentTheme])
 
   return (
+    // @ts-ignore
     <BrowserRouter>
+      {/* @ts-ignore */}
       <Switch>
+        {/* @ts-ignore */}
         <Route exact path="/" component={Home} />
+        {/* @ts-ignore */}
         <Route exact path="/404" component={NoMatch404} />
+        {/* @ts-ignore */}
         <Route path="/CountryDetail/:id" component={CountryDetail} />
       </Switch>
     </BrowserRouter>
