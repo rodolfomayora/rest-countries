@@ -7,18 +7,20 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "start": "PORT=3001 react-scripts start",
-    "build": "react-scripts build",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
     "docker:dev": "docker compose up --watch",
     "cz": "cz",
     "prepare": "husky"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.55.4",
+    "axios": "^1.7.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "5.0.1",
     "react-virtualized-auto-sizer": "^1.0.5",
     "react-window": "^1.8.6",
     "redux": "^4.0.5",
@@ -28,35 +30,20 @@
   "devDependencies": {
     "@commitlint/cli": "19.4.1",
     "@commitlint/config-conventional": "19.4.1",
-    "@types/node": "^12.0.0",
+    "@types/node": "18.0.0",
     "@types/react": "18.2.0",
     "@types/react-dom": "18.2.0",
     "@types/react-redux": "^7.1.16",
     "@types/react-router-dom": "5.3.3",
     "@types/react-virtualized-auto-sizer": "^1.0.0",
     "@types/react-window": "^1.8.2",
+    "@vitejs/plugin-react": "^4.3.1",
     "commitizen": "4.3.0",
     "cz-conventional-changelog": "3.3.0",
     "husky": "^9.1.5",
     "sass": "1.78.0",
-    "typescript": "^4.1.2"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "typescript": "^5.1.6",
+    "vite": "^5.4.3",
+    "vite-plugin-svgr": "^4.2.0"
   }
 }
