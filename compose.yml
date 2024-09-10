@@ -1,12 +1,21 @@
-version: "3.9"
+name: rest-countries
 
 services:
-  app:
-    container_name: countries
+  rest-countries-dev:
     build: .
+    image: rest-countries:1.0
+    container_name: rest-countries
+    command: yarn start
     ports:
-      - "3001:3001"
-    volumes:
-      - .:/app
-    environment:
-      - NODE_ENV:development
+      - 3001:3001
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /usr/src/app
+          ignore:
+            - package.json
+        - action: rebuild
+          path: package.json
+    # environment:
+      # - NODE_ENV:development

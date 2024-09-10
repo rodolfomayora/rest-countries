@@ -1,15 +1,14 @@
-FROM node:16.19-alpine
+# syntax=docker/dockerfile:1
 
-WORKDIR /app
+ARG NODE_VERSION=16.20.2
+# ARG NODE_VERSION=18.20.2
 
-# install dependencies
-COPY package*.json .
-COPY yarn.lock .
-ENV NODE_ENV=development
-RUN yarn install && yarn install --production=false
-
+FROM node:${NODE_VERSION} AS base
+RUN yarn config set cache-folder /root/.yarn
+WORKDIR /usr/src/app
+RUN --mount=type=bind,source=package.json,target=package.json \
+    --mount=type=bind,source=yarn.lock,target=yarn.lock \
+    --mount=type=cache,target=/root/.yarn,id=yarn \
+    yarn install --production=false --frozen-lockfile --cache-folder /root/.yarn
 COPY . .
-
 EXPOSE 3001
-
-CMD ["yarn", "start"]
