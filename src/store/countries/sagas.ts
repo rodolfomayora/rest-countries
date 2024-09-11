@@ -69,12 +69,14 @@ function* fetchCountriesRequest(): FetchSagaReturn {
       payload: normalizedData
     })
 
-  } catch ({ message }) {
+  } catch (error: unknown) {
     console.clear();
-    yield put({
-      type: FETCH_COUNTRIES_FEILURE,
-      payload: message
-    })
+    if (error instanceof Error) {
+      yield put({
+        type: FETCH_COUNTRIES_FEILURE,
+        payload: error.message
+      })
+    }
   }
 }
 

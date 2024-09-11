@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,7 +8,7 @@ import { fetchCountries, setTheme } from './store/rootActions';
 import { Home, CountryDetail, NoMatch404 } from './views';
 import './assets/styles/styles.global.scss';
 
-const App: FC = () => {
+export default function App () {
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -63,19 +63,12 @@ const App: FC = () => {
   [currentTheme])
 
   return (
-    // @ts-ignore
     <BrowserRouter>
-      {/* @ts-ignore */}
       <Switch>
-        {/* @ts-ignore */}
         <Route exact path="/" component={Home} />
-        {/* @ts-ignore */}
         <Route exact path="/404" component={NoMatch404} />
-        {/* @ts-ignore */}
         <Route path="/CountryDetail/:id" component={CountryDetail} />
       </Switch>
     </BrowserRouter>
   );
 }
-
-export default App;
