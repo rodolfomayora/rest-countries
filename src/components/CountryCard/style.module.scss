@@ -1,0 +1,66 @@
+@import '../../assets/styles/config';
+
+.CountryCard {
+  inline-size: 264px;
+  min-block-size: 336px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: $dark-darkBlue;
+
+  .flagImage {
+    inline-size: 100%;
+    aspect-ratio: 264 / 160;
+    object-fit: cover;
+    user-select: none;
+  }
+
+  .summary {
+    display: grid;
+    row-gap: 18px;
+    padding: 25px;
+    color: $white;
+  }
+
+  .name {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: $white;
+  }
+
+  .info {
+    display: grid;
+    row-gap: 7.4px;
+  }
+
+  .label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+  }
+
+  &:hover {
+    background-color: $dark-darkBlueHover;
+  }
+
+  &:active {
+    transform: scale(0.96);
+    opacity: 0.7;
+  }
+
+  /* LIGHT THEME */
+  // &.light {
+  //   background-color: $white;
+  //   box-shadow: 0 0 8px $shadow;
+
+  //   .flagWrapper {
+  //     background-color: $light-darkGray;
+  //     color: $light-veryDarkBlue;
+  //   }
+
+  //   .countryName,
+  //   .countrySummary { color: $light-veryDarkBlue; }
+
+  //   &:hover { background-color: $shadow; }
+  // }
+}
