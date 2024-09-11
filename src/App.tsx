@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectTheme } from './store/rootSelectors';
 import { fetchCountries, setTheme } from './store/rootActions';
 import { Home, CountryDetail, NoMatch404 } from './views';
+import { ThemeStorage } from './storage/theme';
 import './assets/styles/styles.global.scss';
 
 export default function App () {
@@ -14,32 +15,20 @@ export default function App () {
   useEffect(() => {
     const initializeCountryGlobalState = () => dispatch(fetchCountries());
     initializeCountryGlobalState();
-  },
-  [dispatch])
+    
+  }, [dispatch])
   
-  useEffect(() => {
-    const getLocalStorageTheme = () => {
-      const storagedTheme: any = window.localStorage.getItem('theme');
-      if (!!storagedTheme) dispatch(setTheme(storagedTheme));
-    }
+  useEffect(function getLocalStorageTheme () {
+    const storagedTheme = ThemeStorage.get();
+    if (!!storagedTheme) dispatch(setTheme(storagedTheme));
 
-    getLocalStorageTheme();
-  },
-  [dispatch])
+  }, [dispatch])
 
   const currentTheme = useSelector(selectTheme);
-  useEffect(() => {
-    const setLocalStorageTheme = () => {
-      try {
-        window.localStorage.setItem('theme', currentTheme);
-      } catch(error) {
-        console.error(error);
-      }
-    }
+  useEffect(function setLocalStorageTheme () {
+    ThemeStorage.set(currentTheme);
 
-    setLocalStorageTheme();
-  },
-  [currentTheme])
+  }, [currentTheme])
 
   useEffect(() => {
     const setHeaderThemeColor = () => {
