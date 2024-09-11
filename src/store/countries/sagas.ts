@@ -10,20 +10,16 @@ import {
   call,
   put,
 } from 'redux-saga/effects';
-import { allCountries } from '../../utils/endPoints';
+// import { allCountries } from '../../utils/endPoints';
 import parseDigitsNumber from '../../utils/parseDigitsNumber';
 import { FetchSagaReturn, AllCountries } from './types';
+
+import { CountriesApi } from '../../api/rest-countries';
 
 // Saga Workers
 function* fetchCountriesRequest(): FetchSagaReturn {
   try {
-    const response: Response = yield call(window.fetch, allCountries, {
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-    });
-
-    if (!response.ok) throw new Error('Error al cargar, recarge la pagina');
-
-    const data: Array<any> = yield call([response, response.json]);
+    const data = yield call([CountriesApi, CountriesApi.getAll]);
 
     const getName = (item: any) => item.name;
 
