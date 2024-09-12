@@ -1,0 +1,55 @@
+@import '../../assets/styles/config';
+
+@mixin loading {
+  background-color: #999999;
+  animation: hint-loading 2s ease-in-out 0s infinite reverse;
+}
+
+@keyframes hint-loading {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+.SuspenseCountryCard {
+  inline-size: 264px;
+  min-block-size: 336px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: $dark-darkBlue;
+
+  .flagImage {
+    inline-size: 100%;
+    aspect-ratio: 264 / 160;
+    @include loading;
+  }
+
+  .summary {
+    display: grid;
+    row-gap: 18px;
+    padding: 25px;
+  }
+
+  .name {
+    width: 80%;
+    height: 19.55px;
+    @include loading;
+  }
+
+  .info {
+    display: grid;
+    row-gap: 7.4px;
+  }
+
+  .label {
+    width: 60%;
+    height: 16.94px;
+    @include loading;
+  }
+
+  /* LIGHT THEME */
+  // &.light {
+  //   background-color: $white;
+  //   box-shadow: 0 0 8px $shadow;
+  // }
+}
