@@ -22,18 +22,19 @@
 
     /* custom */
     "baseUrl": "./src",
-    // "paths": {
-    //   "#assets/*": ["./assets/*"],
-    //   "#components/*": ["./components/*"],
-    //   "#config/*": ["./config/*"],
-    //   "#helpers/*": ["./helpers/*"],
-    //   "#icons/*": ["./assets/icons/*"],
-    //   "#layouts/*": ["./layouts/*"],
-    //   "#pages/*": ["./pages/*"],
-    //   "#routers/*": ["./routers/*"],
-    //   "#styles/*": ["./styles/utils/*"],
-    //   "#utils/*": ["./utils/*"]
-    // },
+    "paths": {
+      "#/*": ["./*"]
+      // "#assets/*": ["./assets/*"],
+      // "#components/*": ["./components/*"],
+      // "#config/*": ["./config/*"],
+      // "#helpers/*": ["./helpers/*"],
+      // "#icons/*": ["./assets/icons/*"],
+      // "#layouts/*": ["./layouts/*"],
+      // "#pages/*": ["./pages/*"],
+      // "#routers/*": ["./routers/*"],
+      // "#styles/*": ["./styles/utils/*"],
+      // "#utils/*": ["./utils/*"]
+    },
   },
   "include": ["src", "**/*.ts", "**/*.mjs"],
   "references": [{ "path": "./tsconfig.node.json" }]
