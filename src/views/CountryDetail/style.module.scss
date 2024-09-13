@@ -6,6 +6,8 @@
   background-color: $dark-veryDarkBlue;
 
   .sectionWrapper {
+    display: grid;
+    row-gap: 64px;
     padding-left: 12px;
     padding-right: 12px;
   }
@@ -17,41 +19,35 @@
     margin-top: 65px;
   }
 
+  .flagImage {
+    aspect-ratio: 560 / 401;
+    inline-size: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    // margin-bottom: 50px;
+
+  }
+
   .flagWrapper {
     width: 100%;
     margin-bottom: 50px;
   }
 
-  .flagLayer {
-    position: relative;
-    padding-top: 71%;
-  }
-
-  .flagContent {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-  }
-
-  .flagImage {
-    max-width: none;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+  .countryInfo {
+    display: grid;
+    row-gap: 28px;
   }
 
   .countryName {
     letter-spacing: 0.4px;
-    margin-bottom: 28px;
+    // margin-bottom: 28px;
   }
 
   .countryData {
     display: flex;
     flex-direction: column;
-    margin-bottom: 46px;
+    // margin-bottom: 46px;
   }
 
   .data {
@@ -80,12 +76,23 @@
   }
 
   /* LIGHT THEME */
-  &.light {
-    background-color: $white;
+  // &.light {
+  //   background-color: $white;
     
-    .flagWrapper { box-shadow: 0 0 8px $shadow; }
+  //   .flagWrapper { box-shadow: 0 0 8px $shadow; }
 
-    .blockInfo { color: $light-veryDarkBlue; }
+  //   .blockInfo { color: $light-veryDarkBlue; }
+  // }
+
+  @media only screen and (min-width:768px) {
+    .countryInfo {
+      padding-top: 40px;
+      row-gap: 40px;
+    }
+
+    .countryName {
+      font-size: 32px;
+    }
   }
 
   @include responsiveSmall {
@@ -128,15 +135,15 @@
       margin-right: 80px;
     }
 
-    .countryName {
-      margin-top: 40px;
-      margin-bottom: 40px;
-      font-size: 32px;
-    }
+    // .countryName {
+    //   margin-top: 40px;
+    //   margin-bottom: 40px;
+    //   font-size: 32px;
+    // }
 
     .countryData {
       flex-direction: column;
-      margin-bottom: 72px;
+      // margin-bottom: 72px;
     }
 
     .data:first-of-type {
@@ -149,8 +156,6 @@
     .infoContainer {
       flex-direction: row;
     }
-
-    .blockInfo { width: 100%; }
 
     .flagWrapper {
       flex-basis: 560px;
