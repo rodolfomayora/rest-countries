@@ -1,0 +1,89 @@
+@import '../../../assets//styles/config';
+
+.Detail {
+  display: grid;
+  row-gap: 50px;
+
+  .flagImage {
+    aspect-ratio: 560 / 401;
+    inline-size: 100%;
+    max-inline-size: 100%;
+    object-fit: cover;
+    object-position: left;
+  }
+
+  .countryInfo {
+    display: grid;
+    align-content: start;
+    row-gap: 28px;
+  }
+
+  .countryName {
+    letter-spacing: 0.4px;
+  }
+
+  .dataWrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    align-items: start;
+    gap: 46px;
+  }
+
+  .data {
+    display: grid;
+    row-gap: 16px;
+  }
+
+  .label {
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    margin-right: 10px;
+  }
+
+  .borderSubtitle {
+    font-weight: 400;
+  }
+
+  .borderCountries {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px;
+
+    & > * {
+      margin-top: 20px;
+      margin-left: 5px; 
+      margin-right: 5px;
+    }
+  }
+
+  @media only screen and (min-width:768px) {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+    
+    .countryInfo {
+      padding-top: 40px;
+      row-gap: 40px;
+    }
+
+    .countryName {
+      font-size: 32px;
+    }
+
+    .dataWrapper {
+      font-size: 16px;
+    }
+  }
+
+  @media only screen and (min-width:1024px) {
+    grid-template-columns: min(45%, 560px) 1fr;
+    column-gap: 80px;
+  }
+
+
+  @include responsiveMedium {
+    .sectionWrapper {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
