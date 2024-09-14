@@ -1,22 +1,22 @@
 import { useEffect } from 'react';
-
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { selectTheme } from './store/rootSelectors';
 import { fetchCountries, setTheme } from './store/rootActions';
-import { Home, CountryDetail, NoMatch404 } from './views';
+import { CountryDetail, NoMatch404 } from './views';
+import { Home } from './views/Home';
 import { ThemeStorage } from './storage/theme';
 import './assets/styles/styles.global.scss';
 
 export default function App () {
 
   const dispatch = useDispatch();
-  useEffect(() => {
-    const initializeCountryGlobalState = () => dispatch(fetchCountries());
-    initializeCountryGlobalState();
+  // useEffect(() => {
+  //   const initializeCountryGlobalState = () => dispatch(fetchCountries());
+  //   initializeCountryGlobalState();
     
-  }, [dispatch])
+  // }, [dispatch])
   
   useEffect(function getLocalStorageTheme () {
     const storagedTheme = ThemeStorage.get();
