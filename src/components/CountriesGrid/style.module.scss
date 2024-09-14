@@ -2,7 +2,7 @@
 
 .CountriesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(264px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
   column-gap: 16px;
   row-gap: 20px;
   list-style: none;
@@ -15,4 +15,39 @@
   @media only screen and (min-width:1024px) {
     gap: 74px;
   }
+}
+
+.noMatch {
+  display: grid;
+  place-items: center;
+  block-size: 400px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.error {
+  display: grid;
+  place-items: center;
+  block-size: 400px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.buttonsWrapper {
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 20px;
+}
+
+.button {
+  font-size: 17px;
+  font-weight: 600;
+  height: 48px;
+  padding-inline: 40px;
+  border-radius: 5px;
+  border: 0;
+  color: $white;
+  background-color: $dark-darkBlue;
+  text-transform: capitalize;
+  cursor: pointer;
 }

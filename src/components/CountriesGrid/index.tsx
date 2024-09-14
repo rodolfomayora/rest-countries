@@ -1,35 +1,58 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import { CountryCard } from '#/components/CountryCard';
+import { SuspenseCountriesGrid } from '#/components/SuspenseCountriesGrid';
 // import { CountriesApi } from '#/api/dummy-countries';
 import { CountriesApi } from '#/api/rest-countries';
-import { SuspenseCountryCard } from '../SuspenseCountryCard';
 import parseDigitsNumber from '#/utils/parseDigitsNumber';
 import { CountryBase } from '#/types/Country';
 import style from './style.module.scss';
 
-export function CountriesGrid () {
+function usePagination () {
   const quantity = 24;
   const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(() => quantity);
 
-  const [countries, setCountries] = useState<CountryBase[]>([]);
-  useEffect(() => {
-    (async () => {
-      const result = await CountriesApi.getAll();
-      await new Promise((resolve) => window.setTimeout(resolve, 2000));
-      setCountries(result);
-    })()
-  }, [])
+  function handlePrev (): void {
+    if (offset === 0) return; 
+    setOffset((offset) => offset - quantity);
+    setLimit((limit => limit - quantity))
+  }
 
-  if (countries.length === 0) {
-    const listItems = Array(12).fill(0).map((_, index) => (
-      <li key={index}>
-        <SuspenseCountryCard style={{ width: 'auto' }} />
-      </li>
-    ))
+  function handleNext (countriesLength: number):void {
+    if (limit >= countriesLength) return;
+    setOffset((offset) => offset + quantity);
+    setLimit((limit => limit + quantity))
+  }
 
-    return <ul className={style.CountriesGrid}>{listItems}</ul>
+  return { offset, limit, handlePrev, handleNext }
+}
+
+export function CountriesGrid () {
+  const { offset, limit, handlePrev, handleNext } = usePagination();
+
+  const { isLoading, isError, data:countries } = useQuery<CountryBase[]>({
+    queryKey: ['countries'],
+    // queryFn: () => CountriesApi.getAll(),
+    queryFn: async () => {
+      // return new Promise((_, rejects) => rejects()); // error (no delay required)
+      await new Promise((resolve) => window.setTimeout(resolve, 2000)); // delay
+      // return new Promise(((resolve) => resolve([]))); // no match
+      return await CountriesApi.getAll();
+    }
+  })
+
+  if (isLoading) {
+    return <SuspenseCountriesGrid />;
+  }
+
+  if (isError) {
+    return <div className={style.error}>Error loading countries</div>;
+  }
+  
+  if (!countries || countries.length === 0) {
+    return <div className={style.noMatch}>No match countries</div>;
   }
 
   // const listItems = countries.map((country) => (
@@ -56,18 +79,14 @@ export function CountriesGrid () {
     <>
       <ul className={style.CountriesGrid}>{listItems}</ul>
 
-      <div style={{ display: 'flex', justifyContent: 'flex-end', columnGap: '20px' }}>
-        <button onClick={() => {
-          if (offset === 0) return; 
-          setOffset((offset) => offset - quantity);
-          setLimit((limit => limit - quantity))
-        }}>prev</button>
+      <div className={style.buttonsWrapper}>
+        <button className={style.button}onClick={handlePrev}>
+          prev
+        </button>
 
-        <button onClick={() => {
-          if (limit >= countries.length) return;
-          setOffset((offset) => offset + quantity);
-          setLimit((limit => limit + quantity))
-        }}>next</button>
+        <button className={style.button} onClick={() => handleNext(countries.length)}>
+            next
+        </button>
       </div>
     </>
   )
