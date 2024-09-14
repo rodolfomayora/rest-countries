@@ -1,28 +1,29 @@
+import type { CSSProperties } from 'react';
 import style from './style.module.scss';
 
 type Props = {
   capital: string,
+  commonName: string,
+  flagDescription: string,
   flagImage: string,
-  flagAtl?: string,
-  name: string,
   population: string | number,
   region: string,
+  style: CSSProperties,
 }
 
 export function CountryCard (props: Props) {
-  const alt = props?.flagAtl || `${props.name} Flag`;
   return (
-    <article className={style.CountryCard}>
+    <article className={style.CountryCard} style={props?.style ?? {}}>
       <img className={style.flagImage}
         src={props.flagImage}
-        alt={alt}
+        alt={props.flagDescription}
         height="150"
         width="250"
         loading="lazy"
         decoding="auto"
       />
       <div className={style.summary}>
-        <h2 className={style.name}>{props.name}</h2>
+        <h2 className={style.name}>{props.commonName}</h2>
         <div className={style.info}>
           <p><span className={style.label}>Population:</span> {props.population}</p>
           <p><span className={style.label}>Region:</span> {props.region}</p>
