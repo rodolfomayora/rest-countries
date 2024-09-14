@@ -1,32 +1,26 @@
-import React, { FC } from 'react';
-
-import { useTheme } from '../../hooks';
+// import { useTheme } from '../../hooks';
 import {
-  Layout,
-  Container,
-  CountryList,
   CountryFilters
 } from '../../components';
+import { Container } from '#/components/Container';
+import { CountriesGrid } from '#/components/CountriesGrid';
+import { Layout } from '#/components/Layout';
 import style from './style.module.scss';
 
-const Home: FC = () => {
-
-  const homeStyle = useTheme(style.Home, style.light);
+export function Home () {
+  // const homeStyle = useTheme(style.Home, style.light);
 
   return (
     <Layout pageTitle="Home">
-      <main className={homeStyle}>
+      {/* <main className={homeStyle}> */}
+      <main className={style.Home}>
         <Container>
-          <div className={style.contentWrapper}>
-            <div className={style.searchWrapper}>
-              <CountryFilters />
-            </div>
-            <CountryList />
+          <div className={style.content}>
+            {/* <CountryFilters /> */}
+            <CountriesGrid />
           </div>
         </Container>
       </main>
     </Layout>
   );
 }
-
-export default Home;

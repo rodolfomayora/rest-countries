@@ -1,23 +1,24 @@
 @import '../../assets/styles/config';
 
 .Home {
-  height: calc(100vh - #{$headerHeight});
-  padding-top: 24px;
+  // height: calc(100vh - #{$headerHeight});
+  // min-height: calc(100vh - #{$headerHeight});
+  min-block-size: 100svh;
+  padding-block: 24px;
 
-  .contentWrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+  .content {
+    display: grid;
+    row-gap: 20px;
   }
 
-  .searchWrapper { margin-bottom: 20px; }
-
   /* LIGHT THEME */
-  &.light { background-color: $light-lightGray; }
+  // &.light { background-color: $light-lightGray; } 
 
   @include responsiveMedium {
-    padding-top: 40px;
-
-    .searchWrapper { margin-bottom: 40px; }
+    padding-block: 48px;
+    
+    .content {
+      row-gap: 48px;
+    }
   }
 }
