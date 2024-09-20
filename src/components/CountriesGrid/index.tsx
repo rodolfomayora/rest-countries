@@ -39,10 +39,18 @@ export function CountriesGrid () {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const selectedRegion = query.get('region') ?? 'All';
+  const selectedCountry = query.get('country') ?? '';
 
-  const countries = selectedRegion === 'All' ? data : data.filter((country) => {
+  // const countries = selectedRegion === 'All' ? data : data.filter((country) => {
+  const result = selectedRegion === 'All' ? data : data.filter((country) => {
+    const belongsToRegion = country.region === selectedRegion;
+    return belongsToRegion;
+  });
 
-    return country.region === selectedRegion;
+
+  const countries = result.filter((country) => {
+    const matchSearch = country.commonName.toLocaleLowerCase().includes(selectedCountry.toLocaleLowerCase());
+    return matchSearch;
   });
 
 

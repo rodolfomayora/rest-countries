@@ -1,14 +1,12 @@
-import React, { FC } from 'react';
-
-import SearchCountry from '../SearchCountry';
-import RegionFilter from '../RegionFilter';
+import { SearchCountry } from '#/components/SearchCountry';
+import { RegionFilter } from '#/components/RegionFilter';
 import style from './style.module.scss';
 
-const CountryFilters: FC = () => (
-  <div className={style.countryFilters}>
-    <SearchCountry />
-    <RegionFilter />
-  </div>
-);
-
-export default CountryFilters;
+export function CountryFilters () {
+  return (
+    <div className={style.CountryFilters}>
+      <SearchCountry />
+      <RegionFilter />
+    </div>
+  );
+}
