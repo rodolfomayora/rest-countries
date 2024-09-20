@@ -44,6 +44,8 @@ export function RegionFilter () {
     
     const itemQuery = new URLSearchParams(location.search);
     itemQuery.set('region', region);
+    itemQuery.set('page', '1'); // reset page
+
     const route = `?${itemQuery}`;
     return (
       <li key={region}>
