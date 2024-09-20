@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { CountryCard } from '#/components/CountryCard';
 // import { CountriesApi } from '#/api/dummy-countries';
@@ -25,29 +26,31 @@ function usePagination () {
     setLimit((limit => limit + quantity))
   }
 
-  return { offset, limit, handlePrev, handleNext }
+  return { quantity, offset, limit, handlePrev, handleNext }
 }
 
 export function CountriesGrid () {
   const { data } = useSuspenseQuery<CountryBase[]>({
     queryKey: ['countries'],
     queryFn: () => CountriesApi.getAll(),
-    // queryFn: async () => {
-    //   // return new Promise((_, rejects) => rejects()); // error (no delay required)
-    //   await new Promise((resolve) => window.setTimeout(resolve, 2000)); // delay
-    //   // return new Promise(((resolve) => resolve([]))); // no match
-    //   return await CountriesApi.getAll();
-    // }
   })
+
   const countries = data;
 
-  if (!countries || countries.length === 0) {
+  const noResult = !countries || countries.length === 0;
+  if (noResult) {
     return <div className={style.noMatch}>No match countries</div>;
   }
 
-  const { offset, limit, handlePrev, handleNext } = usePagination();
 
-  const listItems = countries.slice(offset, limit).map((country) => (
+  // @ts-ignore
+  const sortedCountries = countries.toSorted((a, b) => a.commonName.localeCompare(b.commonName, 'en')) as CountryBase[];
+
+
+  const { quantity, offset, limit, handlePrev, handleNext } = usePagination();
+
+  // const listItems = countries.slice(offset, limit).map((country) => (
+  const listItems = sortedCountries.slice(offset, limit).map((country) => (
     <li key={country.id}>
       <Link
         to={`/CountryDetail/${country.id}`}
@@ -70,17 +73,19 @@ export function CountriesGrid () {
     <>
       <ul className={style.CountriesGrid}>{listItems}</ul>
 
-      <div className={style.paginationAtions}>
-        <div className={style.buttonsWrapper}>
-          <button className={style.button}onClick={handlePrev}>
-            prev
-          </button>
+      {countries.length >= quantity ? (
+        <div className={style.paginationAtions}>
+          <div className={style.buttonsWrapper}>
+            <button className={style.button}onClick={handlePrev}>
+              prev
+            </button>
 
-          <button className={style.button} onClick={() => handleNext(countries.length)}>
-            next
-          </button>
+            <button className={style.button} onClick={() => handleNext(countries.length)}>
+              next
+            </button>
+          </div>
         </div>
-      </div>
+      ) : null}
     </>
   )
 }
