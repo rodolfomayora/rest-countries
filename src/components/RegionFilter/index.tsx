@@ -1,23 +1,16 @@
-import React, { FC, useState } from 'react';
-
-import { useSelector, useDispatch } from 'react-redux';
-
-import { setRegionFilter } from '../../store/rootActions';
-import { selectRegionFilter, selectTheme } from '../../store/rootSelectors';
+import { useState } from 'react';
+import { useLocation, useHistory, Link } from 'react-router-dom';
 import { ArrowDownIcon } from '../../assets/images';
 import style from './style.module.scss';
 
-const RegionFilter: FC = () => {
+export function RegionFilter () {
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const selectedRegion = query.get('region');
+  // query.get puede ser: null, '', o un valor no esperado
 
-  const currentRegion: string = useSelector(selectRegionFilter);
-  const dispatch = useDispatch();
-
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [label, setLabel] = useState<string>(() => {
-    return currentRegion === 'All'
-      ? 'Filter by Region'
-      : currentRegion;
-  })
+  const [isOpen, setIsOpen] = useState(false);
+  const handleToggle = () => setIsOpen((isOpen) => !isOpen);
 
   const regions: Array<string> = [
     'All',
@@ -25,62 +18,56 @@ const RegionFilter: FC = () => {
     'Americas',
     'Asia',
     'Europe',
-    'Oceania'
+    'Oceania',
   ];
 
-  const changeRegion = (region: string): void => {
-    setLabel(region === 'All'
-      ? 'All Regions'
-      : region
-    );
-
-    dispatch(setRegionFilter(region));
+  const history = useHistory();
+  // if region query param is defined, then it should be validated, if not just ignore
+  // if region query param is empty "", then it should bereplace by a default value
+  if (selectedRegion !== null  && !regions.includes(selectedRegion)) {
+    query.set('region', 'All');
+    history.replace(`?${query}`);
   }
 
-  const onClickSetIsOpen = () => setIsOpen((crr:boolean) => !crr);
+  const label = selectedRegion === null
+    ? 'Filter by Region'
+    : selectedRegion === ''
+    ? 'Filter by Region'
+    : selectedRegion
+    ;
 
-  const theme = useSelector(selectTheme);
+  const listItems = regions.map((region: string) => {
+    // create a new URLSearchParams from a previous URLSearchParams
 
-  const themes = {
-    default: style.RegionFilter,
-    light: `${style.RegionFilter} ${style.light}`
-  }
-
-  const setOptionStyle = (condition: boolean): string => {
-    return condition
-    ? `${style.option} ${style.selected}`
-    : style.option;
-  }
-
-  const setArrowStyle = (condition: boolean): string => {
-    return condition
-    ? style.arrow
-    : style.arrowReverse;
-  }
+    // const itemQuery = new URLSearchParams(query);
+    // itemQuery.set('region', region);
+    
+    const itemQuery = new URLSearchParams(location.search);
+    itemQuery.set('region', region);
+    const route = `?${itemQuery}`;
+    return (
+      <li key={region}>
+        <Link className={style.option}
+          to={route}
+          // onClick={() => setIsOpen(false)}
+          data-seleted={region === selectedRegion}
+        >
+          {region}
+        </Link>
+      </li>
+    )
+  })
 
   return (
-    <div className={themes[theme]}>
-      <div className={style.toggleFilter}
-        onClick={onClickSetIsOpen}
+    <div className={style.RegionFilter}>
+      <button className={style.toggle}
+        onClick={handleToggle}
+        aria-expanded={isOpen}
       >
-        {label}
-        <ArrowDownIcon className={setArrowStyle(isOpen)}/>
-      </div>
-      
-      {isOpen && (
-        <ul className={style.optionsWrapper}>
-        {regions.map((region: string) => (
-          <li className={setOptionStyle(region === currentRegion)}
-            onClick={() => changeRegion(region)}
-            key={region}
-          >
-            {region}
-          </li>
-        ))}
-        </ul>
-      )}
+        <span>{label}</span>
+        <ArrowDownIcon className={style.arrow}/>
+      </button>
+      <ul className={style.optionsWrapper}>{listItems}</ul>
     </div>
   );
 }
-
-export default RegionFilter;
