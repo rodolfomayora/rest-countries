@@ -1,17 +1,11 @@
-import React, { FC } from 'react';
-
-import { useTheme } from '../../hooks';
-
-import { Layout, BackToHomeButton } from '../../components';
+import { BackToHomeButton } from '../../components';
+import { Layout } from '#/components/Layout';
 import style from './style.module.scss';
 
-const NoMatch404: FC = () => {
-
-  const noMatch404Style = useTheme(style.NoMatch404, style.light);
-
+export function NoMatch404 () {
   return (
     <Layout pageTitle="404">
-      <main className={noMatch404Style}>
+      <main className={style.NoMatch404}>
         <h2 className={style.errorCode}>404</h2>
         <p>Country not found</p>
         <BackToHomeButton />
@@ -19,5 +13,3 @@ const NoMatch404: FC = () => {
     </Layout>
   );
 }
-
-export default NoMatch404;
