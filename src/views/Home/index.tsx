@@ -2,7 +2,8 @@ import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Container } from '#/components/Container';
 import { CountryFilters } from '#/components/CountryFilters';
-import { CountriesGrid } from '#/components/CountriesGrid';
+// import { CountriesGrid } from '#/components/CountriesGrid';
+import { CountriesDisplay } from './CountriesDisplay';
 import { SuspenseCountriesGrid } from '#/components/SuspenseCountriesGrid';
 import { ErrorCountriesGrid } from '#/components/ErrorCountriesGrid';
 import { Layout } from '#/components/Layout';
@@ -17,7 +18,7 @@ export function Home () {
             <CountryFilters />
             <ErrorBoundary fallback={<ErrorCountriesGrid />}>
               <Suspense fallback={<SuspenseCountriesGrid />}>
-                <CountriesGrid />
+                <CountriesDisplay />
               </Suspense>
             </ErrorBoundary>
           </div>
