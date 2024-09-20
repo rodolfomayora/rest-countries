@@ -35,7 +35,16 @@ export function CountriesGrid () {
     queryFn: () => CountriesApi.getAll(),
   })
 
-  const countries = data;
+  
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const selectedRegion = query.get('region') ?? 'All';
+
+  const countries = selectedRegion === 'All' ? data : data.filter((country) => {
+
+    return country.region === selectedRegion;
+  });
+
 
   const noResult = !countries || countries.length === 0;
   if (noResult) {
