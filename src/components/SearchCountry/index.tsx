@@ -1,38 +1,44 @@
-import React, { FC, ChangeEvent, useState, useEffect } from 'react';
-
-import { useSelector, useDispatch } from 'react-redux';
-
-import { selectCountryName } from '../../store/rootSelectors';
-import { useTheme } from '../../hooks';
-import { setCountryName } from '../../store/rootActions';
+import { ChangeEvent, useState, useEffect } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import { SearchIcon } from '../../assets/images';
 import style from './style.module.scss';
 
-const SearchCountry: FC = () => {
+export function SearchCountry () {
 
-  const countryName: string = useSelector(selectCountryName);
-  const dispatch = useDispatch();
+  const locale = useLocation();
+  const query = new URLSearchParams(locale.search);
+  const country = query.get('country') ?? '';
 
-  const [input, setInput] = useState<string>(countryName);
+  const history = useHistory();
+
+  const [input, setInput] = useState<string>(country);
   useEffect(() => {
     const debounceTime: number = 500;
 
     const debounceCountryName: number = window.setTimeout(() => {
-      dispatch(setCountryName(input.trim().toLowerCase()))
+      // const parsedInput = input.trim().toLowerCase();
+      const parsedInput = input.trim();
+      const newQuery = new URLSearchParams(query);
+      if (input === '') {
+        newQuery.delete('country');
+      } else {
+        newQuery.set('country', parsedInput);
+      }
+      history.replace(`?${newQuery}`);
+
+      // dispatch(setCountryName(input.trim().toLowerCase()))
     }, debounceTime)
 
     return () => window.clearInterval(debounceCountryName);
   },
-  [input, dispatch])
+  [input, history.replace])
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
     setInput(event.target.value);
   }
 
-  const searchCountryStyle = useTheme(style.SearchCountry, style.light);
-
   return (
-    <div className={searchCountryStyle}>
+    <div className={style.SearchCountry}>
       <div className={style.searchButton}>
         <SearchIcon className={style.searchIcon} />
       </div>
@@ -47,5 +53,3 @@ const SearchCountry: FC = () => {
     </div>
   );
 }
-
-export default SearchCountry;
