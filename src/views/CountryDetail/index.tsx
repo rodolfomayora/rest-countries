@@ -1,26 +1,13 @@
-// import { useEffect, useState } from 'react';
-// import { useQuery } from '@tanstack/react-query';
-import { useParams, useHistory } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
 // import { useTheme } from '../../hooks';
-import {
-  Layout,
-  BackToHomeButton,
-  BorderCountryButton
-} from '../../components';
+import { BackToHomeButton } from '../../components';
 import style from './style.module.scss';
 import { Container } from '#/components/Container';
-
-// import { CountriesApi } from '#/api/dummy-countries';
-// import { CountriesApi } from '#/api/rest-countries';
-// import parseDigitsNumber from '#/utils/parseDigitsNumber'
-// import { CountryDetails, BorderCountry } from '#/types/Country';
+// import { BorderCountryButton } from '#/components/BorderCountryButton';
+import { Layout } from '#/components/Layout';
 import { Detail } from './Detail';
 
-
-export default function CountryDetail () {
-
-  // const pageRedirect = useHistory().push;
+export function CountryDetail () {
   const { id } = useParams<{ id: string }>();
 
   return (

@@ -8,8 +8,9 @@
     aspect-ratio: 560 / 401;
     inline-size: 100%;
     max-inline-size: 100%;
-    object-fit: cover;
-    object-position: left;
+    object-fit: contain;
+    object-position: center top;
+    user-select: none;
   }
 
   .countryInfo {

@@ -5,7 +5,7 @@ import { CountryDetails, BorderCountry } from '#/types/Country';
 import { CountriesApi } from '#/api/rest-countries';
 import style from './style.module.scss';
 
-import { BorderCountryButton } from '../../../components';
+import { BorderCountryButton } from '#/components/BorderCountryButton';
 import { SuspenseFlagImage } from './SuspenseFlagImage';
 import { SuspenseData } from './SuspenseData';
 
@@ -19,7 +19,7 @@ export function Detail ({ countryId }: Props) {
   const pageRedirect = useHistory().push;
   
   const [isLoading, setIsLoading] = useState(true);
-  const [countryData, setCountryData] = useState<null | CountryDetails>(null);
+  const [countryData, setCountryData] = useState<CountryDetails | null>(null);
   useEffect(() => {
     (async () => {
       setIsLoading(true);
@@ -39,7 +39,7 @@ export function Detail ({ countryId }: Props) {
   }, [countryId])
 
 
-  const [borderCountries, setBorderCountries] = useState<null | BorderCountry[]>();
+  const [borderCountries, setBorderCountries] = useState<BorderCountry[] | null>();
   useEffect(() => {
     (async () => {
       if (!countryData) return;
