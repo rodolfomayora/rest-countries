@@ -1,11 +1,6 @@
 @import '../../assets/styles/config';
 
 .Header {
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  left: 0;
-  right: 0;
   background-color: $dark-darkBlue;
 
   .headerWrapper {
@@ -23,12 +18,12 @@
   }
 
   /* LIGHT THEME */
-  &.light {
-    background-color: $white;
-    box-shadow: 0 0 5px $shadow;
+  // &.light {
+  //   background-color: $white;
+  //   box-shadow: 0 0 5px $shadow;
 
-    .mainTitle { color: $light-veryDarkBlue; }
-  }
+  //   .mainTitle { color: $light-veryDarkBlue; }
+  // }
 
   @include responsiveMedium {
     .mainTitle {

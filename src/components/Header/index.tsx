@@ -1,16 +1,12 @@
-import React, { FC } from 'react';
-
 import { Link } from 'react-router-dom';
 
 import { useTheme } from '../../hooks';
-import Container from '../Container';
+import { Container } from '#/components/Container';
 import ToggleThemeButton from '../ToggleThemeButton';
 import style from './style.module.scss';
 
-const Header: FC = () => {
-
+export function Header () {
   const headerStyle = useTheme(style.Header, style.light);
-
   return (
     <header className={headerStyle}>
       <Container>
@@ -27,5 +23,3 @@ const Header: FC = () => {
     </header>
   );
 }
-
-export default Header;
