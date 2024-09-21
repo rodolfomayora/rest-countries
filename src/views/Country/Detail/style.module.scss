@@ -1,4 +1,4 @@
-@import '../../../assets/styles/config';
+@use '/src/style/utils/mixins' as mixins;
 
 .Detail {
   display: grid;
@@ -57,7 +57,7 @@
     }
   }
 
-  @media only screen and (min-width:768px) {
+  @include mixins.minTablet {
     grid-template-columns: 1fr 1fr;
     column-gap: 40px;
     
@@ -75,16 +75,8 @@
     }
   }
 
-  @media only screen and (min-width:1024px) {
+  @include mixins.minDesktop {
     grid-template-columns: min(45%, 560px) 1fr;
     column-gap: 80px;
-  }
-
-
-  @include responsiveMedium {
-    .sectionWrapper {
-      padding-left: 0;
-      padding-right: 0;
-    }
   }
 }

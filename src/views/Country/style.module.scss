@@ -1,9 +1,9 @@
-@import '../../assets//styles/config';
+@use '/src/style/utils/mixins' as mixins;
 
 .CountryDetail {
   padding-top: 40px;
   padding-bottom: 60px;
-  background-color: $dark-veryDarkBlue;
+  // background-color: $dark-veryDarkBlue;
 
   .sectionWrapper {
     display: grid;
@@ -75,16 +75,7 @@
     }
   }
 
-  /* LIGHT THEME */
-  // &.light {
-  //   background-color: $white;
-    
-  //   .flagWrapper { box-shadow: 0 0 8px $shadow; }
-
-  //   .blockInfo { color: $light-veryDarkBlue; }
-  // }
-
-  @media only screen and (min-width:768px) {
+  @include mixins.minTablet {
     .countryInfo {
       padding-top: 40px;
       row-gap: 40px;
@@ -95,7 +86,7 @@
     }
   }
 
-  @include responsiveSmall {
+  @include mixins.minWith(576px) {
     .countryData { flex-direction: row; }
 
     .data {
@@ -108,7 +99,7 @@
     }
   }
 
-  @include responsiveMedium {
+  @include mixins.minTablet {
     padding-top: 80px;
 
     .sectionWrapper {
@@ -123,7 +114,7 @@
     .countryData { font-size: 16px; }
   }
 
-  @include responsiveLarge {
+  @include mixins.minDesktop {
 
     .infoContainer {
       flex-direction: row;
@@ -152,7 +143,7 @@
     }
   }
 
-  @include responsiveExtraLarge {
+  @include mixins.minWith(1320px) {
     .infoContainer {
       flex-direction: row;
     }
