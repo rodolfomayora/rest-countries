@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import { useLocation, useHistory, Link } from 'react-router-dom';
 import { useSuspenseQuery } from '@tanstack/react-query';
 // import { CountriesApi } from '#/api/dummy-countries';
-import { CountriesGrid } from '#/components/CountriesGrid';
 import { CountriesApi } from '#/api/rest-countries';
 import { CountryBase } from '#/types/Country';
+import { CountriesGrid } from './CountriesGrid';
 import style from './style.module.scss';
 
 export function CountriesDisplay () {

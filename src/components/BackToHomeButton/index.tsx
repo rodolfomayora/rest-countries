@@ -1,12 +1,10 @@
-import { FC } from 'react';
-
 import { Link } from 'react-router-dom';
 import { routes } from '#/config/routes';
 import { useTheme } from '../../hooks';
 import { LongArrowLeftIcon } from '../../assets/images';
 import style from './style.module.scss';
 
-const BackToHomeButton: FC = () => {
+export function BackToHomeButton () {
 
   const backButtonStyle = useTheme(style.BackToHomeButton, style.light);
 
@@ -17,5 +15,3 @@ const BackToHomeButton: FC = () => {
     </Link>
   );
 }
-
-export default BackToHomeButton;

@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useRef } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import { SearchIcon } from '../../assets/images';
+import { SearchIcon } from '../../../../assets/images';
 import style from './style.module.scss';
 
 function debounce (callback: Function, delay: number) {

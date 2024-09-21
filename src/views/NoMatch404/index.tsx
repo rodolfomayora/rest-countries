@@ -1,4 +1,4 @@
-import { BackToHomeButton } from '../../components';
+import { BackToHomeButton } from '#/components/BackToHomeButton';
 import { Layout } from '#/components/Layout';
 import style from './style.module.scss';
 

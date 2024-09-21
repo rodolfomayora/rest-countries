@@ -3,11 +3,11 @@ import { useHistory } from 'react-router-dom';
 import { CountryDetails, BorderCountry } from '#/types/Country';
 // import { CountriesApi } from '#/api/dummy-countries';
 import { CountriesApi } from '#/api/rest-countries';
-import style from './style.module.scss';
-
+import { routes } from '#/config/routes';
 import { BorderCountryButton } from '#/components/BorderCountryButton';
 import { SuspenseFlagImage } from './SuspenseFlagImage';
 import { SuspenseData } from './SuspenseData';
+import style from './style.module.scss';
 
 const mapArrayToText = (arr: Array<string>) => arr.join(', ');
 
@@ -33,7 +33,7 @@ export function Detail ({ countryId }: Props) {
         if (error instanceof Error) {
           console.error(error.message);
         }
-        return pageRedirect('/404');
+        return pageRedirect(routes.unknown);
       }
     })()
   }, [countryId])

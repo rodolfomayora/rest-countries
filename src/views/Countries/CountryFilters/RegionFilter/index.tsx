@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useLocation, useHistory, Link } from 'react-router-dom';
-import { ArrowDownIcon } from '../../assets/images';
+import { ArrowDownIcon } from '../../../../assets/images';
 import style from './style.module.scss';
 
 export function RegionFilter () {

@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { routes } from '#/config/routes';
 import { CountryBase } from '#/types/Country';
-import { CountryCard } from '#/components/CountryCard';
 import parseDigitsNumber from '#/utils/parseDigitsNumber';
+import { CountryCard } from './CountryCard';
 import style from './style.module.scss';
 
 type Props = {

@@ -1,15 +1,11 @@
-import React, { FC } from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
-
 import { useTheme } from '../../hooks';
 import { selectTheme } from '../../store/rootSelectors';
 import { toggleTheme } from '../../store/rootActions';
 import { MoonIconFill, MoonIconOutline } from '../../assets/images';
 import style from './style.module.scss';
 
-const ToggleThemeButton: FC = () => {
-
+export function ToggleThemeButton () {
   const currentTheme = useSelector(selectTheme);
   const dispatch = useDispatch();
   const handleClick = () => dispatch(toggleTheme());
@@ -30,5 +26,3 @@ const ToggleThemeButton: FC = () => {
     </button>
   )
 }
-
-export default ToggleThemeButton;

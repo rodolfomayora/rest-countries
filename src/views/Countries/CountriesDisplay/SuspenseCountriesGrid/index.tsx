@@ -1,4 +1,4 @@
-import { SuspenseCountryCard } from '#/components/SuspenseCountryCard';
+import { SuspenseCountryCard } from './SuspenseCountryCard';
 import style from './style.module.scss';
 
 type Props = {

@@ -1,15 +1,14 @@
 import { Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Container } from '#/components/Container';
-import { CountryFilters } from '#/components/CountryFilters';
-// import { CountriesGrid } from '#/components/CountriesGrid';
+import { CountryFilters } from './CountryFilters';
 import { CountriesDisplay } from './CountriesDisplay';
-import { SuspenseCountriesGrid } from '#/components/SuspenseCountriesGrid';
-import { ErrorCountriesGrid } from '#/components/ErrorCountriesGrid';
+import { SuspenseCountriesGrid } from './CountriesDisplay/SuspenseCountriesGrid';
+import { ErrorCountriesGrid } from './CountriesDisplay/ErrorCountriesGrid';
 import { Layout } from '#/components/Layout';
 import style from './style.module.scss';
 
-export function Home () {
+export function Countries () {
   return (
     <Layout pageTitle="Home">
       <main className={style.Home}>

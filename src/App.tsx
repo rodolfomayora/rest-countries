@@ -4,11 +4,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // import { selectTheme } from './store/rootSelectors';
 // import {  setTheme } from './store/rootActions';
 // import { ThemeStorage } from './storage/theme';
-import { Home } from './views/Home';
-import { CountryDetail } from './views/CountryDetail';
+import { Countries } from './views/Countries';
+import { Country } from './views/Country';
 import { NoMatch404 } from './views/NoMatch404';
 import { routes } from './config/routes';
-import './assets/styles/styles.global.scss';
 
 export default function App () {
   // const dispatch = useDispatch();
@@ -49,9 +48,10 @@ export default function App () {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path={routes.root} component={Home} />
+        <Route exact path={routes.root} component={Countries} />
+        <Route exact path={routes.country} component={Country} />
         <Route exact path={routes.unknown} component={NoMatch404} />
-        <Route path={routes.country} component={CountryDetail} />
+        <Route path="*" component={NoMatch404} />
       </Switch>
     </BrowserRouter>
   );
