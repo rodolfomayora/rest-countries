@@ -9,7 +9,7 @@ import { Detail } from './Detail';
 export function Country () {
   const { id } = useParams<{ id: string }>();
   return (
-    <Layout pageTitle="Country Detail">
+    <Layout pageTitle="Country">
       <main className={style.CountryDetail}>
         <Container>
           <section className={style.sectionWrapper}>
