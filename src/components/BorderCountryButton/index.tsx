@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
-
+import { routes } from '#/config/routes';
 import { Link } from 'react-router-dom';
 
-import { useTheme } from '../../hooks';
+// import { useTheme } from '../../hooks';
 import style from './style.module.scss';
 
 type Props = {
@@ -10,12 +10,10 @@ type Props = {
   countryId: string,
 }
 
-export default function BorderCountryButton ({ children, countryId }: Props) {
-  const borderCountryButton = useTheme(style.BorderCountryButton, style.light);
+export function BorderCountryButton ({ children, countryId }: Props) {
+  const countryRoute = routes.country.replace(':id', countryId);
   return (
-    <Link className={borderCountryButton}
-      to={`/CountryDetail/${countryId}`}
-    >
+    <Link className={style.BorderCountryButton} to={countryRoute}>
       {children}
     </Link>
   );

@@ -7,6 +7,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Home } from './views/Home';
 import { CountryDetail } from './views/CountryDetail';
 import { NoMatch404 } from './views/NoMatch404';
+import { routes } from './config/routes';
 import './assets/styles/styles.global.scss';
 
 export default function App () {
@@ -48,9 +49,9 @@ export default function App () {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/404" component={NoMatch404} />
-        <Route path="/CountryDetail/:id" component={CountryDetail} />
+        <Route exact path={routes.root} component={Home} />
+        <Route exact path={routes.unknown} component={NoMatch404} />
+        <Route path={routes.country} component={CountryDetail} />
       </Switch>
     </BrowserRouter>
   );

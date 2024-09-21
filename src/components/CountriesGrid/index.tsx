@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { routes } from '#/config/routes';
 import { CountryBase } from '#/types/Country';
 import { CountryCard } from '#/components/CountryCard';
 import parseDigitsNumber from '#/utils/parseDigitsNumber';
@@ -18,9 +19,10 @@ export function CountriesGrid ({ countries }: Props) {
     commonName,
     capital,
   }) => {
+    const countryRoute = routes.country.replace(':id', id);
     return (
       <li key={id}>
-        <Link to={`/CountryDetail/${id}`} style={{ display: 'block' }}>
+        <Link to={countryRoute} style={{ display: 'block' }}>
           <CountryCard
             capital={capital}
             commonName={commonName}
