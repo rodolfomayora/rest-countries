@@ -1,5 +1,4 @@
-import type { ReactNode } from 'react';
-import { Helmet } from 'react-helmet';
+import { useEffect, type ReactNode } from 'react';
 import { Header } from '#/components/Header';
 
 type Props = {
@@ -8,13 +7,14 @@ type Props = {
 }
 
 export function Layout ({ children, pageTitle }: Props) {
-  // tab title
-  const metaTitle = `${pageTitle} | Search Country App`;
+
+  useEffect(() => { 
+    const browserTabTitle = `${pageTitle} | Seach Country App`;
+    document.title = browserTabTitle;
+  }, [pageTitle]);
+
   return (
     <>
-      <Helmet>
-        <title>{metaTitle}</title>
-      </Helmet>
       <Header />
       {children}
     </>
