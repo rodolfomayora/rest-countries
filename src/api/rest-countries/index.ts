@@ -25,9 +25,9 @@ type ApiResponse = {
 const api = axios.create({ baseURL: 'https://restcountries.com/v3.1' });
 
 export class CountriesApi {
-  static async getAll (): Promise<CountryBase[]> {
+  static async getAll ({ signal }: { signal: AbortSignal }): Promise<CountryBase[]> {
     const URLQueryString = '?fields=cca3,name,flags,capital,population,region'
-    const response = await api.get<ApiResponse[]>('/all' + URLQueryString);
+    const response = await api.get<ApiResponse[]>('/all' + URLQueryString, { signal });
     const mappedCountries = response.data.map((country) => {
       const { capital, cca3, flags, name, population, region } = country;
       return {
@@ -100,5 +100,16 @@ export class CountriesApi {
       commonName: name.common
     }))
     return mappedApiResponse;
+  }
+
+  static async getRegions (): Promise<string[]> {
+    const URLQueryString = '?region'
+    const { data } = await api.get<ApiResponse[]>('/all' + URLQueryString);
+    const regions = new Set();
+    for (const country of data) {
+      const { region } = country;
+      regions.add(region)
+    }
+    return Array.from(regions) as string[];
   }
 }
