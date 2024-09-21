@@ -1,4 +1,4 @@
-@import '../../assets/styles/config';
+@use '/src/style/utils/mixins' as mixins;
 
 .Container {
   box-sizing: content-box;
@@ -6,7 +6,7 @@
   padding-inline: calc(16px + var(--scrollbar-width)) 16px;
   max-inline-size: 1280px;
 
-  @media only screen and (min-width:768px) {
+  @include mixins.minTablet {
     padding-inline: calc(32px + var(--scrollbar-width)) 32px;
   }
 }

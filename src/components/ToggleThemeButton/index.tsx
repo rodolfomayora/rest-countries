@@ -15,9 +15,7 @@ export function ToggleThemeButton () {
   const toggleThemeButtonStyle: string = useTheme(style.ToggleThemeButton, style.light);
 
   return (
-    <button className={toggleThemeButtonStyle}
-      onClick={handleClick}
-    >
+    <button className={toggleThemeButtonStyle} onClick={handleClick}>
       {isDefault
       ? <MoonIconFill className={style.icon} /> 
       : <MoonIconOutline className={style.icon} />}

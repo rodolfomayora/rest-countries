@@ -1,4 +1,4 @@
-@import '../../assets//styles/config';
+@use '/src/style/utils/mixins' as mixins;
 
 .BackToHomeButton {
   display: flex;
@@ -6,11 +6,11 @@
   align-items: center;
   width: 104px;
   height: 32px;
-  background-color: $dark-darkBlue;
+  background-color: var(--color-blue-dark);
   border-radius: 3px;
 
   .icon {
-    fill: $white;
+    fill: var(--color-white);
     width: 18px;
     margin-right: 6px;
   }
@@ -20,25 +20,19 @@
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.4px;
-    color: $white;
+    color: var(--color-white);
   }
 
-  /* LIGHT THEME */
-  &.light {
-    background-color: $white;
-    box-shadow: 0 0 5px 2px $shadow;
-
-    .icon { fill: $light-veryDarkBlue; }
-
-    .text { color: $light-veryDarkBlue; }
-  }
-
-  @include responsiveMedium {
+  @include mixins.minTablet {
     width: 136px;
     height: 40px;
 
-    .icon { margin-right: 10px; }
+    .icon {
+      margin-right: 10px;
+    }
 
-    .text { font-size: 16px; }
+    .text {
+      font-size: 16px;
+    }
   }
 }

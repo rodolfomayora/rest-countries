@@ -1,14 +1,12 @@
 import { Link } from 'react-router-dom';
 import { routes } from '#/config/routes';
-import { useTheme } from '../../hooks';
 import { Container } from '#/components/Container';
 import { ToggleThemeButton } from '#/components/ToggleThemeButton';
 import style from './style.module.scss';
 
 export function Header () {
-  const headerStyle = useTheme(style.Header, style.light);
   return (
-    <header className={headerStyle}>
+    <header className={style.Header}>
       <Container>
         <section className={style.headerWrapper}>
           <Link to={routes.root}>
@@ -16,8 +14,9 @@ export function Header () {
               Where in the world?
             </h1>
           </Link>
-          
-          <ToggleThemeButton />
+          <div className={style.buttonWrapper}>
+            <ToggleThemeButton />
+          </div>
         </section>
       </Container>
     </header>

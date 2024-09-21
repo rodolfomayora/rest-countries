@@ -1,30 +1,42 @@
-@import '../../assets//styles/config';
+@use '/src/style/utils//mixins' as mixins;
 
 .ToggleThemeButton {
-
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
   align-items: center;
-  border: none;
-  outline: none;
+  column-gap: 10px;
   padding: 0;
-  color: $white;
-  font-weight: 600;
+  border: none;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--color-white);
+  background-color: transparent;
   cursor: pointer;
-  background-color: $transparent;
   
   .icon {
-    width: 16px;
-    margin-right: 8px;
-    fill: $white;
+    width: 12px;
+    fill: var(--color-white);;
   }
 
-  .text { margin-top: 2px; }
-  
+  .text {
+    margin-top: 1px;
+  }
+
+  @include mixins.minTablet {
+    font-size: 16px;
+    
+    .icon {
+      width: 16px;
+    }
+
+    .text {
+      margin-top: 0;
+    }
+  }
+
   /* LIGHT MODE */
-  &.light {
-
-    color: $light-veryDarkBlue;
-
-    .icon { fill: $light-veryDarkBlue; }
-  }
+  // &.light {
+  //   color: $light-veryDarkBlue;
+  //   .icon { fill: $light-veryDarkBlue; }
+  // }
 }
