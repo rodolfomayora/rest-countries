@@ -1,20 +1,16 @@
-@import '../../assets/styles/config';
+@use '/src/style/utils/mixins' as mixins;
 
-.Home {
-  // height: calc(100vh - #{$headerHeight});
-  // min-height: calc(100vh - #{$headerHeight});
-  min-block-size: 100svh;
-  padding-block: 24px;
+.Countries {
+  // min-block-size: 100svh;
+  min-block-size: calc(100svh - var(--desktop-header-height));
+  padding-block: 24px 66px;
 
   .content {
     display: grid;
-    row-gap: 20px;
+    row-gap: 32px;
   }
 
-  /* LIGHT THEME */
-  // &.light { background-color: $light-lightGray; } 
-
-  @include responsiveMedium {
+  @include mixins.minTablet {
     padding-block: 48px;
     
     .content {

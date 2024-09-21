@@ -13,12 +13,12 @@ export function RegionFilter () {
   const handleToggle = () => setIsOpen((isOpen) => !isOpen);
 
   const regions: Array<string> = [
-    'All',
     'Africa',
     'Americas',
     'Asia',
     'Europe',
     'Oceania',
+    'All',
   ];
 
   const history = useHistory();
@@ -51,7 +51,7 @@ export function RegionFilter () {
       <li key={region}>
         <Link className={style.option}
           to={route}
-          // onClick={() => setIsOpen(false)}
+          onClick={() => setIsOpen(false)}
           data-seleted={region === selectedRegion}
         >
           {region}
@@ -66,7 +66,7 @@ export function RegionFilter () {
         onClick={handleToggle}
         aria-expanded={isOpen}
       >
-        <span>{label}</span>
+        <span className={style.label}>{label}</span>
         <ArrowDownIcon className={style.arrow}/>
       </button>
       <ul className={style.optionsWrapper}>{listItems}</ul>

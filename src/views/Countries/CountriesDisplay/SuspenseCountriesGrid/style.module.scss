@@ -1,4 +1,4 @@
-@use "../CountriesGrid/style.module.scss" as _;
+@use "/src/views/Countries/CountriesDisplay/CountriesGrid/style.module.scss" as _;
 
 .SuspenseCountriesGrid {
   @extend .CountriesGrid;

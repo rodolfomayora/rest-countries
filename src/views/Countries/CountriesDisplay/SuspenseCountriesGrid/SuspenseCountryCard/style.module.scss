@@ -1,5 +1,3 @@
-@import 'src/assets/styles/config';
-
 @mixin loading {
   background-color: #999999;
   animation: hint-loading 2s ease-in-out 0s infinite reverse;
@@ -16,7 +14,7 @@
   min-block-size: 336px;
   border-radius: 5px;
   overflow: hidden;
-  background-color: $dark-darkBlue;
+  background-color: var(--color-blue-dark);
 
   .flagImage {
     inline-size: 100%;
@@ -46,10 +44,4 @@
     height: 16.1px;
     @include loading;
   }
-
-  /* LIGHT THEME */
-  // &.light {
-  //   background-color: $white;
-  //   box-shadow: 0 0 8px $shadow;
-  // }
 }

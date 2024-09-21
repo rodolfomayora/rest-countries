@@ -1,4 +1,4 @@
-@import '../../../assets/styles/config';
+@use '/src/style/utils/mixins' as mixins;
 
 .noMatch {
   display: grid;
@@ -13,11 +13,11 @@
   grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
   column-gap: 16px;
 
-  @media only screen and (min-width:768px) {
+  @include mixins.minTablet {
     gap: 32px;
   }
 
-  @media only screen and (min-width:1024px) {
+  @include mixins.minDesktop {
     gap: 74px;
   }
 }
@@ -38,8 +38,8 @@
   padding-inline: 40px;
   border-radius: 5px;
   border: 0;
-  color: $white;
-  background-color: $dark-darkBlue;
+  color: var(--color-white);
+  background-color: var(--color-blue-dark);
   text-transform: capitalize;
   cursor: pointer;
 }

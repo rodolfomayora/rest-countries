@@ -21,7 +21,8 @@ export function SearchCountry () {
   useEffect(() => {
     // @ts-ignore
     ref.current.value = country; // input initializtion
-  }, [])
+  // }, [])
+  }, [country])
 
   const history = useHistory();
 

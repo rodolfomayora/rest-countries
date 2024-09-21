@@ -1,4 +1,4 @@
-@import 'src/assets/styles/config';
+@use '/src/style/utils/mixins' as mixins;
 
 .RegionFilter {
   flex-shrink: 0;
@@ -8,45 +8,51 @@
   .toggle {
     position: relative;
     z-index: 2;
+
     display: grid;
     grid-auto-flow: column;
     align-items: center;
     justify-content: space-between;
     column-gap: 20px;
-    height: 56px;
+    height: 48px;
     width: 200px;
     max-width: 100%;
-    padding-left: 25px;
-    padding-right: 20px;
+    padding-left: 22px;
+    padding-right: 18px;
     border-radius: 5px;
     border: 2px solid transparent;
-    background-color: $dark-darkBlue;
-    font-weight: 600;
-    color: $white;
+    background-color: var(--color-blue-dark);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--color-white);
     cursor: pointer;
 
-    &:hover { background-color: $dark-darkBlueHover; }
+    &:hover {
+      background-color: var(--color-hover-blue);
+    }
   }
 
   .arrow {
-    fill: $white;
+    fill: var(--color-white);
     width: 8px;
     height: 8px;
+    transform: scaleY(-1);
   }
 
   .optionsWrapper {
     position: absolute;
     z-index: 1;
     left: 0;
-    top: calc(100% + 5px);
+    top: calc(100% + 4px);
     display: grid;
     width: 200px;
     padding: 12px 0;
-    background-color: $dark-darkBlue;
+    background-color: var(--color-blue-dark);
     border-radius: 5px;
     overflow: hidden;
     list-style: none;
-    box-shadow: 0 2px 6px -2px #80808071;
+    box-shadow: 0 2px 6px -2px #ffffff80;
 
     translate: 0 -40px;
     opacity: 0;
@@ -57,25 +63,25 @@
   .option {
     display: block;
     width: 100%;
-    padding-inline: 25px;
+    padding-inline: 24px;
     border: none;
     text-align: left;
-    font-weight: 600;
-    color: $white;
+    font-weight: 400;
+    color: var(--color-white);
     line-height: 24px;
     background-color: transparent;
     cursor: pointer;
 
     &:hover,
     &[data-seleted="true"] {
-      background-color: $dark-darkBlueHover;
+      background-color: var(--color-hover-blue);
     }
     &:active { opacity: 0.8; }
   }
 
   .toggle[aria-expanded="true"] {
     > .arrow {
-      transform: scaleY(-1);
+      transform: scaleY(1);
     }
 
     + .optionsWrapper {
@@ -85,16 +91,31 @@
     }
   }
 
-  @include responsiveMedium {
+  @include mixins.minTablet {
     height: 56px; 
-    font-size: 13px;
-    margin-left: 20px;
+    font-size: 14px;
 
-    .toggle { font-size: 14px; }
+    .toggle {
+      height: 56px;
+      font-size: 14px;
+    }
+
+    .label {
+      margin-top: 1px;
+    }
+
+    .arrow {
+      width: 10px;
+      height: 10px;
+    }
+
+    .optionsWrapper {
+      padding-top: 13px;
+      padding-bottom: 11px;
+    }
 
     .option {
       line-height: 28px;
-      letter-spacing: 0.4px;
     }
   }
 }

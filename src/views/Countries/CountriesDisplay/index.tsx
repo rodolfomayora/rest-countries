@@ -11,14 +11,20 @@ export function CountriesDisplay () {
   const { data } = useSuspenseQuery<CountryBase[]>({
     queryKey: ['countries'],
     queryFn: () => CountriesApi.getAll(),
+    // queryFn: async () => {
+    //   await new Promise((resolve) => setInterval(resolve, 2000));
+    //   return CountriesApi.getAll()
+    // },
   })
 
   const location = useLocation();
   const query = new URLSearchParams(location.search);
+  const selectedRegion = query.get('region') ?? 'All';
+  const selectedCountry = query.get('country') ?? '';
+  const selectedPage = Number(query.get('page') || '1');
 
 
   // REGION FILTER
-  const selectedRegion = query.get('region') ?? 'All';
   // const countries = selectedRegion === 'All' ? data : data.filter((country) => {
   const result = selectedRegion === 'All' ? data : data.filter((country) => {
     const belongsToRegion = country.region === selectedRegion;
@@ -27,30 +33,15 @@ export function CountriesDisplay () {
 
 
   // COUNTRY NAME FILTER
-  const selectedCountry = query.get('country') ?? '';
   const countries = result.filter((country) => {
-    const matchSearch = country.commonName.toLocaleLowerCase().includes(selectedCountry.toLocaleLowerCase());
+    const matchSearch = country.commonName.toLowerCase().includes(selectedCountry.toLowerCase());
     return matchSearch;
   });
 
 
-  const noResult = !countries || countries.length === 0;
-  if (noResult) {
-    return <div className={style.noMatch}>No match countries</div>;
-  }
 
-
-  // SORT
-  // @ts-ignore
-  const sortedCountries = countries.toSorted((a, b) => a.commonName.localeCompare(b.commonName, 'en')) as CountryBase[];
-
-
-  // PAGINATION
-  // const selectedPage = query.get('page');
-  const selectedPage = Number(query.get('page') || '1');
+  // ?? moved to top
   const quantityToRender = 24;
-  const offset = (selectedPage - 1) * quantityToRender;
-  const limit = offset + quantityToRender;
   const totalCountries = countries.length;
 
   const history = useHistory();
@@ -71,6 +62,24 @@ export function CountriesDisplay () {
 
   }, [history.replace, location.search,  selectedPage, totalCountries, quantityToRender])
 
+
+  // const noResult = !countries || countries.length === 0;
+  const noResult = countries.length === 0;
+  if (noResult) {
+    return <div className={style.noMatch}>No match countries</div>;
+  }
+
+
+  // SORT
+  // @ts-ignore
+  const sortedCountries = countries.toSorted((a, b) => a.commonName.localeCompare(b.commonName, 'en')) as CountryBase[];
+
+
+  // PAGINATION
+  // const selectedPage = query.get('page');
+  const offset = (selectedPage - 1) * quantityToRender;
+  const limit = offset + quantityToRender;
+  
   function handlePrev () {
     const next = new URLSearchParams(location.search);
     if (selectedPage === 1) return `?${next}`; // disabled: select same page

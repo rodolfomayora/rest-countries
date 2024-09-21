@@ -1,11 +1,9 @@
-@import 'src/assets/styles/config';
-
 .CountryCard {
   inline-size: 264px;
   min-block-size: 336px;
   border-radius: 5px;
   overflow: hidden;
-  background-color: $dark-darkBlue;
+  background-color: var(--color-blue-dark);
 
   .flagImage {
     inline-size: 100%;
@@ -19,14 +17,14 @@
     display: grid;
     row-gap: 18px;
     padding: 25px;
-    color: $white;
+    color: var(--color-white);
   }
 
   .name {
     font-size: 17px;
     font-weight: 600;
     letter-spacing: 0.3px;
-    color: $white;
+    color: var(--color-white);
   }
 
   .info {
@@ -41,27 +39,11 @@
   }
 
   &:hover {
-    background-color: $dark-darkBlueHover;
+    background-color: var(--color-hover-blue);
   }
 
   &:active {
     transform: scale(0.96);
     opacity: 0.7;
   }
-
-  /* LIGHT THEME */
-  // &.light {
-  //   background-color: $white;
-  //   box-shadow: 0 0 8px $shadow;
-
-  //   .flagWrapper {
-  //     background-color: $light-darkGray;
-  //     color: $light-veryDarkBlue;
-  //   }
-
-  //   .countryName,
-  //   .countrySummary { color: $light-veryDarkBlue; }
-
-  //   &:hover { background-color: $shadow; }
-  // }
 }
