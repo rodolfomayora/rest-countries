@@ -1,0 +1,43 @@
+@layer defaults.base {
+  *:focus-visible {
+    outline: solid var(--color-white) 2px;
+    border-radius: 5px;
+  }
+
+  *:not(svg, svg *, img, canvas, video) {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  html {
+    font-family: var(--font-nunito-sans), Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--color-white);
+    background-color: var(--color-blue-dark-extra);
+  }
+  
+  body {
+    min-height: 100svh;
+    min-width: var(--min-mobile-width);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-white);
+  }
+  
+  img,
+  figure {
+    max-inline-size: 100%; /* max-width: 100% */
+    block-size: auto;      /* height: auto */
+  }
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  button, label, img, figure, a {
+    user-select: none;
+  }
+}

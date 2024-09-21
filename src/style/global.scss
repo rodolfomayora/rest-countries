@@ -1,0 +1,9 @@
+// vendors (third party styles)
+@use "./vendors/normalize";
+
+// defaults
+@use "./defaults/typography";
+@use "./defaults/variables";  // CSS variables (Custom Properties)
+@use "./defaults/base";
+
+@layer vendors, defaults;

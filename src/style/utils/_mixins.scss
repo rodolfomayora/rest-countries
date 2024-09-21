@@ -1,0 +1,27 @@
+@use "./breakpoints" as breakpoints;
+
+// responsive helpers
+@mixin minWith($breakpoint) {
+  @media only screen and (min-width:$breakpoint) {
+    @content;
+  }
+}
+
+@mixin maxWith($breakpoint) {
+  @media only screen and (max-width:$breakpoint) {
+    @content;
+  }
+}
+
+// mobile first responsive
+@mixin minTablet {
+  @include minWith(breakpoints.$minTablet) {
+    @content;
+  }
+}
+
+@mixin minDesktop {
+  @include minWith(breakpoints.$minDesktop) {
+    @content;
+  }
+}

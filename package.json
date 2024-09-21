@@ -17,6 +17,7 @@
   "dependencies": {
     "@tanstack/react-query": "^5.55.4",
     "axios": "^1.7.7",
+    "modern-normalize": "3.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-error-boundary": "4.0.13",

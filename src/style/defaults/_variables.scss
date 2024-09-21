@@ -1,0 +1,36 @@
+@use "../utils/breakpoints" as breakpoints;
+
+@layer defaults.variables {
+  :root {
+    // fonts
+    --font-nunito-sans: "Nunito Sans";
+    --font-public-sans: "Public Sans";
+    
+    // Colors (default theme)
+    --color-blue-dark: hsl(209, 23%, 22%); // Elements
+    --color-blue-dark-extra: hsl(207, 26%, 17%); // Background
+    --color-white : hsl(0, 0%, 100%);
+
+    // Colors (light theme)
+    --color-blue-black: hsl(200, 15%, 8%);
+    --color-gray-dark: hsl(0, 0%, 52%);
+    --color-gray-light: hsl(0, 0%, 98%);
+    --color-black: hsl(0, 0%, 7%);
+
+    // Extra Colors
+    --color-transparent: hsla(0, 0%, 0%, 0);
+    --color-shadow: hsl(0deg, 0%, 89%);
+    --color-hover-blue: hsl(209, 23%, 30%);
+
+    // Container
+    --min-mobile-width: #{breakpoints.$minMobile};
+
+    // header
+    // --mobile-header-height: 64px;
+    --desktop-header-height: 80px;
+
+    // scrollbar
+    --scrollbar-width: calc(100vw - 100%);
+
+  }
+}
