@@ -1,80 +1,49 @@
-import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import { CountryDetails, BorderCountry } from '#/types/Country';
 // import { CountriesApi } from '#/api/dummy-countries';
 import { CountriesApi } from '#/api/rest-countries';
-import { routes } from '#/config/routes';
 import { BorderCountryButton } from '#/components/BorderCountryButton';
-import { SuspenseFlagImage } from './SuspenseFlagImage';
-import { SuspenseData } from './SuspenseData';
+import { ErrorDetail } from './ErrorDetail';
+import { SuspenseDetail } from './SuspenseDetail';
 import style from './style.module.scss';
 
 const mapArrayToText = (arr: Array<string>) => arr.join(', ');
 
 type Props = {
-  countryId: string,
+  countryId: CountryDetails['id'],
 }
 
 export function Detail ({ countryId }: Props) {
-  const pageRedirect = useHistory().push;
+
+  const { isFetching:countryLoading, data:countryData, isError } = useQuery({
+    queryKey: ['countries', countryId],
+    queryFn: async () => {
+      const data = await CountriesApi.getById(countryId);
+      await new Promise((resolve) => window.setTimeout(resolve, 2000));
+      return data;
+    },
+  })
+
+  const borderCountriesIds = countryData?.borderCountries;
+  const hasBorderCountries = !!borderCountriesIds && borderCountriesIds.length > 0;
   
-  const [isLoading, setIsLoading] = useState(true);
-  const [countryData, setCountryData] = useState<CountryDetails | null>(null);
-  useEffect(() => {
-    (async () => {
-      setIsLoading(true);
+  const { isFetching:borderLoading, data:borderCountries } = useQuery({
+    enabled: hasBorderCountries,
+    queryKey: ['countries', countryId, 'border'],
+    queryFn: async () => {
+      const data = await CountriesApi.getBorderCountries(borderCountriesIds ?? []);
+      return data;
+    },
+  })
 
-      try {
-        const result = await CountriesApi.getById(countryId);
-        await new Promise((resolve) => window.setTimeout(resolve, 2000))
-        setCountryData(result);
+  // if (!countryData || countryLoading || borderLoading) {
+  if (countryLoading || borderLoading) {
+    return <SuspenseDetail />
+  }
 
-      } catch (error: unknown) {
-        if (error instanceof Error) {
-          console.error(error.message);
-        }
-        return pageRedirect(routes.unknown);
-      }
-    })()
-  }, [countryId])
-
-
-  const [borderCountries, setBorderCountries] = useState<BorderCountry[] | null>();
-  useEffect(() => {
-    (async () => {
-      if (!countryData) return;
-
-      try {
-        const { borderCountries } = countryData;
-        const hasBorderCountries = borderCountries.length > 0;
-        if (!hasBorderCountries) {
-          setBorderCountries([]);
-          return setIsLoading(false);
-        }
-        const result = await CountriesApi.getBorderCountries(borderCountries);
-        setBorderCountries(result);
-
-      } catch (error) {
-        if (error instanceof Error) {
-          console.error(error.message);
-        }
-
-      } finally {
-        setIsLoading(false);
-
-      }
-
-    })()
-  }, [countryData])
-
-  if (isLoading) return (
-    <div className={style.Detail}>
-      <div>
-        <SuspenseFlagImage />
-      </div>
-      <SuspenseData />
-    </div>
-  )
+  if (isError) {
+    return <ErrorDetail countryId={countryId} />
+  }
 
   const capital = countryData?.capital || 'Has no capital'
   const subregion = countryData?.subregion || 'Has no subregion';
@@ -82,18 +51,18 @@ export function Detail ({ countryId }: Props) {
   const currencies = mapArrayToText(countryData?.currencies ?? []) || 'Has no currencies';
   const languages = mapArrayToText(countryData?.languages ?? []) || 'Has no languajes';
 
-  function generateList (borderCountries: any) {
+  function generateList (borderCountries: BorderCountry[] | null) {
     if (!borderCountries) return null;
     return borderCountries.length === 0
-    ? <div>It does not have Border Countries</div>
-    // @ts-ignore
-    : borderCountries.map((country) => (
-      <BorderCountryButton key={country.id} countryId={country.id}>
-        {country.commonName}
-      </BorderCountryButton>
-    ))
+      ? <div>It does not have Border Countries</div>
+      : borderCountries.map((country) => (
+        <BorderCountryButton key={country.id} countryId={country.id}>
+          {country.commonName}
+        </BorderCountryButton>
+      ))
   }
-  const listItems = generateList(borderCountries);
+
+  const listItems = generateList(borderCountries ?? []);
 
   return (
     <div className={style.Detail}>

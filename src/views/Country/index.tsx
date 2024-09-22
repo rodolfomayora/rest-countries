@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
 // import { useTheme } from '../../hooks';
 import { BackToHomeButton } from '#/components/BackToHomeButton';
-import style from './style.module.scss';
 import { Container } from '#/components/Container';
 import { Layout } from '#/components/Layout';
 import { Detail } from './Detail';
+import style from './style.module.scss';
 
 export function Country () {
   const { id } = useParams<{ id: string }>();
