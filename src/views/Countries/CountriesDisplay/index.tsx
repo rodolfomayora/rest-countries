@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect } from 'react'
 import { useLocation, useHistory, Link } from 'react-router-dom';
 import { useSuspenseQuery } from '@tanstack/react-query';
 // import { CountriesApi } from '#/api/dummy-countries';
@@ -11,10 +11,6 @@ export function CountriesDisplay () {
   const { data } = useSuspenseQuery<CountryBase[]>({
     queryKey: ['countries'],
     queryFn: ({ signal }) => CountriesApi.getAll({ signal }),
-    // queryFn: async () => {
-    //   await new Promise((resolve) => setInterval(resolve, 2000));
-    //   return CountriesApi.getAll()
-    // },
   })
 
   const countries = data;

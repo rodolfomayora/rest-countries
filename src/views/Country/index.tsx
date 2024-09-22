@@ -1,9 +1,12 @@
+import { Suspense } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useParams } from 'react-router-dom';
-// import { useTheme } from '../../hooks';
-import { BackToHomeButton } from '#/components/BackToHomeButton';
-import { Container } from '#/components/Container';
 import { Layout } from '#/components/Layout';
+import { Container } from '#/components/Container';
+import { BackToHomeButton } from '#/components/BackToHomeButton';
 import { Detail } from './Detail';
+import { SuspenseDetail } from './SuspenseDetail';
+import { ErrorDetail } from './ErrorDetail';
 import style from './style.module.scss';
 
 export function Country () {
@@ -14,7 +17,11 @@ export function Country () {
         <Container>
           <section className={style.sectionWrapper}>
             <BackToHomeButton/>
-            <Detail countryId={id} />
+            <ErrorBoundary fallback={<ErrorDetail countryId={id} />}>
+              <Suspense fallback={<SuspenseDetail />}>
+                <Detail countryId={id} />
+              </Suspense>
+            </ErrorBoundary>
           </section>
         </Container>
       </main>

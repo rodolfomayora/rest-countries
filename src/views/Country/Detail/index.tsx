@@ -1,10 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import { CountryDetails, BorderCountry } from '#/types/Country';
 // import { CountriesApi } from '#/api/dummy-countries';
 import { CountriesApi } from '#/api/rest-countries';
 import { BorderCountryButton } from '#/components/BorderCountryButton';
-import { ErrorDetail } from './ErrorDetail';
-import { SuspenseDetail } from './SuspenseDetail';
 import style from './style.module.scss';
 
 const mapArrayToText = (arr: Array<string>) => arr.join(', ');
@@ -15,35 +13,20 @@ type Props = {
 
 export function Detail ({ countryId }: Props) {
 
-  const { isFetching:countryLoading, data:countryData, isError } = useQuery({
+  const { data: countryData } = useSuspenseQuery<CountryDetails>({
     queryKey: ['countries', countryId],
-    queryFn: async () => {
-      const data = await CountriesApi.getById(countryId);
-      await new Promise((resolve) => window.setTimeout(resolve, 2000));
-      return data;
-    },
+    queryFn: () => CountriesApi.getById(countryId),
   })
 
-  const borderCountriesIds = countryData?.borderCountries;
-  const hasBorderCountries = !!borderCountriesIds && borderCountriesIds.length > 0;
-  
-  const { isFetching:borderLoading, data:borderCountries } = useQuery({
-    enabled: hasBorderCountries,
+  const { data: borderCountries } = useSuspenseQuery<BorderCountry[]>({
     queryKey: ['countries', countryId, 'border'],
     queryFn: async () => {
-      const data = await CountriesApi.getBorderCountries(borderCountriesIds ?? []);
-      return data;
+      const borderCountriesIds = countryData.borderCountries;
+      const hasBorderCountries = !!borderCountriesIds && borderCountriesIds.length > 0;
+      if (!hasBorderCountries) return []; // no border countries, then no request
+      return await CountriesApi.getBorderCountries(borderCountriesIds);
     },
   })
-
-  // if (!countryData || countryLoading || borderLoading) {
-  if (countryLoading || borderLoading) {
-    return <SuspenseDetail />
-  }
-
-  if (isError) {
-    return <ErrorDetail countryId={countryId} />
-  }
 
   const capital = countryData?.capital || 'Has no capital'
   const subregion = countryData?.subregion || 'Has no subregion';
@@ -51,18 +34,13 @@ export function Detail ({ countryId }: Props) {
   const currencies = mapArrayToText(countryData?.currencies ?? []) || 'Has no currencies';
   const languages = mapArrayToText(countryData?.languages ?? []) || 'Has no languajes';
 
-  function generateList (borderCountries: BorderCountry[] | null) {
-    if (!borderCountries) return null;
-    return borderCountries.length === 0
-      ? <div>It does not have Border Countries</div>
-      : borderCountries.map((country) => (
-        <BorderCountryButton key={country.id} countryId={country.id}>
-          {country.commonName}
-        </BorderCountryButton>
-      ))
-  }
-
-  const listItems = generateList(borderCountries ?? []);
+  const listItems = borderCountries.length === 0
+    ? <div>It does not have Border Countries</div>
+    : borderCountries.map(({ id, commonName }) => (
+      <BorderCountryButton key={id} countryId={id}>
+        {commonName}
+      </BorderCountryButton>
+    ))
 
   return (
     <div className={style.Detail}>
@@ -84,15 +62,15 @@ export function Detail ({ countryId }: Props) {
           <div className={style.data}>
             <p>
               <span className={style.label}>Official Name:</span>
-              {countryData?.officialName}
+              {countryData.officialName}
             </p>
             <p>
               <span className={style.label}>Population:</span>
-              {countryData?.population}
+              {countryData.population}
             </p>
             <p>
               <span className={style.label}>Region:</span>
-              {countryData?.region}
+              {countryData.region}
             </p>
             <p>
               <span className={style.label}>Sub Region: </span>
