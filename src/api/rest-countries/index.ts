@@ -25,7 +25,7 @@ type ApiResponse = {
 const api = axios.create({ baseURL: 'https://restcountries.com/v3.1' });
 
 export class CountriesApi {
-  static async getAll ({ signal }: { signal: AbortSignal }): Promise<CountryBase[]> {
+  static async getAll ({ signal }: { signal?: AbortSignal }): Promise<CountryBase[]> {
     const URLQueryString = '?fields=cca3,name,flags,capital,population,region'
     const response = await api.get<ApiResponse[]>('/all' + URLQueryString, { signal });
     const mappedCountries = response.data.map((country) => {
@@ -43,9 +43,9 @@ export class CountriesApi {
     return mappedCountries;
   }
 
-  static async getByName (countryName: string): Promise<CountryDetails> {
+  static async getByName ({ countryName, signal }: { countryName: string, signal?: AbortSignal }): Promise<CountryDetails> {
     const URLQueryString = '?fields=cca3,name,flags,capital,population,region,subregion,tld,currencies,languages,borders';
-    const response = await api.get<ApiResponse>(`/name/${countryName}` + URLQueryString);
+    const response = await api.get<ApiResponse>(`/name/${countryName}` + URLQueryString, { signal });
     const { data } = response;
     const { borders, capital, cca3, currencies, flags,
       languages, name, population, region, subregion, tld,
@@ -67,9 +67,9 @@ export class CountriesApi {
     }
   }
 
-  static async getById (id: string): Promise<CountryDetails> {
+  static async getById ({ id, signal }: { id: string, signal?: AbortSignal }): Promise<CountryDetails> {
     const URLQueryString = '?fields=cca3,name,flags,capital,population,region,subregion,tld,currencies,languages,borders';
-    const response = await api.get<ApiResponse>(`/alpha/${id}` + URLQueryString);
+    const response = await api.get<ApiResponse>(`/alpha/${id}` + URLQueryString, { signal });
     const { data } = response;
     const { borders, capital, cca3, currencies, flags,
       languages, name, population, region, subregion, tld,
@@ -91,10 +91,10 @@ export class CountriesApi {
     }
   }
 
-  static async getBorderCountries (ids: string[]): Promise<BorderCountry[]> {
+  static async getBorderCountries ({ ids, signal }: { ids: string[], signal?: AbortSignal }): Promise<BorderCountry[]> {
     const formatedIds = ids.join(',');
     const URLQueryString = `?codes=${formatedIds}&fields=cca3,name`
-    const response = await api.get<ApiResponse[]>('/alpha' + URLQueryString);
+    const response = await api.get<ApiResponse[]>('/alpha' + URLQueryString,  { signal });
     const mappedApiResponse = response.data.map(({ cca3, name }) => ({
       id: cca3,
       commonName: name.common

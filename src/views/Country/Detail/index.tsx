@@ -15,16 +15,16 @@ export function Detail ({ countryId }: Props) {
 
   const { data: countryData } = useSuspenseQuery<CountryDetails>({
     queryKey: ['countries', countryId],
-    queryFn: () => CountriesApi.getById(countryId),
+    queryFn: ({ signal }) => CountriesApi.getById({ id:countryId, signal }),
   })
 
   const { data: borderCountries } = useSuspenseQuery<BorderCountry[]>({
     queryKey: ['countries', countryId, 'border'],
-    queryFn: async () => {
+    queryFn: async ({ signal }) => {
       const borderCountriesIds = countryData.borderCountries;
       const hasBorderCountries = !!borderCountriesIds && borderCountriesIds.length > 0;
       if (!hasBorderCountries) return []; // no border countries, then no request
-      return await CountriesApi.getBorderCountries(borderCountriesIds);
+      return await CountriesApi.getBorderCountries({ ids: borderCountriesIds, signal });
     },
   })
 
