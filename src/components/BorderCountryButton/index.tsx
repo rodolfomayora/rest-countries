@@ -1,8 +1,6 @@
 import type { ReactNode } from 'react';
 import { routes } from '#/config/routes';
 import { Link } from 'react-router-dom';
-
-// import { useTheme } from '../../hooks';
 import style from './style.module.scss';
 
 type Props = {

@@ -1,17 +1,12 @@
 // import { useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { selectTheme } from './store/rootSelectors';
-// import {  setTheme } from './store/rootActions';
 // import { ThemeStorage } from './storage/theme';
 import { Countries } from './views/Countries';
 import { Country } from './views/Country';
 import { NoMatch404 } from './views/NoMatch404';
 import { routes } from './config/routes';
 
-export default function App () {
-  // const dispatch = useDispatch();
-  
+export default function App() {
   // useEffect(function getLocalStorageTheme () {
   //   const storagedTheme = ThemeStorage.get();
   //   if (!!storagedTheme) dispatch(setTheme(storagedTheme));
