@@ -1,5 +1,5 @@
 // import { useTheme } from '../../hooks';
-import { MoonIconFill, MoonIconOutline } from '../../assets/images';
+import MoonIconFill from '#/assets/images/svg/moon-fill.svg?react';
 import style from './style.module.scss';
 
 export function ToggleThemeButton () {

@@ -1,166 +1,22 @@
 @use '/src/style/utils/mixins' as mixins;
 
-.CountryDetail {
+.Country {
   padding-top: 40px;
   padding-bottom: 60px;
-  // background-color: $dark-veryDarkBlue;
 
   .sectionWrapper {
     display: grid;
     row-gap: 64px;
-    padding-left: 12px;
-    padding-right: 12px;
-  }
-
-  .infoContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 65px;
-  }
-
-  .flagImage {
-    aspect-ratio: 560 / 401;
-    inline-size: 100%;
-    object-fit: cover;
-    object-position: center;
-
-    // margin-bottom: 50px;
-
-  }
-
-  .flagWrapper {
-    width: 100%;
-    margin-bottom: 50px;
-  }
-
-  .countryInfo {
-    display: grid;
-    row-gap: 28px;
-  }
-
-  .countryName {
-    letter-spacing: 0.4px;
-    // margin-bottom: 28px;
-  }
-
-  .countryData {
-    display: flex;
-    flex-direction: column;
-    // margin-bottom: 46px;
-  }
-
-  .data {
-    &:first-of-type { margin-bottom: 46px; }
-
-    & > * + * { margin-top: 16px; }
-  }
-
-  .borderSubtitle { font-weight: 400; }
-
-  .label {
-    font-weight: 600;
-    letter-spacing: 0.4px;
-  }
-
-  .borderCountries {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 -5px;
-
-    & > * {
-      margin-top: 20px;
-      margin-left: 5px; 
-      margin-right: 5px;
-    }
-  }
-
-  @include mixins.minTablet {
-    .countryInfo {
-      padding-top: 40px;
-      row-gap: 40px;
-    }
-
-    .countryName {
-      font-size: 32px;
-    }
-  }
-
-  @include mixins.minWith(576px) {
-    .countryData { flex-direction: row; }
-
-    .data {
-      flex-basis: 49%;
-
-      &:first-of-type {
-        margin-bottom: 0;
-        margin-right: 48px;
-      }
-    }
+    padding-inline: 12px;
   }
 
   @include mixins.minTablet {
     padding-top: 80px;
 
     .sectionWrapper {
-      padding-left: 0;
+      row-gap: 80px;
+      padding-inline: 0;
       padding-right: 0;
-    }
-
-    .infoContainer {
-      margin-top: 80px;
-    }
-
-    .countryData { font-size: 16px; }
-  }
-
-  @include mixins.minDesktop {
-
-    .infoContainer {
-      flex-direction: row;
-    }
-
-    .flagWrapper {
-      flex-shrink: 0;
-      width: 440px;
-      margin-right: 80px;
-    }
-
-    // .countryName {
-    //   margin-top: 40px;
-    //   margin-bottom: 40px;
-    //   font-size: 32px;
-    // }
-
-    .countryData {
-      flex-direction: column;
-      // margin-bottom: 72px;
-    }
-
-    .data:first-of-type {
-      margin-bottom: 46px;
-      margin-right: 0;
-    }
-  }
-
-  @include mixins.minWith(1320px) {
-    .infoContainer {
-      flex-direction: row;
-    }
-
-    .flagWrapper {
-      flex-basis: 560px;
-      margin-right: 144px;
-    }
-
-    .countryData {
-      flex-direction: row;
-    }
-
-    .data:first-of-type {
-      margin-bottom: 0;
-      flex-basis: 63%;
-      padding-right: 30px;
     }
   }
 }

@@ -13,7 +13,7 @@ export function Country () {
   const { id } = useParams<{ id: string }>();
   return (
     <Layout pageTitle="Country">
-      <main className={style.CountryDetail}>
+      <main className={style.Country}>
         <Container>
           <section className={style.sectionWrapper}>
             <BackToHomeButton/>

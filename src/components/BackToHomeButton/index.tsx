@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { routes } from '#/config/routes';
-import { LongArrowLeftIcon } from '../../assets/images';
+import LongArrowLeftIcon from '#/assets/images/svg/long-arrow-left.svg?react';
 import style from './style.module.scss';
 
 export function BackToHomeButton () {

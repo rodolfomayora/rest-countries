@@ -32,15 +32,22 @@ export function Detail ({ countryId }: Props) {
   const subregion = countryData?.subregion || 'Has no subregion';
   const topLevelDomain = mapArrayToText(countryData?.topLevelDomain ?? []) || 'Has no top level domain';
   const currencies = mapArrayToText(countryData?.currencies ?? []) || 'Has no currencies';
+  // @ts-ignore
   const languages = mapArrayToText(countryData?.languages ?? []) || 'Has no languajes';
 
   const listItems = borderCountries.length === 0
-    ? <div>It does not have Border Countries</div>
-    : borderCountries.map(({ id, commonName }) => (
-      <BorderCountryButton key={id} countryId={id}>
-        {commonName}
-      </BorderCountryButton>
-    ))
+    ? <li>It does not have Border Countries</li>
+    : borderCountries
+      // @ts-ignore
+      .toSorted((a, b) => a.commonName.localeCompare(b.commonName, 'en'))
+      // @ts-ignore
+      .map(({ id, commonName }) => (
+        <li key={id}>
+          <BorderCountryButton countryId={id}>
+            {commonName}
+          </BorderCountryButton>
+        </li>
+      ))
 
   return (
     <div className={style.Detail}>
@@ -83,25 +90,25 @@ export function Detail ({ countryId }: Props) {
           </div>
           <div className={style.data}>
             <p>
-              <span className={style.label}>Top Level Domains:</span>
+              <span className={style.label}>Top Level Domain:</span>
               {topLevelDomain}
             </p>
             <p>
-              <span className={style.label}>Currences:</span>
+              <span className={style.label}>Currencies:</span>
               {currencies}
             </p>
             <p>
-              <span className={style.label}>languages:</span>
+              <span className={style.label}>Languages:</span>
               {languages}
             </p>
           </div>
         </div>
 
-        <section>
+        <section className={style.borders}>
           <h3 className={style.borderSubtitle}>Border Countries:</h3>
-          <div className={style.borderCountries}>
+          <ul className={style.borderCountries}>
             {listItems}
-          </div>
+          </ul>
         </section>
       </div>
     </div>
