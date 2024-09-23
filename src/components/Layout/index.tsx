@@ -1,15 +1,17 @@
-import React, { FC, useEffect } from 'react';
+import { useEffect, type ReactNode } from 'react';
+import { Header } from '#/components/Header';
 
-import Header from '../Header';
-import { LayoutProps } from './types';
+type Props = {
+  children: ReactNode,
+  pageTitle: string,
+}
 
-const Layout: FC<LayoutProps> = ({ children, pageTitle }) => {
+export function Layout ({ children, pageTitle }: Props) {
 
   useEffect(() => { 
-    const browserTabTitle: string = `${pageTitle} | Seach Country App`;
+    const browserTabTitle = `${pageTitle} | Seach Country App`;
     document.title = browserTabTitle;
-  },
-  [pageTitle])
+  }, [pageTitle]);
 
   return (
     <>
@@ -18,5 +20,3 @@ const Layout: FC<LayoutProps> = ({ children, pageTitle }) => {
     </>
   );
 }
-
-export default Layout;

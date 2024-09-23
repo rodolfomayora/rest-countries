@@ -1,0 +1,15 @@
+@use '/src/style/utils/mixins' as mixins;
+
+.ErrorDetial {
+  display: grid;
+  place-content: center;
+  place-items: center;
+  row-gap: 20px;
+  block-size: 400px;
+  font-size: 16px;
+  font-weight: 600;
+  
+  @include mixins.minTablet {
+    font-size: 24px;
+  }
+}

@@ -1,0 +1,13 @@
+@use '/src/style/utils/mixins' as mixins;
+
+.ErrorCountriesGrid {
+  display: grid;
+  place-items: center;
+  block-size: 400px;
+  font-size: 16px;
+  font-weight: 600;
+
+  @include mixins.minTablet {
+    font-size: 24px;
+  }
+}

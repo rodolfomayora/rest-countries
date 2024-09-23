@@ -1,3 +1,5 @@
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
 # Frontend Mentor - REST Countries API
 
 This is a solution to the [REST Countries API challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
@@ -6,62 +8,86 @@ This is a solution to the [REST Countries API challenge on Frontend Mentor](http
 
 ![](./public/screenshot.jpg)
 
+---
 
 ### Links
 
 - Solution URL: [https://github.com/rodolfomayora/rest-countries.git](https://github.com/rodolfomayora/rest-countries.git)
 - Live Site URL: [https://rest-countries-app-swart.vercel.app/](https://rest-countries-app-swart.vercel.app/)
 
+<!-- 
 
 ## My process
 
-- RC0: Proyect Configuration
-- RC1: Assets Definition
-- RC2: View Navigation Configuration
-- RC3: Layout and Container Component
-- RC4: Header Component
-- RC5: SearchCountry Component
-- RC6: RegionFilter Component
-- RC7: CountryPreview Component
-- RC8: Redux and Redux Saga configuration"
-- RC9: API Integration and Search Country using input field
-- RC10: Normalized reducer countries data
-- RC11: CountryList Component (section)
-- RC12: Improve Layout and fix country data
-- RC13: Filter Countries by Region
-- RC14: CountryFilters Component
-- RC15: Dinamyc route configuration for Country Detail
-- RC16: Improve performance and UX of SearchCountry
-- RC17: BackButton Component
-- RC18: BorderCountryButton Component
-- RC19: CountryDetail Component
-- RC20: Improve performance with List Virtualization (windowing)
-- RC21: Solve reload country detail page issue
-- RC22: Update README.md
-- RC23: Improve UX for RegionFilter
-- RC24: 404 Page Component
-
 
 ### Built with
+ -->
 
-- [ReactJS](https://reactjs.org/) 
-- [TypeScript](https://www.typescriptlang.org/) - JavaScript Superset
-- [Redux](https://redux.js.org/) - Global State Management Pattern
-- [Redux-Saga](https://redux-saga.js.org/) - Redux Side Effect Manager
-- [SASS](https://sass-lang.com/) - CSS Pre-procesor
-- [CSS Modules](https://github.com/css-modules/css-modules) - For Scoped styles
-- [List Virtualization](https://github.com/bvaughn/react-window) - windowing
-- Semantic HTML5 markup
-- Flexbox
-- Mobile-first workflow
+<br />
 
+---
 
-### development techniques for performance improvement
-- debouncing
-- Windowing (List Virtualization)
+### Setup and run the application locally
 
+This project requires at least **Node.js v18** and uses **PNPM** as package manager by default.
 
-## Author
+1. Install exact dependencies from `pnpm-lock.yaml` file using NPM with the following command:
+	
+    `pnpm install` 
+    
+	
+<br />
+
+2. Start local dev server with the following comand
+
+    `pnpm dev`
+
+<br />
+
+3. Open project on the following URL in the web browser:
+
+    [http://localhost:3001](http://localhost:3001)
+
+<br />
+
+4. **Docker**: if you have **docker engine** and **docker compose** availables on your manchine, just run:
+
+    - `pnpm docker:dev` to start local dev server from docker
+    - Open the app on [http://localhost:3001](http://localhost:3001)
+
+<br />
+
+---
+
+### Technical stack used
+
+- **Runtime environment**: Node `>=18.0.0` ([Documenation](https://nodejs.org/en))
+
+- **Package manager**: NPM
+
+- **App bundler**: Vite `v5.x` ([Documentation](https://vitejs.dev/))
+
+- **UI library/framework**: React `v18.x` ([Documentation](https://react.dev/)
+
+- **Meta-languages**: TypeScript `5.x` ([Documentation](https://react-typescript-cheatsheet.netlify.app/))
+
+- **Styling**:
+  - Sass/SCSS ([Documentation](https://sass-lang.com/)),
+  - CSS-Modules ([Documentation](https://github.com/css-modules/css-modules))
+
+- **Page navigation**: React Router Dom `v5.x` ([Documentation](https://v5.reactrouter.com/))
+
+- **HTTP client**: Axios `v1.x` ([Documentation](https://axios-http.com/))
+
+- **Server state management**: TanStack Query `v5.x` ([Documentation](https://tanstack.com/query/latest/docs/framework/react/overview))
+
+- **Error management**: React Error Boundary `v4.x` ([Documentation](https://www.npmjs.com/package/react-error-boundary))
+
+<br />
+
+---
+
+### Author
 
 - Website - [https://rodolfo-mayora-pereda.vercel.app](https://rodolfo-mayora-pereda.vercel.app)
 - LinkedIn - [https://www.linkedin.com/in/rodolfo-mayora-pereda](https://www.linkedin.com/in/rodolfo-mayora-pereda)

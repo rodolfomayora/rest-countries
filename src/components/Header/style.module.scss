@@ -1,40 +1,41 @@
-@import '../../assets/styles/config';
+@use '/src/style/utils/mixins' as mixins;
 
 .Header {
-  position: fixed;
-  z-index: 10;
-  top: 0;
-  left: 0;
-  right: 0;
-  background-color: $dark-darkBlue;
+  background-color: var(--color-blue-dark);
 
   .headerWrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: $headerHeight;
+    height: var(--desktop-header-height);
+    padding-top: 2px;
+    padding-inline: 0 1px;
   }
 
   .mainTitle {
     font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.4px;
-    color: $white;
+    font-weight: 700;
+    word-spacing: 0.3px;
+    color: var(--color-white);
   }
 
-  /* LIGHT THEME */
-  &.light {
-    background-color: $white;
-    box-shadow: 0 0 5px $shadow;
-
-    .mainTitle { color: $light-veryDarkBlue; }
+  .buttonWapper {
+    margin-top: 1px;
   }
 
-  @include responsiveMedium {
+  @include mixins.minTablet {
+    .headerWrapper {
+      padding-top: 0;
+      padding-inline: 1px 1px;
+    }
+
     .mainTitle {
-      font-size: 23px;
-      font-weight: 800;
-      letter-spacing: 0.6px;
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .buttonWapper {
+      margin-top: 0;
     }
   }
 }

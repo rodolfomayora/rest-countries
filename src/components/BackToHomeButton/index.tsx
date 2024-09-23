@@ -1,23 +1,13 @@
-import React, { FC } from 'react';
-
 import { Link } from 'react-router-dom';
-
-import { useTheme } from '../../hooks';
-import { LongArrowLeftIcon } from '../../assets/images';
+import { routes } from '#/config/routes';
+import LongArrowLeftIcon from '#/assets/images/svg/long-arrow-left.svg?react';
 import style from './style.module.scss';
 
-const BackToHomeButton: FC = () => {
-
-  const backButtonStyle = useTheme(style.BackToHomeButton, style.light);
-
+export function BackToHomeButton () {
   return  (
-    <Link className={backButtonStyle}
-      to="/"
-    >
+    <Link className={style.BackToHomeButton} to={routes.root}>
       <LongArrowLeftIcon className={style.icon} />
       <span className={style.text}>Back</span>
     </Link>
   );
 }
-
-export default BackToHomeButton;

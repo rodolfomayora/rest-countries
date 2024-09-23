@@ -1,0 +1,71 @@
+@use '/src/style/utils/mixins' as mixins;
+
+.SearchCountry {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 70px 1fr;
+  overflow: hidden;
+  border: solid 2px transparent;
+  border-radius: 5px;
+  height: 48px;
+  // width: min(100%, 480px);
+  background-color: var(--color-blue-dark);
+
+  &:focus-within {
+    border-color: var(--color-white);
+  }
+
+  .searchButton {
+    display: grid;
+    place-items: center;
+    padding-left: 4px;
+    padding-bottom: 1px;
+    background-color: var(--color-blue-dark);
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      opacity: 0.8;
+    }
+  }
+
+  .searchIcon {
+    fill: var(--color-white);
+    width: 15px;
+    height: 15px;
+  }
+
+  .searchInput {
+    outline: none;
+    border: none;
+    padding-right: 20px;
+    background-color: var(--color-blue-dark);
+  }
+
+  .searchInput,
+  .searchInput::placeholder {
+    color: var(--color-white);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  @include mixins.minTablet {
+    height: 56px;
+    // width: 480px;
+
+    .searchButton {
+      padding-left: 6px;
+    }
+
+    .searchIcon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .searchInput,
+    .searchInput::placeholder {
+      font-size: 14px;
+    }
+  }
+}

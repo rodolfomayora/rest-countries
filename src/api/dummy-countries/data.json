@@ -1,0 +1,326 @@
+[
+  {
+    "flags": {
+      "png":"https://flagcdn.com/w320/gs.png",
+      "svg":"https://flagcdn.com/gs.svg",
+      "alt":"example"
+    },
+    "name": {
+      "common":"South Georgia",
+      "official":"South Georgia and the South Sandwich Islands"
+    },
+    "tld": [".gs"],
+    "cca3":"SGS1",
+    "currencies":{
+      "SHP":{
+        "name":"Saint Helena pound",
+        "symbol":"£"
+      }
+    },
+    "capital": ["King Edward Point"],
+    "region": "Antarctic",
+    "subregion":"",
+    "languages":{
+      "eng": "English"
+    },
+    "borders": [],
+    "population": 30
+  },
+  {
+    "flags": {
+      "png":"https://flagcdn.com/w320/gd.png",
+      "svg":"https://flagcdn.com/gd.svg",
+      "alt":""
+    },
+    "name": {
+      "common":"South Georgia",
+      "official":"South Georgia and the South Sandwich Islands"
+    },
+    "tld": [".gs"],
+    "cca3":"SGS2",
+    "currencies":{
+      "SHP":{
+        "name":"Saint Helena pound",
+        "symbol":"£"
+      }
+    },
+    "capital": ["King Edward Point"],
+    "region": "Antarctic",
+    "subregion":"",
+    "languages":{
+      "eng": "English"
+    },
+    "borders": [],
+    "population": 30
+  },
+  {
+    "flags": {
+      "png":"https://flagcdn.com/w320/gs.png",
+      "svg":"https://flagcdn.com/gs.svg",
+      "alt":""
+    },
+    "name": {
+      "common":"South Georgia",
+      "official":"South Georgia and the South Sandwich Islands"
+    },
+    "tld": [".gs"],
+    "cca3":"SGS3",
+    "currencies":{
+      "SHP":{
+        "name":"Saint Helena pound",
+        "symbol":"£"
+      }
+    },
+    "capital": ["King Edward Point"],
+    "region": "Antarctic",
+    "subregion":"",
+    "languages":{
+      "eng": "English"
+    },
+    "borders": [],
+    "population": 30
+  },
+  {
+    "flags": {
+      "png":"https://flagcdn.com/w320/gs.png",
+      "svg":"https://flagcdn.com/gs.svg",
+      "alt":""
+    },
+    "name": {
+      "common":"South Georgia",
+      "official":"South Georgia and the South Sandwich Islands"
+    },
+    "tld": [".gs"],
+    "cca3":"SGS4",
+    "currencies":{
+      "SHP":{
+        "name":"Saint Helena pound",
+        "symbol":"£"
+      }
+    },
+    "capital": ["King Edward Point"],
+    "region": "Antarctic",
+    "subregion":"",
+    "languages":{
+      "eng": "English"
+    },
+    "borders": [],
+    "population": 30
+  },
+  {
+    "flags": {
+      "png":"https://flagcdn.com/w320/gs.png",
+      "svg":"https://flagcdn.com/gs.svg",
+      "alt":""
+    },
+    "name": {
+      "common":"South Georgia",
+      "official":"South Georgia and the South Sandwich Islands"
+    },
+    "tld": [".gs"],
+    "cca3":"SGS5",
+    "currencies":{
+      "SHP":{
+        "name":"Saint Helena pound",
+        "symbol":"£"
+      }
+    },
+    "capital": ["King Edward Point"],
+    "region": "Antarctic",
+    "subregion":"",
+    "languages":{
+      "eng": "English"
+    },
+    "borders": [],
+    "population": 30
+  },
+  {
+    "flags": {
+      "png":"https://flagcdn.com/w320/gs.png",
+      "svg":"https://flagcdn.com/gs.svg",
+      "alt":""
+    },
+    "name": {
+      "common":"South Georgia",
+      "official":"South Georgia and the South Sandwich Islands"
+    },
+    "tld": [".gs"],
+    "cca3":"SGS6",
+    "currencies":{
+      "SHP":{
+        "name":"Saint Helena pound",
+        "symbol":"£"
+      }
+    },
+    "capital": ["King Edward Point"],
+    "region": "Antarctic",
+    "subregion":"",
+    "languages":{
+      "eng": "English"
+    },
+    "borders": [],
+    "population": 30
+  },
+  {
+    "flags": {
+      "png":"https://flagcdn.com/w320/gs.png",
+      "svg":"https://flagcdn.com/gs.svg",
+      "alt":""
+    },
+    "name": {
+      "common":"South Georgia",
+      "official":"South Georgia and the South Sandwich Islands"
+    },
+    "tld": [".gs"],
+    "cca3":"SGS7",
+    "currencies":{
+      "SHP":{
+        "name":"Saint Helena pound",
+        "symbol":"£"
+      }
+    },
+    "capital": ["King Edward Point"],
+    "region": "Antarctic",
+    "subregion":"",
+    "languages":{
+      "eng": "English"
+    },
+    "borders": [],
+    "population": 30
+  },
+  {
+    "flags": {
+      "png":"https://flagcdn.com/w320/gs.png",
+      "svg":"https://flagcdn.com/gs.svg",
+      "alt":""
+    },
+    "name": {
+      "common":"South Georgia",
+      "official":"South Georgia and the South Sandwich Islands"
+    },
+    "tld": [".gs"],
+    "cca3":"SGS8",
+    "currencies":{
+      "SHP":{
+        "name":"Saint Helena pound",
+        "symbol":"£"
+      }
+    },
+    "capital": ["King Edward Point"],
+    "region": "Antarctic",
+    "subregion":"",
+    "languages":{
+      "eng": "English"
+    },
+    "borders": [],
+    "population": 30
+  },
+  {
+    "flags": {
+      "png":"https://flagcdn.com/w320/gs.png",
+      "svg":"https://flagcdn.com/gs.svg",
+      "alt":""
+    },
+    "name": {
+      "common":"South Georgia",
+      "official":"South Georgia and the South Sandwich Islands"
+    },
+    "tld": [".gs"],
+    "cca3":"SGS9",
+    "currencies":{
+      "SHP":{
+        "name":"Saint Helena pound",
+        "symbol":"£"
+      }
+    },
+    "capital": ["King Edward Point"],
+    "region": "Antarctic",
+    "subregion":"",
+    "languages":{
+      "eng": "English"
+    },
+    "borders": [],
+    "population": 30
+  },
+  {
+    "flags": {
+      "png":"https://flagcdn.com/w320/gs.png",
+      "svg":"https://flagcdn.com/gs.svg",
+      "alt":""
+    },
+    "name": {
+      "common":"South Georgia",
+      "official":"South Georgia and the South Sandwich Islands"
+    },
+    "tld": [".gs"],
+    "cca3":"SGS10",
+    "currencies":{
+      "SHP":{
+        "name":"Saint Helena pound",
+        "symbol":"£"
+      }
+    },
+    "capital": ["King Edward Point"],
+    "region": "Antarctic",
+    "subregion":"",
+    "languages":{
+      "eng": "English"
+    },
+    "borders": [],
+    "population": 30
+  },
+  {
+    "flags": {
+      "png":"https://flagcdn.com/w320/gs.png",
+      "svg":"https://flagcdn.com/gs.svg",
+      "alt":""
+    },
+    "name": {
+      "common":"South Georgia",
+      "official":"South Georgia and the South Sandwich Islands"
+    },
+    "tld": [".gs"],
+    "cca3":"SGS11",
+    "currencies":{
+      "SHP":{
+        "name":"Saint Helena pound",
+        "symbol":"£"
+      }
+    },
+    "capital": ["King Edward Point"],
+    "region": "Antarctic",
+    "subregion":"",
+    "languages":{
+      "eng": "English"
+    },
+    "borders": [],
+    "population": 30
+  },
+  {
+    "flags": {
+      "png":"https://flagcdn.com/w320/gs.png",
+      "svg":"https://flagcdn.com/gs.svg",
+      "alt":""
+    },
+    "name": {
+      "common":"South Georgia",
+      "official":"South Georgia and the South Sandwich Islands"
+    },
+    "tld": [".gs"],
+    "cca3":"SGS12",
+    "currencies":{
+      "SHP":{
+        "name":"Saint Helena pound",
+        "symbol":"£"
+      }
+    },
+    "capital": ["King Edward Point"],
+    "region": "Antarctic",
+    "subregion":"",
+    "languages":{
+      "eng": "English"
+    },
+    "borders": [],
+    "population": 30
+  }
+]
