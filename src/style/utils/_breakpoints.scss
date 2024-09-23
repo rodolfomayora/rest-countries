@@ -1,0 +1,13 @@
+// Design limits
+// - from: 375px
+// - to  : 1440px
+$minMobile : 375px;
+$maxDesktop: 1440px;
+
+// Mobile First
+$minTablet : 768px;  // medium
+$minDesktop: 1024px; // large
+
+// Desktop First
+$maxMobile : 767px;  // small
+$maxTablet : 1023px; // medium

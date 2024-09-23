@@ -1,0 +1,49 @@
+.CountryCard {
+  inline-size: 264px;
+  min-block-size: 336px;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: var(--color-blue-dark);
+
+  .flagImage {
+    inline-size: 100%;
+    aspect-ratio: 264 / 160;
+    object-fit: cover;
+    user-select: none;
+    background-color: #999999;
+  }
+
+  .summary {
+    display: grid;
+    row-gap: 18px;
+    padding: 25px;
+    color: var(--color-white);
+  }
+
+  .name {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: var(--color-white);
+  }
+
+  .info {
+    display: grid;
+    row-gap: 7.4px;
+  }
+
+  .label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+  }
+
+  &:hover {
+    background-color: var(--color-hover-blue);
+  }
+
+  &:active {
+    transform: scale(0.96);
+    opacity: 0.7;
+  }
+}

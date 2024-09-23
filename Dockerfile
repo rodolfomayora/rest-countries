@@ -1,15 +1,17 @@
-FROM node:16.19-alpine
+# syntax=docker/dockerfile:1
 
-WORKDIR /app
+ARG NODE_VERSION=18.20.2
 
-# install dependencies
-COPY package*.json .
-COPY yarn.lock .
-ENV NODE_ENV=development
-RUN yarn install && yarn install --production=false
-
+FROM node:${NODE_VERSION} AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+RUN --mount=type=bind,source=package.json,target=package.json \
+    corepack install
+WORKDIR /usr/src/app
+RUN --mount=type=bind,source=package.json,target=package.json \
+    --mount=type=bind,source=pnpm-lock.yaml,target=pnpm-lock.yaml \
+    --mount=type=cache,id=pnpm,target=/pnpm/store \
+    pnpm install
 COPY . .
-
 EXPOSE 3001
-
-CMD ["yarn", "start"]

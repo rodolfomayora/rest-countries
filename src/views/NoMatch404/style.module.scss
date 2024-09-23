@@ -1,22 +1,12 @@
-@import '../../assets/styles/config';
-
 .NoMatch404 {
-  height: calc(100vh - #{$headerHeight});
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  & > * + * { margin-top: 40px; }
+  height: calc(100svh - var(--desktop-header-height));
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 40px;
 
   .errorCode {
     font-size: 100px;
-    color: $white;
-  }
-
-  &.light {
-    background-color: $white;
-  
-    .errorCode { color: $light-veryDarkBlue; }
+    color: var(--color-white);
   }
 }

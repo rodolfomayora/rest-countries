@@ -1,34 +1,24 @@
-import React, { FC } from 'react';
-
-import { useSelector, useDispatch } from 'react-redux';
-
-import { useTheme } from '../../hooks';
-import { selectTheme } from '../../store/rootSelectors';
-import { toggleTheme } from '../../store/rootActions';
-import { MoonIconFill, MoonIconOutline } from '../../assets/images';
+// import { useTheme } from '../../hooks';
+import MoonIconFill from '#/assets/images/svg/moon-fill.svg?react';
 import style from './style.module.scss';
 
-const ToggleThemeButton: FC = () => {
+export function ToggleThemeButton () {
+  // const currentTheme = useSelector(selectTheme);
+  // const isDefault: boolean = currentTheme === 'default';
 
-  const currentTheme = useSelector(selectTheme);
-  const dispatch = useDispatch();
-  const handleClick = () => dispatch(toggleTheme());
+  // const dispatch = useDispatch();
+  // const handleClick = () => dispatch(toggleTheme());
 
-  const isDefault: boolean = currentTheme === 'default';
-
-  const toggleThemeButtonStyle: string = useTheme(style.ToggleThemeButton, style.light);
+  // const toggleThemeButtonStyle: string = useTheme(style.ToggleThemeButton, style.light);
 
   return (
-    <button className={toggleThemeButtonStyle}
-      onClick={handleClick}
-    >
-      {isDefault
+    // <button className={toggleThemeButtonStyle} onClick={handleClick}>
+    <button className={style.ToggleThemeButton} onClick={() => {}}>
+      {/* {isDefault
       ? <MoonIconFill className={style.icon} /> 
-      : <MoonIconOutline className={style.icon} />}
-      
+      : <MoonIconOutline className={style.icon} />} */}
+      <MoonIconFill className={style.icon} />
       <span className={style.text}>Dark Mode</span>
     </button>
   )
 }
-
-export default ToggleThemeButton;

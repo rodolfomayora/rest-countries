@@ -1,0 +1,22 @@
+@use '/src/style/utils/mixins' as mixins;
+
+.Country {
+  padding-top: 40px;
+  padding-bottom: 60px;
+
+  .sectionWrapper {
+    display: grid;
+    row-gap: 64px;
+    padding-inline: 12px;
+  }
+
+  @include mixins.minTablet {
+    padding-top: 80px;
+
+    .sectionWrapper {
+      row-gap: 80px;
+      padding-inline: 0;
+      padding-right: 0;
+    }
+  }
+}

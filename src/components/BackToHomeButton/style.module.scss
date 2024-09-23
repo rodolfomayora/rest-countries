@@ -1,44 +1,40 @@
-@import '../../assets//styles/config';
+@use '/src/style/utils/mixins' as mixins;
 
 .BackToHomeButton {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
   justify-content: center;
   align-items: center;
+  column-gap: 10px;
   width: 104px;
   height: 32px;
-  background-color: $dark-darkBlue;
+  background-color: var(--color-blue-dark);
   border-radius: 3px;
 
   .icon {
-    fill: $white;
-    width: 18px;
-    margin-right: 6px;
+    width: 16px;
+    fill: var(--color-white);
   }
 
   .text {
-    margin-bottom: -2px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.4px;
-    color: $white;
+    margin-top: 2px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--color-white);
   }
 
-  /* LIGHT THEME */
-  &.light {
-    background-color: $white;
-    box-shadow: 0 0 5px 2px $shadow;
-
-    .icon { fill: $light-veryDarkBlue; }
-
-    .text { color: $light-veryDarkBlue; }
-  }
-
-  @include responsiveMedium {
+  @include mixins.minTablet {
     width: 136px;
     height: 40px;
+    padding-right: 8px;
 
-    .icon { margin-right: 10px; }
+    .icon {
+      width: 20px;
+    }
 
-    .text { font-size: 16px; }
+    .text {
+      margin-top: 0;
+      font-size: 16px;
+    }
   }
 }

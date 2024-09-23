@@ -1,31 +1,24 @@
-import React, { FC } from 'react';
-
 import { Link } from 'react-router-dom';
-
-import { useTheme } from '../../hooks';
-import Container from '../Container';
-import ToggleThemeButton from '../ToggleThemeButton';
+import { routes } from '#/config/routes';
+import { Container } from '#/components/Container';
+import { ToggleThemeButton } from '#/components/ToggleThemeButton';
 import style from './style.module.scss';
 
-const Header: FC = () => {
-
-  const headerStyle = useTheme(style.Header, style.light);
-
+export function Header () {
   return (
-    <header className={headerStyle}>
+    <header className={style.Header}>
       <Container>
         <section className={style.headerWrapper}>
-          <Link to="/">
+          <Link to={routes.root}>
             <h1 className={style.mainTitle}>
               Where in the world?
             </h1>
           </Link>
-          
-          <ToggleThemeButton />
+          <div className={style.buttonWrapper}>
+            <ToggleThemeButton />
+          </div>
         </section>
       </Container>
     </header>
   );
 }
-
-export default Header;

@@ -1,0 +1,16 @@
+@use '/src/style/utils/mixins' as mixins;
+
+.SuspenseDetail {
+  display: grid;
+  row-gap: 50px;
+
+  @include mixins.minTablet {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+  }
+
+  @include mixins.minDesktop {
+    grid-template-columns: min(45%, 560px) 1fr;
+    column-gap: 80px;
+  }
+}

@@ -1,0 +1,13 @@
+@use '/src/style/utils/mixins' as mixins;
+
+.CountryFilters {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 40px;
+  column-gap: 20px;
+
+  @include mixins.minTablet {
+    grid-template-columns: minmax(auto, 480px) auto;
+    justify-content: space-between;
+  }
+}

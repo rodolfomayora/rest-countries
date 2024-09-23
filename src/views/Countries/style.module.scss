@@ -1,0 +1,20 @@
+@use '/src/style/utils/mixins' as mixins;
+
+.Countries {
+  // min-block-size: 100svh;
+  min-block-size: calc(100svh - var(--desktop-header-height));
+  padding-block: 24px 66px;
+
+  .content {
+    display: grid;
+    row-gap: 32px;
+  }
+
+  @include mixins.minTablet {
+    padding-block: 48px;
+    
+    .content {
+      row-gap: 48px;
+    }
+  }
+}
