@@ -1,4 +1,4 @@
-import countries from './data.json' with { type: 'json' };
+import countries from './data.json';
 import { CountryBase, CountryDetails, BorderCountry } from '#/types/Country';
 
 export class CountriesApi {
