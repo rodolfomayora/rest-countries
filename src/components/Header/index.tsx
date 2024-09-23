@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { routes } from '#/config/routes';
 import { Container } from '#/components/Container';
-import { ToggleThemeButton } from '#/components/ToggleThemeButton';
+// import { ToggleThemeButton } from '#/components/ToggleThemeButton';
 import style from './style.module.scss';
 
 export function Header () {
@@ -15,7 +15,7 @@ export function Header () {
             </h1>
           </Link>
           <div className={style.buttonWrapper}>
-            <ToggleThemeButton />
+            {/* <ToggleThemeButton /> */}
           </div>
         </section>
       </Container>
