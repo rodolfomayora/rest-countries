@@ -5,7 +5,7 @@ services:
     build: .
     image: rest-countries:1.0
     container_name: rest-countries
-    command: yarn start
+    command: pnpm dev
     ports:
       - 3001:3001
     develop:
@@ -17,5 +17,3 @@ services:
             - package.json
         - action: rebuild
           path: package.json
-    # environment:
-      # - NODE_ENV:development

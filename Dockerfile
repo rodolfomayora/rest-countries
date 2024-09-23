@@ -1,14 +1,17 @@
 # syntax=docker/dockerfile:1
 
-ARG NODE_VERSION=16.20.2
-# ARG NODE_VERSION=18.20.2
+ARG NODE_VERSION=18.20.2
 
 FROM node:${NODE_VERSION} AS base
-RUN yarn config set cache-folder /root/.yarn
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+RUN --mount=type=bind,source=package.json,target=package.json \
+    corepack install
 WORKDIR /usr/src/app
 RUN --mount=type=bind,source=package.json,target=package.json \
-    --mount=type=bind,source=yarn.lock,target=yarn.lock \
-    --mount=type=cache,target=/root/.yarn,id=yarn \
-    yarn install --production=false --frozen-lockfile --cache-folder /root/.yarn
+    --mount=type=bind,source=pnpm-lock.yaml,target=pnpm-lock.yaml \
+    --mount=type=cache,id=pnpm,target=/pnpm/store \
+    pnpm install
 COPY . .
 EXPOSE 3001
